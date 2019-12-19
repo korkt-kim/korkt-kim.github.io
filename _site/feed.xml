@@ -6,9 +6,45 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 17 Dec 2019 02:06:51 +0900</pubDate>
-    <lastBuildDate>Tue, 17 Dec 2019 02:06:51 +0900</lastBuildDate>
+    <pubDate>Fri, 20 Dec 2019 01:44:44 +0900</pubDate>
+    <lastBuildDate>Fri, 20 Dec 2019 01:44:44 +0900</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>React 3일차! React Router, Redux란?, Redux구조, 잘짜여진 React+Redux</title>
+        <description>&lt;p&gt;This is just a dummy post. Lorem ipsum and all the rest.&lt;/p&gt; &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna...</description>
+        <pubDate>Thu, 19 Dec 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/diary/2019/12/19/diary.html</link>
+        <guid isPermaLink="true">http://localhost:4000/diary/2019/12/19/diary.html</guid>
+        
+        
+        <category>diary</category>
+        
+      </item>
+    
+      <item>
+        <title>리액트 2일차! State, ContextAPI, Component LifeCycle, List </title>
+        <description>&lt;h1&gt; ◎ State &lt;/h1&gt; &lt;p&gt;props는 받아오기만 하고 props 데이터 자체는 수정이 안되는 정적 데이터였다.&lt;br /&gt; 데이터가 실시간으로 바뀔 수 있는 동적인 데이터를 다뤄볼 시간이다. 이를 위해서는 state를 사용한다.&lt;/p&gt; &lt;p&gt;state의 특징은...</description>
+        <pubDate>Wed, 18 Dec 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/diary/2019/12/18/diary.html</link>
+        <guid isPermaLink="true">http://localhost:4000/diary/2019/12/18/diary.html</guid>
+        
+        
+        <category>diary</category>
+        
+      </item>
+    
+      <item>
+        <title>리액트 1일차! 프로젝트 생성, JSX파일이 뭐야, Props, Refs</title>
+        <description>&lt;h1&gt; ◎ React! &lt;/h1&gt; &lt;p&gt;드디어 교육의 목적인 React를 배우기 시작했다.&lt;/p&gt; &lt;p&gt;왜 React를 쓰는 걸까? React 의 특징부터 알아보자&lt;/p&gt; &lt;ol&gt; &lt;li&gt;컴포넌트 단위 UI 개발, MVC 구조의 V(view)영역을 구현&lt;/li&gt; &lt;li&gt;React는 Javascript 라이브러리/프레임워크&lt;/li&gt;...</description>
+        <pubDate>Tue, 17 Dec 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/diary/2019/12/17/diary.html</link>
+        <guid isPermaLink="true">http://localhost:4000/diary/2019/12/17/diary.html</guid>
+        
+        
+        <category>diary</category>
+        
+      </item>
     
       <item>
         <title>자바스크립트 스마트폰용 웹페이지 개발</title>
@@ -37,38 +73,6 @@
       <item>
         <title>Welcome to Jekyll!</title>
         <description>&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different...</description>
-        <pubDate>Mon, 20 Apr 2015 17:43:59 +0900</pubDate>
-        <link>http://localhost:4000/jekyll/2015/04/20/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">http://localhost:4000/jekyll/2015/04/20/welcome-to-jekyll.html</guid>
-        
-        <category>jekyll</category>
-        
-        <category>welcome</category>
-        
-        
-        <category>Jekyll</category>
-        
-      </item>
-    
-      <item>
-        <title>Dummy Post 6</title>
-        <description>&lt;p&gt;This is just a dummy post. Lorem ipsum and all the rest.&lt;/p&gt; &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna...</description>
-        <pubDate>Sun, 19 Apr 2015 17:43:59 +0900</pubDate>
-        <link>http://localhost:4000/dummy/2015/04/19/dummy6.html</link>
-        <guid isPermaLink="true">http://localhost:4000/dummy/2015/04/19/dummy6.html</guid>
-        
-        <category>lorem</category>
-        
-        <category>ipsum</category>
-        
-        
-        <category>Dummy</category>
-        
-      </item>
-    
-      <item>
-        <title>Welcome to Jekyll!</title>
-        <description>&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different...</description>
         <pubDate>Sun, 19 Apr 2015 04:25:52 +0900</pubDate>
         <link>http://localhost:4000/jekyll/2015/04/19/welcome-to-jekyll.html</link>
         <guid isPermaLink="true">http://localhost:4000/jekyll/2015/04/19/welcome-to-jekyll.html</guid>
@@ -79,36 +83,6 @@
         
         
         <category>Jekyll</category>
-        
-      </item>
-    
-      <item>
-        <title>Dummy Post 6</title>
-        <description>&lt;p&gt;This is just a dummy post. Lorem ipsum and all the rest.&lt;/p&gt; &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna...</description>
-        <pubDate>Sun, 19 Apr 2015 04:25:52 +0900</pubDate>
-        <link>http://localhost:4000/dummy/2015/04/19/dummy6.html</link>
-        <guid isPermaLink="true">http://localhost:4000/dummy/2015/04/19/dummy6.html</guid>
-        
-        <category>lorem</category>
-        
-        <category>ipsum</category>
-        
-        
-        <category>Dummy</category>
-        
-      </item>
-    
-      <item>
-        <title>Dummy Post 5</title>
-        <description>&lt;p&gt;This is just a dummy post. Lorem ipsum and all the rest.&lt;/p&gt; &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna...</description>
-        <pubDate>Sun, 19 Apr 2015 04:25:52 +0900</pubDate>
-        <link>http://localhost:4000/dummy/2015/04/19/dummy5.html</link>
-        <guid isPermaLink="true">http://localhost:4000/dummy/2015/04/19/dummy5.html</guid>
-        
-        <category>lorem</category>
-        
-        
-        <category>Dummy</category>
         
       </item>
     

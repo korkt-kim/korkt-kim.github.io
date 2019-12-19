@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Dummy Post 5</title>
-  <meta name="description" content="This is just a dummy post. Lorem ipsum and all the rest.">
+  <title>리액트 2일차! State, ContextAPI, Component LifeCycle, List </title>
+  <meta name="description" content=" ◎ State ">
   
   <meta name="author" content="korkt-kim">
   <meta name="copyright" content="&copy; korkt-kim 2019">
@@ -41,10 +41,10 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="This is just a dummy post. Lorem ipsum and all the rest." />
-  <meta property="og:url" content="http://localhost:4000/dummy/2015/04/19/dummy5.html">
+  <meta property="og:description" content=" ◎ State " />
+  <meta property="og:url" content="http://localhost:4000/diary/2019/12/18/diary.html">
   <meta property="og:site_name" content="Better than Yesterday!" />
-  <meta property="og:title" content="Dummy Post 5" />
+  <meta property="og:title" content="리액트 2일차! State, ContextAPI, Component LifeCycle, List " />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="http://localhost:4000/assets/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -55,17 +55,17 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Dummy Post 5">
-  <meta name="twitter:description" content="This is just a dummy post. Lorem ipsum and all the rest.">
+  <meta name="twitter:title" content="리액트 2일차! State, ContextAPI, Component LifeCycle, List ">
+  <meta name="twitter:description" content=" ◎ State ">
   <meta name="twitter:image" content="http://localhost:4000/assets/logo.png">
-  <meta name="twitter:url" content="http://localhost:4000/dummy/2015/04/19/dummy5.html">
+  <meta name="twitter:url" content="http://localhost:4000/diary/2019/12/18/diary.html">
   
 
   
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/dummy/2015/04/19/dummy5.html">
+  <link rel="canonical" href="http://localhost:4000/diary/2019/12/18/diary.html">
 	<link rel="alternate" type="application/rss+xml" title="Better than Yesterday!" href="http://localhost:4000/feed.xml" />
 	
 	<!-- Tooltips -->
@@ -126,8 +126,6 @@
 
 	
 
-	
-
 
       </ul>
     </nav>
@@ -141,8 +139,8 @@
 <div class="post-header-container " >
   <div class="scrim ">
     <header class="post-header">
-      <h1 class="title">Dummy Post 5</h1>
-      <p class="info">by <strong>Ben Centra</strong></p>
+      <h1 class="title">리액트 2일차! State, ContextAPI, Component LifeCycle, List </h1>
+      <p class="info">by <strong>korkt</strong></p>
     </header>
   </div>
 </div>
@@ -156,33 +154,141 @@
  
 
 <section class="post-meta">
-  <div class="post-date">April 19, 2015</div>
+  <div class="post-date">December 18, 2019</div>
   <div class="post-categories">
   in 
     
-    <a href="/category/Dummy">Dummy</a>
+    <a href="/category/diary">Diary</a>
     
   
   </div>
 </section>
 
 <article class="post-content">
-  <p>This is just a dummy post. Lorem ipsum and all the rest.</p>
+  <h1> ◎ State </h1>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>props는 받아오기만 하고 props 데이터 자체는 수정이 안되는 정적 데이터였다.<br />
+데이터가 실시간으로 바뀔 수 있는 동적인 데이터를 다뤄볼 시간이다. 이를 위해서는 state를 사용한다.</p>
+
+<p>state의 특징은 다음과같다.<br /></p>
+<ol>
+  <li>항상 this.setState() 메서드를 사용하여 값을 변경하여야한다.</li>
+  <li>setState() 호출 후에는 항상 render함수가 실행되어 DOM이 갱신된다.</li>
+  <li>props와 달리 Component 내부에서 선언되며 내부에서 값을 변경할 수 있다.</li>
+</ol>
+
+<p>state가 들어있는 class의 구조는 다음과 같다. event로 state값을 변경시키는 경우와 setTimeout()으로 state값을 변경시키는 경우이다.
+(setTimeout을 써야하는 이유는 setTimeout후 setState가 실행. 이후 render로 다시 진입하여 setTimeout 후 setState의 무한반복이 이뤄지기 때문)</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class MYCLASS extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            count: 0,
+            date : new Date()
+        };
+    }
+
+    clickHandler(){
+        //this bind 주의
+        this.setState({
+            count:this.state.count+1
+        });
+    }
+
+    render(){
+        const style={
+            width: this.props.style.width+'px',
+            background:this.props.style.backgroundColor
+        };
+        setTimeout(()=&gt;this.setState({
+            date:new Date()
+        }),1000);
+        
+        return &lt;div onClick={this.clickHandler.bind(this)}&gt;&lt;h1 style={style}&gt;{this.state.count}&lt;br&gt;&lt;/br&gt;{this.state.date.toTimeString()}&lt;/h1&gt;&lt;/div&gt;
+    }
+}
+</code></pre></div></div>
+
+<h2> - 하위 Component로 state 전달 </h2>
+
+<p>그렇다면 부모 Component에서 자식 Component로 state값을 전달하는 방법도 필요할 것이다.<br />
+기본적으로 부모 Component에서 state로 선언된 변수를 props로 자식 Component에 전달하는 방식이다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class Parent extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {text: 'Hello World'};
+    }
+    render(){
+        return &lt;div&gt;parent&lt;First text={this.state.text}/&gt;&lt;/div&gt;
+    }
+}
+
+const First = props =&gt;(
+    &lt;div&gt;first&lt;Second text={props.text}/&gt;&lt;/div&gt;
+)
+
+const Second = props =&gt;(
+    &lt;div&gt;second text:{props.text}&lt;/div&gt;
+)
+</code></pre></div></div>
+
+<h1> ◎Context API </h1>
+
+<p>ContextAPI는 React Component “트리”에서 데이터를 전역변수”처럼” 공유하고 싶을때 사용될 수 있다.<br />
+기본적으로 Provider Consumer방식으로 변수가 공유된다.</p>
+
+<li>Provider: 해당 Context로 값을 설정/전달 하는 경우에 사용</li>
+<li>Consumer: Context의 값을 가져오는 경우에 사용</li>
+
+<p>이를 활용하면 최상단 부모 Component에서 최하단 자식 Component까지 데이터를 한번에 넘겨줄 수 있다.<br />
+위의 state예제에 ContextAPI를 적용해보면 다음과 같다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class Parent extends React.Component{ 
+    constructor(props){
+        super(props);
+        this.state = {text: 'Hello World'};
+    }
+    render(){
+        return &lt;MyContext.Provider value ={this.state.text}&gt;&lt;div&gt;parent&lt;First/&gt;&lt;/div&gt;&lt;/MyContext.Provider&gt; // 무조건 value 이어야함
+    }
+}
+const First = props =&gt;(
+    &lt;div&gt;first&lt;Second/&gt;&lt;/div&gt;
+)
+const Second = props =&gt;(
+    &lt;div&gt;second text: &lt;MyContext.Consumer&gt;{context1 =&gt; context1}&lt;/MyContext.Consumer&gt;&lt;/div&gt; // Consumer는 multiple children node를 가져서는 안됨
+)
+</code></pre></div></div>
+
+<h1> ◎Component Lifecycle </h1>
+
+<p>Vue 에서는 beforeCreate,created,beforeMount,mounted,beforeUpdate,updated,beforeDestroy,Destroyed의 라이프 사이클이 있었다.<br />
+React의 라이프 사이클은 다음 그림과 같다.
+<img /></p>
+
+<p>Vue와 유사하지만 Vue보다 간단하다.<br /></p>
+<li>Mounting은 해당 Component가 처음 실행할 때 실행되는 부분이며 componentDidMount()로 확인가능하다</li>
+<li>Updating은 수시로 render()가 발생할때 실행되며 componentDidUpdate()로 확인가능하다</li>
+<li>Unmounting는 `ReactDOM.unmountComponentAtNode(container)로 발생시킬 수 있으며, 컴포넌트가 DOM에서 제거된 시점에 componentWillUnmount()가 실행된다.</li>
+
+<h1> ◎List </h1>
+
+<p>list형식의 데이터 변수를 목록으로 출력하고 싶다면 “반복문을 통해” Component생성이 가능하다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const listItems = [1,2,3,4,5].map(number=&gt;&lt;li key={number}&gt;number&lt;/li&gt;); //key 중요!
+ReactDOM.render(&lt;li&gt;listItems&lt;/li&gt;,document.getElementById('app'));
+</code></pre></div></div>
+
+<p>key가 없다면 경고메시지가 출력된다. 그렇다면 key props는 왜 필요할까? 그것은 각각의 요소의 변경,추가,삭제등의 작업이 수행될 때 element를 구분할 수 있어야하기 때문이다.</p>
+
+<p>key props는 오직 반복문과 결합하였을때 의미있게 생성가능하다.</p>
+
 
 </article>
 
 
-
-<section class="tags">
-  <strong>Tags:</strong> <a href="/tag/lorem">lorem</a>
-</section>
 
 
 
@@ -207,7 +313,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     
     
     
-      <a href="//www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdummy%2F2015%2F04%2F19%2Fdummy5.html"
+      <a href="//www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdiary%2F2019%2F12%2F18%2Fdiary.html"
         onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
         <i class="fa fa-linkedin-square fa-lg"></i>
       </a>
@@ -220,7 +326,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     
     
     
-      <a href="//plus.google.com/share?title=Dummy+Post+5&url=http%3A%2F%2Flocalhost%3A4000%2Fdummy%2F2015%2F04%2F19%2Fdummy5.html"
+      <a href="//plus.google.com/share?title=%EB%A6%AC%EC%95%A1%ED%8A%B8+2%EC%9D%BC%EC%B0%A8%21+State%2C+ContextAPI%2C+Component+LifeCycle%2C+List+&url=http%3A%2F%2Flocalhost%3A4000%2Fdiary%2F2019%2F12%2F18%2Fdiary.html"
         onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
         <i class="fa fa-google-plus-square fa-lg"></i>
       </a>
@@ -265,8 +371,6 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
 	
 	<li class="nav-link"><a href="/typography/">Typography</a>
-	
-
 	
 
 	
