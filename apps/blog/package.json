@@ -4,21 +4,32 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "next dev",
+    "dev": "scripts/nextEnv.js && next dev",
     "lint": "eslint . --max-warnings 0",
+    "sanity-build": "sanity build",
+    "sanity-deploy": "sanity deploy",
+    "sanity-deploy-graphql": "sanity graphql deploy",
+    "sanity-dev": "sanity dev",
+    "sanity-start": "sanity start",
     "start": "next start"
   },
   "dependencies": {
     "@emotion/css": "^11.11.2",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@sanity/vision": "^3.20.2",
     "@zakelstorm/ui": "workspace:*",
+    "axios": "^1.6.2",
+    "dotenv": "^16.3.1",
     "next": "^14.0.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "sanity": "^3.20.2",
+    "styled-components": "^5.2 || ^6"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^14.0.2",
+    "@sanity/eslint-config-studio": "^3.0.1",
     "@svgr/webpack": "^8.1.0",
     "@types/eslint": "^8.44.7",
     "@types/node": "^17.0.12",
