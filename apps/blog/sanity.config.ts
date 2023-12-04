@@ -6,7 +6,7 @@ import { schemaTypes } from './apis/schemas'
 
 export default defineConfig({
   name: 'default',
-  title: 'Sanity Project',
+  title: 'twitter-2-yt-nextjs-clone',
 
   projectId: 'n322w4lp',
   dataset: 'production',

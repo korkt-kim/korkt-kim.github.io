@@ -1,3 +1,4 @@
-import pet from './pet'
+import article from './article'
+import comment from './comment'
 
-export const schemaTypes = [pet]
+export const schemaTypes = [article, comment]
