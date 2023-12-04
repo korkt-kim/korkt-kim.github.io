@@ -1,0 +1,15 @@
+export const CATEGORIES = [
+  ['Typescript'],
+  ['Javascript'],
+  ['HTTP'],
+  ['HTML'],
+  ['CSS'],
+  ['VueJS'],
+  ['React'],
+  ['Webpack'],
+  ['Security'],
+  ['Git'],
+  ['Books'],
+  ['Browser'],
+  ['ETC'],
+]
