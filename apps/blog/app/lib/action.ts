@@ -1,51 +1,54 @@
-import { sanityFetch } from "@/apis";
-import { client } from "@/apis/client";
+import { sanityFetch } from '@/apis'
+import { client } from '@/apis/client'
 import {
-    allArticlesQuery,
-    articleQuery,
-    paginatedArticleByCategoryQuery,
-    paginatedArticleQuery
-} from "@/apis/groq";
+  allArticlesQuery,
+  articleQuery,
+  paginatedArticleByCategoryQuery,
+  paginatedArticleQuery,
+} from '@/apis/groq'
 
-export async function getAllArticles(){
-    return sanityFetch(client, {
+export async function getAllArticles() {
+  return sanityFetch(client, {
     query: allArticlesQuery,
-    params:{},
+    params: {},
     tags: articleQueryKeys.all,
   })
 }
 
-export async function getArticles(id:string){
-    return sanityFetch(client, {
+export async function getArticles(id: string) {
+  return sanityFetch(client, {
     query: articleQuery,
-    params:{
-        id
+    params: {
+      id,
     },
     tags: articleQueryKeys.all,
   })
 }
 
-export async function getPaginatedArticles(lastId:string){
-    return sanityFetch(client, {
+export async function getPaginatedArticles(lastId: string) {
+  return sanityFetch(client, {
     query: paginatedArticleQuery,
-    params:{
-        lastId
+    params: {
+      lastId,
     },
     tags: articleQueryKeys.all,
   })
 }
 
-export async function getPaginatedArticlesByCategoryId(categoryId:string, lastId:string ){
-    return sanityFetch(client, {
+export async function getPaginatedArticlesByCategoryId(
+  categoryId: string,
+  lastId: string
+) {
+  return sanityFetch(client, {
     query: paginatedArticleByCategoryQuery,
-    params:{
-        categoryId,
-        lastId
+    params: {
+      categoryId,
+      lastId,
     },
     tags: articleQueryKeys.all,
   })
 }
 
-const articleQueryKeys =  {
-    all: ['articles'],
+const articleQueryKeys = {
+  all: ['article'],
 }
