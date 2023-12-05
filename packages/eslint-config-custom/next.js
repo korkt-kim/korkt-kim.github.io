@@ -29,7 +29,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['app{/**,}/page.{ts,tsx}', 'app{/**,}/layout.{ts,tsx}'],
+      files: ['app{/**,}/{page,layout,error,loading}.{ts,tsx}'],
       rules: {
         'import/no-default-export': 0,
         'import/prefer-default-export': 2,
