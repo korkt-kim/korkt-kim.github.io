@@ -1,8 +1,13 @@
 {
   "extends": "typescript-config/react-library.json",
   "compilerOptions": {
-    "outDir": "dist"
+    "lib": ["DOM", "ESNext"],
+    "outDir": "dist",
+    "jsxImportSource": "@emotion/react",
+    "isolatedModules": false,
+    "resolveJsonModule": true,
+    "downlevelIteration": true
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["**/*", "components", "hooks", "src/theme", "src/utils"],
+  "exclude": ["dist", "build", "node_modules"]
 }
