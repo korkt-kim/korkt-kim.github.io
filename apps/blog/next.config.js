@@ -2,7 +2,6 @@
 module.exports = {
   swcMinify: true,
   reactStrictMode: false,
-  compiler: { emotion: true },
   images: { unoptimized: true },
   webpack(config) {
     {

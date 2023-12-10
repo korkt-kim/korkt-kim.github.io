@@ -1,6 +1,6 @@
-import { createContext } from 'react'
+import React, { createContext } from 'react'
 
-import { seedToken } from '@/src/theme/tokens/seed'
+import { seedToken } from '../theme/tokens/seed'
 
 export type AliasToken = typeof seedToken
 
