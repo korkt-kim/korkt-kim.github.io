@@ -1,4 +1,4 @@
-import React, { createContext } from 'react'
+import { createContext } from 'react'
 
 import { seedToken } from '../theme/tokens/seed'
 
@@ -10,7 +10,7 @@ export const defaultConfig = {
 }
 
 export interface DesignTokenProviderProps {
-  token: AliasToken
+  token?: AliasToken
   override: Partial<AliasToken>
 }
 

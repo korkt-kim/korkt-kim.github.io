@@ -20,7 +20,8 @@
       "import": "./dist/hooks.mjs",
       "types": "./dist/hooks.d.ts",
       "default": "./dist/hooks.mjs"
-    }
+    },
+    "./dist/index.css": "./dist/index.css"
   },
   "scripts": {
     "build": "tsup",

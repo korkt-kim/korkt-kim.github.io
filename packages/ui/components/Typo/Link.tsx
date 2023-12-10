@@ -1,11 +1,11 @@
-import React, { forwardRef } from 'react'
+import { AnchorHTMLAttributes, forwardRef } from 'react'
 import type { TypographyProps } from './Base'
 import Base from './Base'
 
 export interface LinkProps
   extends TypographyProps<'a'>,
     Omit<
-      React.AnchorHTMLAttributes<HTMLAnchorElement>,
+      AnchorHTMLAttributes<HTMLAnchorElement>,
       'type' | keyof TypographyProps<'a'>
     > {}
 

@@ -1,10 +1,10 @@
-import React, { forwardRef } from 'react'
+import { CSSProperties, HTMLAttributes, ReactNode, forwardRef } from 'react'
 
 export interface TypographyProps<C extends keyof JSX.IntrinsicElements>
-  extends React.HTMLAttributes<HTMLElement> {
+  extends HTMLAttributes<HTMLElement> {
   id?: string
-  style?: React.CSSProperties
-  children?: React.ReactNode
+  style?: CSSProperties
+  children?: ReactNode
   component?: C
 }
 

@@ -1,8 +1,14 @@
 import './globals.css'
+import '@zakelstorm/ui/dist/index.css'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Script from 'next/script'
+import { Suspense } from 'react'
+import Skeleton from 'react-loading-skeleton'
+
+import { Footer } from './features/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,7 +25,13 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <Script src='/env.js' type='text/javascript'></Script>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {children}
+
+        <Suspense fallback={<Skeleton />}>
+          <Footer />
+        </Suspense>
+      </body>
     </html>
   )
 }
