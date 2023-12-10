@@ -20,6 +20,5 @@ export default defineConfig([
     splitting: true,
     outDir: './dist',
     external: ['react', 'react-dom'],
-    platform: 'browser',
   },
 ])

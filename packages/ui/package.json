@@ -4,33 +4,28 @@
   "private": true,
   "exports": {
     ".": {
-      "require": "./dist/index.cjs",
-      "default": "./dist/index.mjs",
+      "require": "./dist/index.js",
       "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.mjs"
     },
     "./components": {
-      "require": "./dist/components.cjs",
-      "default": "./dist/components.mjs",
+      "require": "./dist/components.js",
       "import": "./dist/components.mjs",
-      "types": "./dist/components.d.ts"
+      "types": "./dist/components.d.ts",
+      "default": "./dist/components.mjs"
     },
     "./hooks": {
-      "require": "./dist/hooks.cjs",
-      "default": "./dist/hooks.mjs",
+      "require": "./dist/hooks.js",
       "import": "./dist/hooks.mjs",
-      "types": "./dist/hooks.d.ts"
+      "types": "./dist/hooks.d.ts",
+      "default": "./dist/hooks.mjs"
     }
   },
   "scripts": {
     "build": "tsup",
     "generate:component": "turbo gen react-component",
     "lint": "eslint . --max-warnings 0"
-  },
-  "dependencies": {
-    "@emotion/css": "^11.11.2",
-    "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6"
   },
   "devDependencies": {
     "@turbo/gen": "^1.10.12",
@@ -39,11 +34,15 @@
     "@types/node": "^20.5.2",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
+    "autoprefixer": "^10.4.16",
     "eslint": "^8.53.0",
     "eslint-config-custom": "workspace:*",
     "glob": "^8.1.0",
+    "postcss": "^8.4.32",
     "prettier": "latest",
     "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.3.6",
     "tsup": "7.2.0",
     "typescript": "^5.2.2",
     "typescript-config": "workspace:*"

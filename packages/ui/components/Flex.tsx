@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { css } from '@emotion/react'
+import React from 'react'
 import { CSSProperties, forwardRef, HTMLProps, PropsWithChildren } from 'react'
 
 import { useToken } from '../hooks/useToken'
@@ -35,21 +34,21 @@ export const Flex = forwardRef<
     const { token } = useToken()
 
     const className = `_z-space${props.className ? ` ${props.className}` : ''}`
-    const _cssStyles = css`
-      display: ${inline ? 'inline-flex' : 'flex'};
-      flex-direction: ${direction === 'h' ? 'row' : 'column'};
-      gap: ${noGap ? 0 : gap ?? token.paddingSM}px;
-      justify-content: ${justify};
-      align-items: ${align};
-      ${flow &&
-      css`
-        flex-flow: row wrap;
-      `};
-      ${(props as any).css ?? ''};
-    `
+    const _cssStyles: CSSProperties = {
+      display: inline ? 'inline-flex' : 'flex',
+      flexDirection: direction === 'h' ? 'row' : 'column',
+      gap: noGap ? 0 : gap ?? token.paddingSM,
+      justifyContent: justify,
+      alignItems: align,
+      flexFlow: flow ? 'row-wrap' : undefined,
+    }
 
     return (
-      <div className={className} css={_cssStyles} ref={forwardedRef} {...props}>
+      <div
+        className='text-3xl'
+        style={_cssStyles}
+        ref={forwardedRef}
+        {...props}>
         {children}
       </div>
     )
