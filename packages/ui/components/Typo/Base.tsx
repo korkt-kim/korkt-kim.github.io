@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { forwardRef } from 'react'
 
 export interface TypographyProps<C extends keyof JSX.IntrinsicElements>
   extends React.HTMLAttributes<HTMLElement> {
@@ -11,7 +11,7 @@ export interface TypographyProps<C extends keyof JSX.IntrinsicElements>
 interface InternalTypographyProps<C extends keyof JSX.IntrinsicElements>
   extends TypographyProps<C> {}
 
-export const Typography = React.forwardRef<
+export const Typography = forwardRef<
   HTMLElement,
   InternalTypographyProps<keyof JSX.IntrinsicElements>
 >((props, ref) => {

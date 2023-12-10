@@ -19,7 +19,7 @@ export function env(name: keyof APP_ENV): string {
     return process.env[name]!
   }
 
-  return (window as any)['__ENV'][name]
+  return (window as any)['__ENV']?.[name]
 }
 
 // export const useEnv = (name: keyof APP_ENV) => {
