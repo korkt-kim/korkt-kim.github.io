@@ -1,3 +1,5 @@
+'use client'
+
 import { Flex, Typo, useToken } from '@zakelstorm/ui'
 import dayjs from 'dayjs'
 
@@ -5,6 +7,7 @@ import { env } from '@/env'
 
 export function Footer() {
   const { token } = useToken()
+
   return (
     <Flex justify='center' align='center' gap={token.paddingLG}>
       <Flex align='center'>

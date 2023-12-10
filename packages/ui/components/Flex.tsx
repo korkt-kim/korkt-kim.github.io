@@ -32,7 +32,7 @@ export const Flex = forwardRef<
   ) => {
     const { token } = useToken()
 
-    const className = `_z-space${props.className ? ` ${props.className}` : ''}`
+    const className = `${props.className ? ` ${props.className}` : ''}`
     const _cssStyles: CSSProperties = {
       display: inline ? 'inline-flex' : 'flex',
       flexDirection: direction === 'h' ? 'row' : 'column',
@@ -44,7 +44,7 @@ export const Flex = forwardRef<
 
     return (
       <div
-        className='text-3xl'
+        className={className}
         style={_cssStyles}
         ref={forwardedRef}
         {...props}>
@@ -54,4 +54,6 @@ export const Flex = forwardRef<
   }
 )
 
-Flex.displayName = 'Flex'
+if (process.env.NODE_ENV !== 'production') {
+  Flex.displayName = 'Flex'
+}

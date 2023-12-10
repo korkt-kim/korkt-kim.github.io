@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import { HTMLAttributes, forwardRef } from 'react'
 import type { TypographyProps } from './Base'
 import Base from './Base'
 
@@ -7,7 +7,7 @@ const TITLE_ELE_LIST = [1, 2, 3, 4, 5] as const
 export interface TitleProps
   extends Omit<TypographyProps<'h1' | 'h2' | 'h3' | 'h4' | 'h5'>, 'strong'>,
     Omit<
-      React.HTMLAttributes<HTMLHeadElement>,
+      HTMLAttributes<HTMLHeadElement>,
       'type' | keyof TypographyProps<'h1' | 'h2' | 'h3' | 'h4' | 'h5'>
     > {
   level?: (typeof TITLE_ELE_LIST)[number]
