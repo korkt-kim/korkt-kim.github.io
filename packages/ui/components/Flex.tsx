@@ -1,4 +1,3 @@
-import React from 'react'
 import { CSSProperties, forwardRef, HTMLProps, PropsWithChildren } from 'react'
 
 import { useToken } from '../hooks/useToken'
@@ -55,4 +54,4 @@ export const Flex = forwardRef<
   }
 )
 
-Flex.displayName = 'ZSpace'
+Flex.displayName = 'Flex'
