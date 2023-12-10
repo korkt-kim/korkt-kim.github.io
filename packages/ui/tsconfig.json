@@ -7,6 +7,6 @@
     "resolveJsonModule": true,
     "downlevelIteration": true
   },
-  "include": ["**/*", "components", "hooks", "src/theme", "src/utils"],
+  "include": ["components", "hooks", "src/theme", "src/utils"],
   "exclude": ["dist", "build", "node_modules"]
 }
