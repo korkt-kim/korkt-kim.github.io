@@ -1,4 +1,4 @@
-import { HTMLAttributes, forwardRef } from 'react'
+import { HTMLAttributes, forwardRef, memo } from 'react'
 import type { TypographyProps } from './Base'
 import Base from './Base'
 
@@ -13,15 +13,17 @@ export interface TitleProps
   level?: (typeof TITLE_ELE_LIST)[number]
 }
 
-export const Title = forwardRef<HTMLElement, TitleProps>((props, ref) => {
-  const { level = 1, ...restProps } = props
-  let component: keyof JSX.IntrinsicElements
+export const Title = memo(
+  forwardRef<HTMLElement, TitleProps>((props, ref) => {
+    const { level = 1, ...restProps } = props
+    let component: keyof JSX.IntrinsicElements
 
-  if (TITLE_ELE_LIST.includes(level)) {
-    component = `h${level}`
-  } else {
-    component = 'h1'
-  }
+    if (TITLE_ELE_LIST.includes(level)) {
+      component = `h${level}`
+    } else {
+      component = 'h1'
+    }
 
-  return <Base ref={ref} {...restProps} component={component} />
-})
+    return <Base ref={ref} {...restProps} component={component} />
+  })
+)

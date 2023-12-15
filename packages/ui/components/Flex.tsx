@@ -1,6 +1,10 @@
-import { CSSProperties, forwardRef, HTMLProps, PropsWithChildren } from 'react'
-
-import { useToken } from '../hooks/useToken'
+import {
+  CSSProperties,
+  forwardRef,
+  HTMLProps,
+  memo,
+  PropsWithChildren,
+} from 'react'
 
 interface ZSpaceProps {
   gap?: number
@@ -12,46 +16,41 @@ interface ZSpaceProps {
   flow?: boolean
 }
 
-export const Flex = forwardRef<
-  HTMLDivElement,
-  PropsWithChildren<ZSpaceProps> & HTMLProps<HTMLDivElement>
->(
-  (
-    {
-      gap,
-      noGap = false,
-      inline = false,
-      direction = 'h',
-      justify = 'flex-start',
-      align = 'normal',
-      flow = false,
-      children,
-      ...props
-    },
-    forwardedRef
-  ) => {
-    const { token } = useToken()
+export const Flex = memo(
+  forwardRef<
+    HTMLDivElement,
+    PropsWithChildren<ZSpaceProps> & HTMLProps<HTMLDivElement>
+  >(
+    (
+      {
+        gap,
+        noGap = false,
+        inline = false,
+        direction = 'h',
+        justify = 'flex-start',
+        align = 'normal',
+        flow = false,
+        children,
+        ...props
+      },
+      forwardedRef
+    ) => {
+      const style: CSSProperties = {
+        display: inline ? 'inline-flex' : 'flex',
+        flexDirection: direction === 'h' ? 'row' : 'column',
+        gap: noGap ? 0 : gap ?? 16,
+        justifyContent: justify,
+        alignItems: align,
+        flexFlow: flow ? 'row-wrap' : undefined,
+      }
 
-    const className = `${props.className ? ` ${props.className}` : ''}`
-    const _cssStyles: CSSProperties = {
-      display: inline ? 'inline-flex' : 'flex',
-      flexDirection: direction === 'h' ? 'row' : 'column',
-      gap: noGap ? 0 : gap ?? token.paddingSM,
-      justifyContent: justify,
-      alignItems: align,
-      flexFlow: flow ? 'row-wrap' : undefined,
+      return (
+        <div style={style} ref={forwardedRef} {...props}>
+          {children}
+        </div>
+      )
     }
-
-    return (
-      <div
-        className={className}
-        style={_cssStyles}
-        ref={forwardedRef}
-        {...props}>
-        {children}
-      </div>
-    )
-  }
+  )
 )
 
 if (process.env.NODE_ENV !== 'production') {

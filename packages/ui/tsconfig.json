@@ -5,8 +5,11 @@
     "outDir": "dist",
     "isolatedModules": false,
     "resolveJsonModule": true,
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "paths": {
+      "@/*": ["./*"]
+    }
   },
-  "include": ["components", "hooks", "src/theme", "src/utils"],
+  "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["dist", "build", "node_modules"]
 }
