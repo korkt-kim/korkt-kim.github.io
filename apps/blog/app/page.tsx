@@ -1,3 +1,5 @@
+import { Button } from '@zakelstorm/ui'
+
 import { createArticle } from './action'
 import { getAllArticles } from './lib/action'
 
@@ -7,7 +9,7 @@ export default async function Page() {
   return (
     <form action={createArticle}>
       {JSON.stringify(res)}
-      <button type='submit'>asdfasfsadf</button>
+      <Button type='submit'>asdfasfsadf</Button>
     </form>
   )
 }

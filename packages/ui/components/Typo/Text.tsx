@@ -1,4 +1,4 @@
-import { HTMLAttributes, forwardRef } from 'react'
+import { HTMLAttributes, forwardRef, memo } from 'react'
 import type { TypographyProps } from './Base'
 import Base from './Base'
 
@@ -9,6 +9,8 @@ export interface TextProps
       'type' | keyof TypographyProps<'span'>
     > {}
 
-export const Text = forwardRef<HTMLSpanElement, TextProps>((textProps, ref) => {
-  return <Base ref={ref} {...textProps} component='span' />
-})
+export const Text = memo(
+  forwardRef<HTMLSpanElement, TextProps>((textProps, ref) => {
+    return <Base ref={ref} {...textProps} component='span' />
+  })
+)

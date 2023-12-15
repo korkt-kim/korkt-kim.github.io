@@ -1,0 +1,24 @@
+lockfileVersion: '6.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+dependencies:
+  react-ripples:
+    specifier: ^2.2.1
+    version: 2.2.1
+
+devDependencies:
+  eslint-config-custom:
+    specifier: workspace:*
+    version: link:../../../zakelstorm-repo/packages/eslint-config-custom
+  typescript-config:
+    specifier: workspace:*
+    version: link:../../../zakelstorm-repo/packages/typescript-config
+
+packages:
+
+  /react-ripples@2.2.1:
+    resolution: {integrity: sha512-TfLjgZICQlsYCN2iX4fdeZNjoDzhJVC7r+R3irqyaNvCtWezouS9j+sE+nwSk747irtV8RKRDHmwMmsNBOw8Qg==}
+    dev: false

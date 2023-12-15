@@ -1,4 +1,4 @@
-import { AnchorHTMLAttributes, forwardRef } from 'react'
+import { AnchorHTMLAttributes, forwardRef, memo } from 'react'
 import type { TypographyProps } from './Base'
 import Base from './Base'
 
@@ -9,8 +9,8 @@ export interface LinkProps
       'type' | keyof TypographyProps<'a'>
     > {}
 
-export const Link = forwardRef<HTMLElement, LinkProps>(
-  ({ rel, ...restProps }, ref) => {
+export const Link = memo(
+  forwardRef<HTMLElement, LinkProps>(({ rel, ...restProps }, ref) => {
     const mergedProps = {
       ...restProps,
       rel:
@@ -20,5 +20,5 @@ export const Link = forwardRef<HTMLElement, LinkProps>(
     }
 
     return <Base {...mergedProps} ref={ref} component='a' />
-  }
+  })
 )
