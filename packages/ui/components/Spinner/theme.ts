@@ -1,7 +1,5 @@
 export const spinnerStyle = {
-  defaultProps: {
-    spinnerColor: 'text-white',
-  },
+  defaultProps: {},
   styles: {
     base: {
       color: 'text-gray-300',
