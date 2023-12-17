@@ -1,5 +1,3 @@
-import { Spinner } from '@zakelstorm/ui'
-
 import { ArticleList } from './features/Articles/List'
 import { getAllArticles } from './lib/action'
 

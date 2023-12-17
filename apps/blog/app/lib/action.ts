@@ -8,9 +8,9 @@ import {
 } from '@/apis/groq'
 import { Article } from '@/apis/schemas/article'
 
-export async function getAllArticles() {
+export async function getAllArticles(category?: string[]) {
   return sanityFetch<Article[]>(client, {
-    query: allArticlesQuery,
+    query: allArticlesQuery({ category }),
     params: {},
     tags: articleQueryKeys.all,
   })
