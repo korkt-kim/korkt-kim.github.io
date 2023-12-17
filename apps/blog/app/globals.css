@@ -43,5 +43,5 @@ body {
 }
 
 a {
-  @apply no-underline !important;
+  @apply no-underline;
 }

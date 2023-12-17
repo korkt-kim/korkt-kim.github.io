@@ -1,13 +1,20 @@
 import { groq } from 'next-sanity'
 
-export const allArticlesQuery = groq`
-    *[_type=="article"] | order(publishedAt desc, _createdAt desc) {
+export const allArticlesQuery = (query?: { category?: string[] }) => {
+  const _query = `${query?.category ? '&&' : ''} ${(query?.category ?? [])
+    .map(item => `'${item}' in category`)
+    .join('&&')}`
+
+  return groq`
+    *[_type=="article" ${_query}] | order(publishedAt desc, _createdAt desc) {
         title,
         category,
         content,
         _createdAt,
+        _id
     }
 `
+}
 export const articleQuery = groq`
     *[_type=="article" && _id==$id]  {
         title,
