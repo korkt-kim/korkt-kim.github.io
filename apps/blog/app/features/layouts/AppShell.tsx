@@ -13,7 +13,7 @@ export const AppShell = ({ children }: PropsWithChildren) => {
       <main>{children}</main>
       <Flex
         justify='center'
-        className={`absolute left-0  bottom-0 w-[calc(100%-320px)] min-h-[50px]`}>
+        className={`absolute left-0  bottom-0 w-full min-h-[50px]`}>
         <Footer />
       </Flex>
     </div>
