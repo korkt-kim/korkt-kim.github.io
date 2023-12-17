@@ -22,7 +22,6 @@ export const Typography = memo(
     (props, ref) => {
       const {
         component: Component = 'article',
-        className,
 
         children,
         style,

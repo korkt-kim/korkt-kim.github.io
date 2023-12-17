@@ -1,8 +1,6 @@
 import classnames from 'classnames'
 import { twMerge } from 'tailwind-merge'
 
-import { get, defaults } from 'lodash-es'
-
 import Spinner from '../Spinner'
 import { buttonStyle } from './theme'
 
@@ -29,7 +27,6 @@ export const Button = memo(
       ref
     ) => {
       // 1. init
-
       const { defaultProps, styles } = buttonStyle
       const { base, variants, sizes } = styles
 
