@@ -1,5 +1,5 @@
 import { errorMessage } from './consts'
-import { DocumentDefinition } from 'sanity'
+import { DocumentDefinition, PortableTextBlock, TypedObject } from 'sanity'
 
 const articleDefinition: DocumentDefinition = {
   name: 'article',
@@ -48,7 +48,8 @@ export interface Article extends ArticleBody {
 export type ArticleBody = {
   title: string
   password: string
-  category: string
+  category: string[]
+  content: PortableTextBlock[]
 }
 
 export default articleDefinition

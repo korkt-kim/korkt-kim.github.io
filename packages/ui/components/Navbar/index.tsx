@@ -24,7 +24,7 @@ export const Navbar = forwardRef<
 >(({ shadow, blurred, fullWidth, className, children, ...rest }, ref) => {
   const {
     defaultProps,
-    styles: { base, directions },
+    styles: { base },
   } = navbar
 
   shadow = shadow ?? defaultProps.shadow

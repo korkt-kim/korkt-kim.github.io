@@ -6,16 +6,17 @@ import {
   paginatedArticleByCategoryQuery,
   paginatedArticleQuery,
 } from '@/apis/groq'
+import { Article } from '@/apis/schemas/article'
 
 export async function getAllArticles() {
-  return sanityFetch(client, {
+  return sanityFetch<Article[]>(client, {
     query: allArticlesQuery,
     params: {},
     tags: articleQueryKeys.all,
   })
 }
 
-export async function getArticles(id: string) {
+export async function getArticle(id: string) {
   return sanityFetch(client, {
     query: articleQuery,
     params: {
