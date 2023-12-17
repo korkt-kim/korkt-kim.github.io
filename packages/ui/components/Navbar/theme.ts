@@ -52,13 +52,5 @@ export const navbar = {
         },
       },
     },
-    directions: {
-      h: {
-        flexDirection: 'flex-row',
-      },
-      v: {
-        flexDirection: 'flex-col',
-      },
-    },
   },
 } as const

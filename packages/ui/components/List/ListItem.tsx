@@ -30,12 +30,7 @@ export const ListItem = forwardRef<
   )
 
   return (
-    <li
-      {...rest}
-      ref={ref}
-      role='button'
-      tabIndex={0}
-      className={listItemClasses}>
+    <li ref={ref} tabIndex={0} className={listItemClasses} {...rest}>
       {children}
     </li>
   )

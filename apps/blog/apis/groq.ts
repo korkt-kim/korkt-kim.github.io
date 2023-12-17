@@ -4,6 +4,8 @@ export const allArticlesQuery = groq`
     *[_type=="article"] | order(publishedAt desc, _createdAt desc) {
         title,
         category,
+        content,
+        _createdAt,
     }
 `
 export const articleQuery = groq`
