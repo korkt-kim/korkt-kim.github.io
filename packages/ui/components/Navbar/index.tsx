@@ -10,9 +10,6 @@ import { recordValuesToString } from '../../util/recordValuesToString'
 import { GetTailwindVariant } from '../../util/type'
 
 export interface NavbarProps {
-  direction?: 'h' | 'v'
-  justify?: GetTailwindVariant<'justify-content'>[number]
-  align?: GetTailwindVariant<'align-items'>[number]
   shadow?: boolean
   blurred?: boolean
   fullWidth?: boolean

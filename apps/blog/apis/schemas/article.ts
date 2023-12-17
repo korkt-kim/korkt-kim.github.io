@@ -43,6 +43,7 @@ export interface Article extends ArticleBody {
   _rev: string
   _type: 'article'
   blockTweet: boolean
+  totalCount: number
 }
 
 export type ArticleBody = {

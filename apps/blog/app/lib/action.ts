@@ -2,6 +2,7 @@ import { sanityFetch } from '@/apis'
 import { client } from '@/apis/client'
 import {
   allArticlesQuery,
+  allArticleTotalCount,
   articleQuery,
   paginatedArticleByCategoryQuery,
   paginatedArticleQuery,
@@ -11,6 +12,14 @@ import { Article } from '@/apis/schemas/article'
 export async function getAllArticles(category?: string[]) {
   return sanityFetch<Article[]>(client, {
     query: allArticlesQuery({ category }),
+    params: {},
+    tags: articleQueryKeys.all,
+  })
+}
+
+export async function getArticleTotalCount() {
+  return sanityFetch<number>(client, {
+    query: allArticleTotalCount(),
     params: {},
     tags: articleQueryKeys.all,
   })
