@@ -24,15 +24,15 @@ const GlobalNav = () => {
   return (
     <Navbar>
       <Flex>
-        <NavIcno href='/' title='Home' Icon={<Home />} />
-        <NavIcno href='/category' title='Category' Icon={<Category />} />
-        <NavIcno href='/' title='User' Icon={<User />} />
+        <NavIcon href='/' title='Home' Icon={<Home />} />
+        <NavIcon href='/category' title='Category' Icon={<Category />} />
+        <NavIcon href='/' title='User' Icon={<User />} />
       </Flex>
     </Navbar>
   )
 }
 
-const NavIcno = ({
+const NavIcon = ({
   Icon,
   href,
   title,

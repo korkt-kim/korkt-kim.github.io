@@ -11,10 +11,18 @@ export const allArticlesQuery = (query?: { category?: string[] }) => {
         category,
         content,
         _createdAt,
-        _id
+        _id,
+        "totalCount": count(*[_type=="article" ${_query}])
     }
 `
 }
+
+export const allArticleTotalCount = () => {
+  return groq`
+    count(*[_type=="article" ])
+  `
+}
+
 export const articleQuery = groq`
     *[_type=="article" && _id==$id]  {
         title,
