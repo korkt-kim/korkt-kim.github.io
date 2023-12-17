@@ -5,10 +5,7 @@
     "outDir": "dist",
     "isolatedModules": false,
     "resolveJsonModule": true,
-    "downlevelIteration": true,
-    "paths": {
-      "@/*": ["./*"]
-    }
+    "downlevelIteration": true
   },
   "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["dist", "build", "node_modules"]
