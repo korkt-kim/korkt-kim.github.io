@@ -1,0 +1,13 @@
+{
+  "extends": "typescript-config/base.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ESNext",
+    "importHelpers": true,
+    "sourceMap": true,
+    "declaration": false,
+    "declarationMap": false
+  },
+  "include": ["global.d.ts", "src/**/*.ts"],
+  "exclude": ["node_modules"]
+}
