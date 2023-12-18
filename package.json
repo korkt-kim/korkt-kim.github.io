@@ -2,11 +2,7 @@
   "name": "zakelstorm-repo",
   "private": true,
   "scripts": {
-    "build": "turbo build",
-    "dev": "turbo dev",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "lint": "turbo lint",
-    "prepare": "husky install"
+    "zakelstorm": "packages/cli/dist/index.js"
   },
   "devDependencies": {
     "eslint-config-custom": "workspace:*",

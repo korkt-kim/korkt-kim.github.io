@@ -5,13 +5,16 @@
   "scripts": {
     "build": "next build",
     "dev": "scripts/nextEnv.js && next dev",
-    "lint": "eslint . --max-warnings 0",
+    "docker:dev": "scripts/docker.mjs -p development",
+    "docker:prod": "scripts/docker.mjs -p production",
+    "docker:stage": "scripts/docker.mjs -p stage",
     "sanity-build": "sanity build",
     "sanity-deploy": "sanity deploy",
     "sanity-deploy-graphql": "sanity graphql deploy",
     "sanity-dev": "sanity dev",
     "sanity-start": "sanity start",
-    "start": "next start"
+    "start": "next start",
+    "start:pm2": "pm2-runtime start pm2.config.js"
   },
   "dependencies": {
     "@portabletext/react": "^3.0.11",
@@ -40,11 +43,14 @@
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.17",
     "autoprefixer": "^10.4.16",
+    "env-cmd": "^10.1.0",
     "eslint": "^8.55.0",
     "eslint-config-custom": "workspace:*",
     "postcss": "^8.4.32",
     "tailwindcss": "^3.3.6",
     "typescript": "^5.3.3",
-    "typescript-config": "workspace:*"
+    "typescript-config": "workspace:*",
+    "yargs": "^17.6.2",
+    "zx": "^7.2.3"
   }
 }
