@@ -8,9 +8,9 @@ import Calendar from '@/public/calendar.svg'
 import Folder from '@/public/folder.svg'
 
 export interface ArticleListProps {
-  articles: Article[]
+  articles: Partial<Article>[]
 }
-
+// @TODO
 export const ArticleList = ({ articles }: ArticleListProps) => {
   if (isEmpty(articles)) {
     return (
@@ -34,23 +34,22 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
                 className={`[&>*]:text-gray-400 [&>*]:text-sm [&_svg]:stroke-gray-500 [&>*]:inline-flex [&>*]:items-center`}>
                 <Typo.Text>
                   <Calendar className='text-transparent inline mx-[6px]' />
-                  Posted On {formatDate(article._createdAt)} |
+                  Posted On {formatDate(article._createdAt!)} |
                 </Typo.Text>
-                <Typo.Link
-                  href={`/category/${article.category.join(
-                    '/'
-                  )}`.toLowerCase()}>
+                <Typo.Link href={`/category/${article.category?.[0]}`}>
                   <Folder className='text-transparent inline mx-[6px]' /> In{' '}
-                  {article.category.join('/')}
+                  {article.category!.join('/')}
                 </Typo.Link>
               </div>
             </Flex>
             <span className='w-full text-center [&>p]:truncate'>
-              <PortableText value={[article.content?.[0]]} />
+              {article.content && (
+                <PortableText value={[article.content?.[0]]} />
+              )}
             </span>
             {/*@TODO: link 수정 */}
             <Typo.Link
-              href='/'
+              href={`/category/${article.category?.[0]}/${article._id}`}
               className='bg-black p-[10px] rounded text-white'>
               Read More
             </Typo.Link>

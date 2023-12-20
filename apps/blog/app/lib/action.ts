@@ -10,7 +10,7 @@ import {
 import { Article } from '@/apis/schemas/article'
 
 export async function getAllArticles(category?: string[]) {
-  return sanityFetch<Article[]>(client, {
+  return sanityFetch<Partial<Article>[]>(client, {
     query: allArticlesQuery({ category }),
     params: {},
     tags: articleQueryKeys.all,
@@ -26,13 +26,13 @@ export async function getArticleTotalCount() {
 }
 
 export async function getArticle(id: string) {
-  return sanityFetch(client, {
+  return sanityFetch<Article[]>(client, {
     query: articleQuery,
     params: {
       id,
     },
     tags: articleQueryKeys.all,
-  })
+  }).then(res => res[0])
 }
 
 export async function getPaginatedArticles(lastId: string) {
