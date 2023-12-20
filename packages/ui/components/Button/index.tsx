@@ -7,8 +7,8 @@ import { buttonStyle } from './theme'
 import { ComponentProps, PropsWithChildren, forwardRef, memo } from 'react'
 import { recordValuesToString } from '../../util/recordValuesToString'
 
-export type variant = 'filled' | 'outlined' | 'text'
-export type size = 'sm' | 'md' | 'lg'
+type variant = 'filled' | 'outlined' | 'text'
+type size = 'sm' | 'md' | 'lg'
 
 export interface ButtonProps {
   variant?: variant
