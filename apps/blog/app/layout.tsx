@@ -1,14 +1,9 @@
-import '@zakelstorm/ui/dist/index.css'
-import 'react-loading-skeleton/dist/skeleton.css'
 import './globals.css'
 
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Script from 'next/script'
 import { PropsWithChildren } from 'react'
-
-import { AppShell } from './features/layouts/AppShell'
-import { MainSidebar } from './features/Sidebars/Main'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,13 +17,8 @@ export default function RootLayout({
 }: PropsWithChildren): JSX.Element {
   return (
     <html lang='en'>
-      <Script src='/env.js' type='text/javascript'></Script>
-      <body className={inter.className}>
-        <AppShell>
-          {children}
-          <MainSidebar />
-        </AppShell>
-      </body>
+      <Script src='/env.js' type='text/javascript' />
+      <body className={inter.className}>{children}</body>
     </html>
   )
 }

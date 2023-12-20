@@ -28,10 +28,8 @@ export const articleQuery = groq`
         title,
         category,
         content,
-        "relatedComments": *[_type=='comment' && references(^._id)] | order(publishedAt desc, _createdAt desc) {
-            username,
-            content
-        }
+        _id,
+        _createdAt,
     }
 `
 

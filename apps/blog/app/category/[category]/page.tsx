@@ -17,7 +17,9 @@ export default async function Page({
 }) {
   const { category } = params
 
-  const _category = CATEGORIES.find(item => item.toLowerCase() === category)
+  const _category = CATEGORIES.find(
+    item => item.toLowerCase() === category.toLowerCase()
+  )
 
   if (!_category) {
     notFound()
