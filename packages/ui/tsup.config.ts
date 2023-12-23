@@ -8,7 +8,6 @@ export default defineConfig([
   {
     entry: {
       ...glob.sync('components/**/*/index.tsx').reduce((obj, path) => {
-        console.log(path)
         return {
           ...obj,
           [path.replace(/\.tsx$/, '')]: path,
@@ -31,7 +30,6 @@ export default defineConfig([
         name: 'import-path',
         setup(build) {
           build.onResolve({ filter: /^\.\/components\/*/ }, args => {
-            console.log(args, build)
             if (args.importer.endsWith('/packages/ui/index.ts')) {
               return {
                 path:

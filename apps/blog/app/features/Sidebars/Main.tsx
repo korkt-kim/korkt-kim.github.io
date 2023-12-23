@@ -1,16 +1,16 @@
 import { Flex, Typo } from '@zakelstorm/ui'
 import Image from 'next/image'
 
-import { Sidebar } from '@/app/components/Sidebar'
+import { Sidebar, SidebarProps } from '@/app/components/Sidebar'
 import { getArticleTotalCount } from '@/app/lib/action'
 import { CATEGORIES } from '@/consts'
 import Avatar from '@/public/avatar.jpeg'
 
-export const MainSidebar = async () => {
+export const MainSidebar = async (props: SidebarProps) => {
   const res = await getArticleTotalCount()
 
   return (
-    <Sidebar>
+    <Sidebar {...props}>
       <Image src={Avatar} width={100} height={100} alt='Avatar' />
       <Typo.Text>코딩하는 폴제트</Typo.Text>
       <Flex

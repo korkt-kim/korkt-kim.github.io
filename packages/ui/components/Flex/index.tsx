@@ -11,7 +11,7 @@ import { twMerge, getDefaultConfig } from 'tailwind-merge'
 import classnames from 'classnames'
 import { GetTailwindVariant } from '../../util/type'
 
-interface ZSpaceProps {
+export interface FlexProps extends PropsWithChildren<ComponentProps<'div'>> {
   gap?: number
   noGap?: boolean
   inline?: boolean
@@ -22,10 +22,7 @@ interface ZSpaceProps {
 }
 
 export const Flex = memo(
-  forwardRef<
-    HTMLDivElement,
-    ZSpaceProps & PropsWithChildren<ComponentProps<'div'>>
-  >(
+  forwardRef<HTMLDivElement, FlexProps>(
     (
       {
         gap,
