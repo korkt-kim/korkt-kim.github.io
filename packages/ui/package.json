@@ -9,20 +9,10 @@
       "types": "./dist/index.d.ts",
       "default": "./dist/index.mjs"
     },
-    "./components": {
-      "require": "./dist/components.js",
-      "import": "./dist/components.mjs",
-      "types": "./dist/components.d.ts",
-      "default": "./dist/components.mjs"
-    },
-    "./hooks": {
-      "require": "./dist/hooks.js",
-      "import": "./dist/hooks.mjs",
-      "types": "./dist/hooks.d.ts",
-      "default": "./dist/hooks.mjs"
-    },
     "./dist/index.css": "./dist/index.css"
   },
+  "main": "./dist/index.mjs",
+  "typings": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
@@ -37,6 +27,7 @@
     "tailwind-merge": "^2.1.0"
   },
   "devDependencies": {
+    "@heroicons/react": "^2.1.1",
     "@turbo/gen": "^1.11.2",
     "@types/eslint": "^8.44.9",
     "@types/glob": "^8.1.0",
@@ -45,6 +36,7 @@
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.17",
     "autoprefixer": "^10.4.16",
+    "esbuild-plugin-react18": "^0.0.6",
     "eslint": "^8.55.0",
     "eslint-config-custom": "workspace:*",
     "glob": "^8.1.0",
@@ -53,7 +45,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tailwindcss": "^3.3.6",
-    "tsup": "7.2.0",
+    "tsup": "^8.0.1",
     "type-fest": "^4.8.3",
     "typescript": "^5.3.3",
     "typescript-config": "workspace:*"

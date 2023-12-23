@@ -1,6 +1,6 @@
 import { ComponentProps, PropsWithChildren } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { Typo } from './Typo'
+import { Typo } from '../Typo'
 
 export function Card({
   className,

@@ -1,11 +1,13 @@
+'use client'
+
 import { List, Typo } from '@zakelstorm/ui'
 
 import { CATEGORIES } from '@/consts'
 
 export default function Page() {
   return (
-    <List>
-      {CATEGORIES.map(category => (
+    <List data={Array.from(CATEGORIES)}>
+      {category => (
         <List.Item key={category} className='p-0 justify-center'>
           <Typo.Link
             href={`/category/${category}`}
@@ -13,7 +15,7 @@ export default function Page() {
             {category}
           </Typo.Link>
         </List.Item>
-      ))}
+      )}
     </List>
   )
 }
