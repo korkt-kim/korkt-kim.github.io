@@ -7,7 +7,7 @@ export default function Template({ children }: PropsWithChildren) {
   return (
     <AppShell>
       {children}
-      <MainSidebar />
+      <MainSidebar className='sm:hidden' />
     </AppShell>
   )
 }
