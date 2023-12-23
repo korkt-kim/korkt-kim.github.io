@@ -15,7 +15,7 @@ module.exports = {
   async headers() {
     return [{ source: '/:path*', headers: securityHeaders }]
   },
-  transpilePackages: ['@zakelstorm/ui', 'lodash-es'],
+
   swcMinify: true,
   reactStrictMode: false,
   images: { unoptimized: true },

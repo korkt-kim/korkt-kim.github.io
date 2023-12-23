@@ -15,9 +15,11 @@
   "typings": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup",
+    "build-storybook": "storybook build",
     "dev": "tsup --watch",
     "generate:component": "turbo gen react-component",
-    "lint": "eslint . --max-warnings 0"
+    "lint": "eslint . --max-warnings 0",
+    "storybook": "storybook dev -p 6006"
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.4",
@@ -28,6 +30,14 @@
   },
   "devDependencies": {
     "@heroicons/react": "^2.1.1",
+    "@storybook/addon-essentials": "^7.6.6",
+    "@storybook/addon-interactions": "^7.6.6",
+    "@storybook/addon-links": "^7.6.6",
+    "@storybook/addon-onboarding": "^1.0.10",
+    "@storybook/blocks": "^7.6.6",
+    "@storybook/react": "^7.6.6",
+    "@storybook/react-vite": "^7.6.6",
+    "@storybook/test": "^7.6.6",
     "@turbo/gen": "^1.11.2",
     "@types/eslint": "^8.44.9",
     "@types/glob": "^8.1.0",
@@ -39,11 +49,13 @@
     "esbuild-plugin-react18": "^0.0.6",
     "eslint": "^8.55.0",
     "eslint-config-custom": "workspace:*",
+    "eslint-plugin-storybook": "^0.6.15",
     "glob": "^8.1.0",
     "postcss": "^8.4.32",
     "prettier": "latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "storybook": "^7.6.6",
     "tailwindcss": "^3.3.6",
     "tsup": "^8.0.1",
     "type-fest": "^4.8.3",
