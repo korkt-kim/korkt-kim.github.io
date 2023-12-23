@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 module.exports = {
   root: true,
-  extends: ['custom/react'],
+  extends: ['custom/react', 'plugin:storybook/recommended'],
   overrides: {
     files: ['*.stories.tsx', 'tsup.config.ts', 'interop.ts'],
     rules: {

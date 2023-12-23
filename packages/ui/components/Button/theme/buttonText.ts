@@ -1,5 +1,5 @@
 export const buttonText = {
-  color: 'text-white',
-  hover: 'hover:bg-white/10',
-  active: 'active:bg-white/30',
+  color: 'text-blue-gray-900',
+  hover: 'hover:bg-black/10',
+  active: 'active:bg-black/30',
 }
