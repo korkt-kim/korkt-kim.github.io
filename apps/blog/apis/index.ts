@@ -1,4 +1,4 @@
-import 'server-only'
+'use server'
 import { QueryParams, SanityClient } from 'next-sanity'
 
 const DEFAULT_PARAMS = {} as QueryParams

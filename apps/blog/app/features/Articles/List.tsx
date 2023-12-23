@@ -1,3 +1,5 @@
+'use client'
+
 import { PortableText } from '@portabletext/react'
 import { Flex, List, Typo } from '@zakelstorm/ui'
 import { isEmpty } from 'lodash-es'
@@ -22,8 +24,8 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
   }
 
   return (
-    <List>
-      {articles.map(article => {
+    <List data={articles}>
+      {article => {
         return (
           <List.Item
             className='border flex-col items-center gap-[16px] !px-[100px]'
@@ -55,7 +57,7 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
             </Typo.Link>
           </List.Item>
         )
-      })}
+      }}
     </List>
   )
 }
