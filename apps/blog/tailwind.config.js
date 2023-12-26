@@ -14,7 +14,6 @@ module.exports = {
   },
   plugins: [
     plugin(function ({ addComponents, theme }) {
-      console.log(addComponents, theme)
       addComponents({
         '._cont': {
           margin: '0 auto',

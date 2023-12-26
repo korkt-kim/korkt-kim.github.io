@@ -25,7 +25,6 @@ export const iconButtonStyle = {
   defaultProps: {
     variant: 'filled',
     size: 'md',
-    fullWidth: false,
   },
   styles: {
     base: {

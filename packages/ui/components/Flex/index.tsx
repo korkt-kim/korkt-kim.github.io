@@ -12,13 +12,13 @@ import classnames from 'classnames'
 import { GetTailwindVariant } from '../../util/type'
 
 export interface FlexProps extends PropsWithChildren<ComponentProps<'div'>> {
-  gap?: number
+  gap?: 'sm' | 'md' | 'lg'
   noGap?: boolean
   inline?: boolean
   direction?: 'h' | 'v'
   justify?: GetTailwindVariant<'justify-content'>[number]
   align?: GetTailwindVariant<'align-items'>[number]
-  flow?: boolean
+  wrap?: boolean
 }
 
 export const Flex = memo(
@@ -31,7 +31,7 @@ export const Flex = memo(
         direction,
         justify,
         align,
-        flow,
+        wrap,
         className,
         ...rest
       },
@@ -40,7 +40,7 @@ export const Flex = memo(
       // 1. init
       const { defaultProps, styles } = flexStyle
 
-      const { base, flexDirections } = styles
+      const { base, flexDirections, gaps, justifyContents, alignItems } = styles
 
       // 2. set default props
       gap = gap ?? defaultProps.gap
@@ -49,31 +49,18 @@ export const Flex = memo(
       direction = direction ?? defaultProps.direction
       justify = justify ?? defaultProps.justify
       align = align ?? defaultProps.align
-      flow = flow ?? defaultProps.flow
-
-      // 3. set style
-      const flexBase = recordValuesToString(base?.initial)
-      const flexDirection = recordValuesToString(flexDirections[direction])
-      const flexGap = `gap-[${gap}px]`
-      const flexJustify = `justify-${justify}`
-      const flexAlign = `items-${align}`
+      wrap = wrap ?? defaultProps.wrap
 
       const classes = twMerge(
         classnames(
-          flexBase,
-          flexDirection,
-          flexGap,
-          flexJustify,
-          flexAlign,
-          {
-            [recordValuesToString(base.flow)]: flow,
-          },
-          {
-            [recordValuesToString(base.inline)]: inline,
-          },
-          {
-            [recordValuesToString(base.noGap)]: noGap,
-          }
+          recordValuesToString(base?.initial),
+          recordValuesToString(flexDirections[direction]),
+          recordValuesToString(gaps[gap]),
+          recordValuesToString(justifyContents[justify]),
+          recordValuesToString(alignItems[align]),
+          { [recordValuesToString(base.wrap)]: wrap },
+          { [recordValuesToString(base.inline)]: inline },
+          { [recordValuesToString(base.noGap)]: noGap }
         ),
         className
       )

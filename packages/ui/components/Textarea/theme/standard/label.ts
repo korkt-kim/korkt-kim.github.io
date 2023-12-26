@@ -1,9 +1,9 @@
 export const label = {
   position: '-top-1.5',
-  fontSize: 'peer-placeholder-shown:text-sm',
-  floated: {
-    fontSize: 'text-[11px] peer-focus:text-[11px]',
-  },
+  placeholderSize: 'peer-placeholder-shown:text-sm',
+
+  fontSize: 'text-[11px] peer-focus:text-[11px]',
+
   after: {
     content: "after:content[' ']",
     display: 'after:block',
@@ -12,10 +12,8 @@ export const label = {
     bottom: 'after:-bottom-0',
     left: 'left-0',
     borderWidth: 'after:border-b-2',
-    scale: 'after:scale-x-0',
-    floated: {
-      scale: 'peer-focus:after:scale-x-100',
-    },
+    scale: 'after:scale-x-0 peer-focus:after:scale-x-100',
+
     transition: 'after:transition-transform after:duration-300',
   },
 }

@@ -1,12 +1,31 @@
+import { getDefaultConfig } from 'tailwind-merge'
+import { FlexProps } from '.'
+import { Join } from 'type-fest'
+import { Prefix } from '../../util/type'
+
+const alignItems = getDefaultConfig().classGroups[
+  'align-items'
+][0].items.reduce(
+  (acc, item) => {
+    return { ...acc, [item]: { alignItems: `items-${item}` } }
+  },
+  {} as Record<
+    NonNullable<FlexProps['align']>,
+    Record<'alignItems', Prefix<'items-', NonNullable<FlexProps['align']>>>
+  >
+)
+const justifyContents =
+  getDefaultConfig().classGroups['justify-content'][0].justify
+
 export const flexStyle = {
   defaultProps: {
-    gap: 16,
+    gap: 'md',
     noGap: false,
     inline: false,
     direction: 'h',
     justify: 'start',
     align: 'start',
-    flow: false,
+    wrap: false,
   },
   styles: {
     base: {
@@ -17,11 +36,11 @@ export const flexStyle = {
       inline: {
         display: 'inline-flex',
       },
-      flow: {
-        flexFlow: 'row-wrap',
+      wrap: {
+        flexWrap: 'flex-wrap',
       },
       noGap: {
-        gap: 0,
+        gap: 'gap-0',
       },
     },
     flexDirections: {
@@ -31,6 +50,34 @@ export const flexStyle = {
       v: {
         flexDirection: 'flex-col',
       },
+    },
+    gaps: {
+      sm: {
+        gap: 'gap-[8px]',
+      },
+      md: {
+        gap: 'gap-[16px]',
+      },
+      lg: {
+        gap: 'gap-[32px]',
+      },
+    },
+    justifyContents: {
+      start: { jusitfyContent: 'justify-start' },
+      end: { jusitfyContent: 'justify-end' },
+      center: { jusitfyContent: 'justify-center' },
+      stretch: { jusitfyContent: 'justify-stretch' },
+      normal: { jusitfyContent: 'justify-normal' },
+      between: { jusitfyContent: 'justify-between' },
+      around: { jusitfyContent: 'justify-around' },
+      evenly: { jusitfyContent: 'justify-evenly' },
+    },
+    alignItems: {
+      start: { alignItems: 'items-start' },
+      end: { alignItems: 'items-end' },
+      center: { alignItems: 'items-center' },
+      baseline: { alignItems: 'items-baseline' },
+      stretch: { alignItems: 'items-stretch' },
     },
   },
 } as const
