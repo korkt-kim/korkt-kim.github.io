@@ -1,7 +1,7 @@
-import { PortableText } from '@portabletext/react'
 import { Card } from '@zakelstorm/ui'
 import { notFound } from 'next/navigation'
 
+import { PortableText } from '@/app/components/PortableText/WrappedPortableText'
 import { getAllArticles, getArticle } from '@/app/lib/action'
 import { CATEGORIES } from '@/consts'
 
