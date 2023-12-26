@@ -7,7 +7,7 @@ import { twMerge } from 'tailwind-merge'
 
 import { ListItem } from './ListItem'
 
-import { list } from './theme'
+import { listStyle } from './theme'
 
 export interface ListProps<T> {
   data: T[]
@@ -27,7 +27,7 @@ function _List<T extends any>(
 ) {
   const {
     styles: { base },
-  } = list
+  } = listStyle
 
   const listClasses = twMerge(
     classnames(recordValuesToString(base.list)),

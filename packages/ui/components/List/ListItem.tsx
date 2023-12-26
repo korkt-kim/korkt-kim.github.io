@@ -1,6 +1,6 @@
 import { ComponentProps, forwardRef } from 'react'
 
-import { list } from './theme'
+import { listStyle } from './theme'
 
 import classnames from 'classnames'
 import { twMerge } from 'tailwind-merge'
@@ -19,7 +19,7 @@ export const ListItem = forwardRef<
   const {
     defaultProps,
     styles: { base },
-  } = list
+  } = listStyle
 
   const listItemClasses = twMerge(
     classnames(recordValuesToString(base.item.initial), {

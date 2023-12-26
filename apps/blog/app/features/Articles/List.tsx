@@ -30,7 +30,7 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
           <List.Item
             className='border flex-col items-center gap-[16px] !px-[100px]'
             key={article._id}>
-            <Flex gap={0} direction='v' align='center'>
+            <Flex noGap direction='v' align='center'>
               <Typo.Title level={1}>{article.title}</Typo.Title>
               <div
                 className={`[&>*]:text-gray-400 [&>*]:text-sm [&_svg]:stroke-gray-500 [&>*]:inline-flex [&>*]:items-center`}>

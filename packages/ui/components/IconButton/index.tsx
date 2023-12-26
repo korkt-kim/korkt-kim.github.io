@@ -10,12 +10,12 @@ import { iconButtonStyle } from './theme'
 import { ButtonProps } from '../Button'
 import { recordValuesToString } from '../../util/recordValuesToString'
 
-export type IconButtonProps = ButtonProps
+export type IconButtonProps = Omit<ButtonProps, 'loading' | 'fullWidth'>
 
 export const IconButton = React.forwardRef<
   HTMLButtonElement,
   IconButtonProps & PropsWithChildren<ComponentProps<'button'>>
->(({ variant, size, className, children, fullWidth, ...rest }, ref) => {
+>(({ variant, size, className, children, ...rest }, ref) => {
   // 1. init
   const { defaultProps, styles } = iconButtonStyle
   const { base, variants, sizes } = styles

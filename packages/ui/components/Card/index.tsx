@@ -8,7 +8,7 @@ export function Card({
   children,
   ...rest
 }: {
-  title: string
+  title?: string
 } & PropsWithChildren<ComponentProps<'div'>>): JSX.Element {
   return (
     <div

@@ -14,7 +14,7 @@ export interface ListStylesType {
   }
 }
 
-export const list = {
+export const listStyle = {
   defaultProps: {},
   styles: {
     base: {
