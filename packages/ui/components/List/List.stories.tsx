@@ -21,3 +21,19 @@ export const Default: Story = {
     </>
   ),
 }
+
+export const WithPagination: Story = {
+  args: { ...listStyle.defaultProps, pagination: true },
+
+  render: arg => (
+    <>
+      <List
+        pagination
+        data={Array(101)
+          .fill(null)
+          .map((_, index) => ({ name: index }))}>
+        {item => <List.Item>{item.name}</List.Item>}
+      </List>
+    </>
+  ),
+}

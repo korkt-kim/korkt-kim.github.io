@@ -32,7 +32,7 @@ const serializers = {
   },
   block: {
     normal: ({ children }: { children: ReactNode }) => {
-      return <p className='leading-7'>{children}</p>
+      return <p className='leading-30'>{children}</p>
     },
     h2: ({ children }: { children: ReactNode }) => {
       return <h2 className='text-2xl my-20'>{children}</h2>
