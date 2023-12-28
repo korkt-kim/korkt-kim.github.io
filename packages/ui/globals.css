@@ -2,15 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-h1 {
-  @apply text-2xl;
-}
-h2 {
-  @apply text-xl;
-}
-h3 {
-  @apply text-lg;
-}
-a {
-  @apply text-blue-600;
+/*@layer는 어떤 "유틸리티 레벨"에 커스텀 CSS를 담을지 지정하고 nested 방식으로 커스텀 CSS를 추가한다. @layer는 base, components, utilities에만 적용할 수 있다.*/
+@layer base {
+  h1 {
+    @apply text-2xl;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  h3 {
+    @apply text-lg;
+  }
+  a {
+    @apply text-blue-600;
+  }
 }
