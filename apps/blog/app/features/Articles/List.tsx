@@ -24,7 +24,7 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
   }
 
   return (
-    <List data={articles}>
+    <List data={articles} pagination>
       {article => {
         return (
           <List.Item

@@ -15,11 +15,14 @@ export const Default: Story = {
   args: navbarStyle.defaultProps,
 
   render: arg => (
-    <Navbar {...arg}>
-      <div>a</div>
-      <div>b</div>
-      <div>c</div>
-    </Navbar>
+    <Flex>
+      <Navbar {...arg}>
+        <div>a</div>
+        <div>b</div>
+        <div>c</div>
+      </Navbar>
+      <div>outside navbar</div>
+    </Flex>
   ),
 }
 
