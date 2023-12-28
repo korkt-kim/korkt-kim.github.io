@@ -7,8 +7,8 @@ import User from '@/public/user.svg'
 
 export const Header = () => {
   return (
-    <Flex direction='v' align='center' justify='center' className='h-[200px]'>
-      <Typo.Link href='/' className='bg-black text-white px-[20px]'>
+    <Flex direction='v' align='center' justify='center' className='h-200'>
+      <Typo.Link href='/' className='bg-black text-white px-20'>
         코딩하는 폴제트
       </Typo.Link>
       <Typo.Text>

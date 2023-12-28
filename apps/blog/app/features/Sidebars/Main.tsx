@@ -16,7 +16,7 @@ export const MainSidebar = async (props: SidebarProps) => {
       <Flex
         noGap
         justify='center'
-        className='mt-[10px] w-full [&>div:not(:last-child)]:border-r [&>div:not(:last-child)]:border-neutral-500'>
+        className='mt-10 w-full [&>div:not(:last-child)]:border-r [&>div:not(:last-child)]:border-neutral-500'>
         <ResourceCount value={res} label={'posts'} />
         <ResourceCount
           value={Array.from(CATEGORIES).length}
@@ -35,7 +35,7 @@ const ResourceCount = ({
   label: string
 }) => {
   return (
-    <Flex className='px-[20px]' direction='v' align='center' noGap>
+    <Flex className='px-20' direction='v' align='center' noGap>
       <Typo.Text>{value}</Typo.Text>
       <Typo.Text>{label}</Typo.Text>
     </Flex>
