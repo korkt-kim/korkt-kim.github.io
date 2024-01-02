@@ -1,8 +1,9 @@
 export const label = {
   position: '-top-1.5',
-  placeholdeSize: 'peer-placeholder-shown:text-sm',
-  fontSize: 'text-[11px] peer-focus:text-[11px]',
-
+  fontSize: 'peer-placeholder-shown:text-sm',
+  floated: {
+    fontSize: 'text-[11px] peer-focus:text-[11px]',
+  },
   before: {
     content: "before:content[' ']",
     display: 'before:block',
@@ -13,8 +14,10 @@ export const label = {
     mr: 'before:mr-1',
     borderColor: 'peer-placeholder-shown:before:border-transparent',
     borderRadius: 'before:rounded-tl-md',
-    bt: 'before:border-t peer-focus:before:border-t-2',
-    bl: 'before:border-l peer-focus:before:border-l-2',
+    floated: {
+      bt: 'before:border-t peer-focus:before:border-t-2',
+      bl: 'before:border-l peer-focus:before:border-l-2',
+    },
     pointerEvents: 'before:pointer-events-none',
     transition: 'before:transition-all',
     disabled: 'peer-disabled:before:border-transparent',
@@ -30,8 +33,10 @@ export const label = {
     ml: 'after:ml-1',
     borderColor: 'peer-placeholder-shown:after:border-transparent',
     borderRadius: 'after:rounded-tr-md',
-    bt: 'after:border-t peer-focus:after:border-t-2',
-    br: 'after:border-r peer-focus:after:border-r-2',
+    floated: {
+      bt: 'after:border-t peer-focus:after:border-t-2',
+      br: 'after:border-r peer-focus:after:border-r-2',
+    },
     pointerEvents: 'after:pointer-events-none',
     transition: 'after:transition-all',
     disabled: 'peer-disabled:after:border-transparent',

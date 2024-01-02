@@ -10,6 +10,8 @@ type variant = 'standard' | 'outlined'
 type labelProps = {
   [key: string]: any
 }
+type size = 'md' | 'lg'
+
 type containerProps = {
   [key: string]: any
 }
@@ -17,6 +19,7 @@ type containerProps = {
 export interface TextareaProps {
   variant?: variant
   label?: string
+  size?: size
   error?: boolean
   success?: boolean
   resize?: boolean
@@ -33,6 +36,8 @@ export const Textarea = forwardRef<
     {
       variant,
       label,
+      color,
+      size,
       error,
       success,
       resize,
@@ -50,6 +55,7 @@ export const Textarea = forwardRef<
 
     // 2. set default props
     variant = variant ?? defaultProps.variant
+    size = size ?? defaultProps.size
     label = label ?? defaultProps.label
     labelProps = labelProps ?? defaultProps.labelProps
     containerProps = containerProps ?? defaultProps.containerProps
@@ -62,6 +68,7 @@ export const Textarea = forwardRef<
       textareaVariant.success.textarea
     )
     const textareaShrink = recordValuesToString(textareaVariant.shrink.textarea)
+    const textareaColor = recordValuesToString(textareaVariant.colors.textarea)
     const labelError = recordValuesToString(textareaVariant.error.label)
     const labelSuccess = recordValuesToString(textareaVariant.success.label)
     const labelShrink = recordValuesToString(textareaVariant.shrink.label)
@@ -70,9 +77,12 @@ export const Textarea = forwardRef<
       recordValuesToString(base.container),
       containerProps?.className
     )
+
     const textareaClasses = classnames(
       recordValuesToString(base.textarea),
       recordValuesToString(textareaVariant.base.textarea),
+      recordValuesToString(textareaVariant.sizes[size].textarea),
+      { [textareaColor]: !error && !success },
       { [textareaError]: error },
       { [textareaSuccess]: success },
       { [textareaShrink]: shrink },
@@ -82,6 +92,7 @@ export const Textarea = forwardRef<
     const labelClasses = classnames(
       recordValuesToString(base.label),
       recordValuesToString(textareaVariant.base.label),
+      recordValuesToString(textareaVariant.sizes[size].label),
       { [labelColor]: !error && !success },
       { [labelError]: error },
       { [labelSuccess]: success },

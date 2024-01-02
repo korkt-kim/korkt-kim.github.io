@@ -11,10 +11,40 @@ export const outlined = {
         'placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200',
       floated: {
         borderWidth: 'border focus:border-2',
-        borderColor: 'border-t-transparent focus:border-t-transparent',
+        borderColor: 'focus:border-t-transparent',
       },
     },
     label,
+  },
+  sizes: {
+    md: {
+      container: {
+        height: 'h-10',
+      },
+      textarea: {
+        fontSize: 'text-sm',
+        px: 'px-3',
+        py: 'py-2.5',
+        borderRadius: 'rounded-[7px]',
+      },
+      label: {
+        lineHeight: 'peer-placeholder-shown:leading-[3.75]',
+      },
+    },
+    lg: {
+      container: {
+        height: 'h-11',
+      },
+      textarea: {
+        fontSize: 'text-sm',
+        px: 'px-3',
+        py: 'py-3',
+        borderRadius: 'rounded-md',
+      },
+      label: {
+        lineHeight: 'peer-placeholder-shown:leading-[4.1]',
+      },
+    },
   },
   colors: {
     textarea: colors,

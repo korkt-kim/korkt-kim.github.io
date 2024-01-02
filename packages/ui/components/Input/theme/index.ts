@@ -1,63 +1,46 @@
-import { outlined } from './outlined'
-import { standard } from './standard'
-import { TextareaProps } from '..'
+import inputOutlined from './outlined'
+import inputStandard from './standard'
 
-// types
-
-export interface TextareaSizeStylesType {
+export interface InputSizeStylesType {
   container?: object
-  textarea?: object
+  input?: object
+  label?: object
+  icon?: object
+}
+
+export interface InputStateStylesType {
+  input?: object
   label?: object
 }
 
-export interface TextareaStateStylesType {
-  textarea?: object
-  label?: object
-}
-
-export interface TextareaVariantStylesType {
+export interface InputVariantStylesType {
   base?: {
-    container?: object
-    textarea?: object
+    input?: object
+    inputWithIcon?: object
+    icon?: object
     label?: object
   }
-  error?: TextareaStateStylesType
-  success?: TextareaStateStylesType
-  shrink?: TextareaStateStylesType
+  sizes?: {
+    md?: InputSizeStylesType
+    lg?: InputSizeStylesType
+  }
+  error?: InputStateStylesType
+  success?: InputStateStylesType
+  shrink?: InputStateStylesType
 }
 
-export interface TextareaStylesType {
-  defaultProps?: TextareaProps
-  valid?: {
-    variants?: string[]
-    sizes?: string[]
-    colors?: string[]
-  }
-  styles?: {
-    base?: {
-      container?: object
-      textarea?: object
-      label?: object
-    }
-    variants?: {
-      outlined: TextareaVariantStylesType
-      standard: TextareaVariantStylesType
-      static: TextareaVariantStylesType
-    }
-  }
-}
-
-export const textareaStyle = {
+export const inputStyle = {
   defaultProps: {
     variant: 'outlined',
     size: 'md',
     label: '',
     error: false,
     success: false,
-    resize: true,
+    icon: undefined,
     labelProps: undefined,
     containerProps: undefined,
     shrink: false,
+    className: '',
   },
   styles: {
     base: {
@@ -66,19 +49,17 @@ export const textareaStyle = {
         width: 'w-full',
         minWidth: 'min-w-[200px]',
       },
-      textarea: {
+      input: {
         peer: 'peer',
         width: 'w-full',
         height: 'h-full',
-        minHeight: 'min-h-[100px]',
         bg: 'bg-transparent',
         color: 'text-blue-gray-700',
         fontFamily: 'font-sans',
         fontWeight: 'font-normal',
         outline: 'outline outline-0 focus:outline-0',
-        resize: 'resize-y',
         disabled:
-          'disabled:bg-blue-gray-50 disabled:border-0 disabled:resize-none disabled:cursor-not-allowed',
+          'disabled:bg-blue-gray-50 disabled:border-0 disabled:cursor-not-allowed',
         transition: 'transition-all',
       },
       label: {
@@ -90,16 +71,29 @@ export const textareaStyle = {
         position: 'absolute',
         left: 'left-0',
         fontWeight: 'font-normal',
+        overflow: '!overflow-visible',
+        textOverflow: 'truncate',
         color: 'peer-placeholder-shown:text-blue-gray-500',
         lineHeight: 'leading-tight peer-focus:leading-tight',
         disabled:
           'peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500',
         transition: 'transition-all',
       },
+      icon: {
+        display: 'grid',
+        placeItems: 'place-items-center',
+        position: 'absolute',
+        color: 'text-blue-gray-500',
+      },
+      asterisk: {
+        display: 'inline-block',
+        color: 'text-red-500',
+        ml: 'ml-0.5',
+      },
     },
     variants: {
-      outlined,
-      standard,
+      outlined: inputOutlined,
+      standard: inputStandard,
     },
   },
 } as const
