@@ -1,36 +1,66 @@
-import { label } from './label'
 import { colors } from './colors'
 import { labelColors } from './labelColors'
 
-//@TODO 추후 TextArea Size,Color 옵션 추가
-export const standard = {
+const inputStandard = {
   base: {
-    textarea: {
+    input: {
       borderWidth: 'border-b',
       borderColor: 'placeholder-shown:border-blue-gray-200',
+      placeholder: 'placeholder:opacity-0 focus:placeholder:opacity-100',
     },
-    label,
+    inputWithIcon: {
+      pr: '!pr-7',
+    },
+    icon: {
+      top: 'top-2/4',
+      right: 'right-0',
+      transform: '-translate-y-1/4',
+    },
+    label: {
+      position: '-top-1.5',
+      fontSize: 'peer-placeholder-shown:text-sm',
+      floated: {
+        fontSize: 'text-[11px] peer-focus:text-[11px]',
+      },
+      after: {
+        content: "after:content['']",
+        display: 'after:block',
+        width: 'after:w-full',
+        position: 'after:absolute',
+        bottom: 'after:-bottom-1.5',
+        left: 'left-0',
+        borderWidth: 'after:border-b-2',
+        scale: 'after:scale-x-0',
+        floated: {
+          scale: 'peer-focus:after:scale-x-100',
+        },
+        transition: 'after:transition-transform after:duration-300',
+      },
+    },
   },
   sizes: {
     md: {
       container: {
         height: 'h-11',
       },
-      textarea: {
+      input: {
         fontSize: 'text-sm',
         pt: 'pt-4',
         pb: 'pb-1.5',
-        mt: 'mt-1.5',
       },
       label: {
         lineHeight: 'peer-placeholder-shown:leading-[4.25]',
+      },
+      icon: {
+        width: 'w-5',
+        height: 'h-5',
       },
     },
     lg: {
       container: {
         height: 'h-12',
       },
-      textarea: {
+      input: {
         fontSize: 'text-sm',
         px: 'px-px',
         pt: 'pt-5',
@@ -39,14 +69,18 @@ export const standard = {
       label: {
         lineHeight: 'peer-placeholder-shown:leading-[4.875]',
       },
+      icon: {
+        width: 'w-6',
+        height: 'h-6',
+      },
     },
   },
   colors: {
-    textarea: colors,
+    input: colors,
     label: labelColors,
   },
   error: {
-    textarea: {
+    input: {
       borderColor: 'border-red-500 placeholder-shown:border-red-500',
       borderColorFocused: 'focus:border-red-500',
     },
@@ -57,7 +91,7 @@ export const standard = {
     },
   },
   success: {
-    textarea: {
+    input: {
       borderColor: 'border-green-500 placeholder-shown:border-green-500',
       borderColorFocused: 'focus:border-green-500',
     },
@@ -68,10 +102,12 @@ export const standard = {
     },
   },
   shrink: {
-    textarea: {},
+    input: {},
     label: {
       fontSize: '!text-[11px]',
       lineHeight: '!leading-tight',
     },
   },
 }
+
+export default inputStandard
