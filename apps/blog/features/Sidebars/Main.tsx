@@ -1,8 +1,8 @@
 import { Flex, Typo } from '@zakelstorm/ui'
 import Image from 'next/image'
 
-import { Sidebar, SidebarProps } from '@/app/components/Sidebar'
-import { getArticleTotalCount } from '@/app/lib/action'
+import { getArticleTotalCount } from '@/action/article'
+import { Sidebar, SidebarProps } from '@/components/Sidebar'
 import { CATEGORIES } from '@/consts'
 import Avatar from '@/public/avatar.jpeg'
 

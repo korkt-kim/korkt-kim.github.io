@@ -1,8 +1,8 @@
 import { notFound } from 'next/navigation'
 
-import { ArticleList } from '@/app/features/Articles/List'
-import { getAllArticles } from '@/app/lib/action'
+import { getAllArticles } from '@/action/article'
 import { CATEGORIES } from '@/consts'
+import { ArticleList } from '@/features/Articles/List'
 
 export async function generateStaticParams() {
   return CATEGORIES.map(category => ({

@@ -7,7 +7,11 @@ const px0_100 = { ...Array.from(Array(101)).map((_, i) => `${i}px`) }
 const px0_200 = { ...Array.from(Array(201)).map((_, i) => `${i}px`) }
 
 module.exports = {
-  content: ['./app/**/*.{js,ts,jsx,tsx,mdx}'],
+  content: [
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './features/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
   theme: {
     screens: {
       sm: { max: '1100px' },

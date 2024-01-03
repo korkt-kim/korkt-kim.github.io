@@ -1,13 +1,16 @@
-import { sanityFetch } from '@/apis'
-import { client } from '@/apis/client'
+import { revalidateTag } from 'next/cache'
+
+import { env } from '@/env'
+import { sanityFetch } from '@/sanity'
+import { client } from '@/sanity/client'
 import {
   allArticlesQuery,
   allArticleTotalCount,
   articleQuery,
   paginatedArticleByCategoryQuery,
   paginatedArticleQuery,
-} from '@/apis/groq'
-import { Article } from '@/apis/schemas/article'
+} from '@/sanity/queries/article'
+import { Article } from '@/types/article'
 
 export async function getAllArticles(category?: string[]) {
   return sanityFetch<Partial<Article>[]>(client, {
@@ -57,6 +60,23 @@ export async function getPaginatedArticlesByCategoryId(
     },
     tags: articleQueryKeys.all,
   })
+}
+
+export async function createArticle() {
+  const res = await fetch(`${env('NEXT_PUBLIC_BASE_URL')}/api/article`, {
+    body: JSON.stringify({
+      title: 'k',
+      password: 'rnrn0808!!',
+      category: ['Typescript'],
+    }),
+    method: 'POST',
+    cache: 'no-store',
+  })
+
+  const data = await res.json()
+  revalidateTag('article')
+
+  return JSON.stringify(data)
 }
 
 const articleQueryKeys = {

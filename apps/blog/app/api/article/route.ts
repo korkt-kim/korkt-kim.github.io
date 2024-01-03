@@ -2,9 +2,9 @@
 
 import { NextRequest } from 'next/server'
 
-import { client } from '@/apis/client'
-import { ArticleBody } from '@/apis/schemas/article'
 import { env } from '@/env'
+import { client } from '@/sanity/client'
+import { ArticleBody } from '@/types/article'
 
 export async function POST(req: NextRequest) {
   if (req.method !== 'POST') {
