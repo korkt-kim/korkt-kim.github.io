@@ -1,8 +1,8 @@
 import { Flex } from '@zakelstorm/ui'
 import { PropsWithChildren } from 'react'
 
-import { Footer } from '@/app/features/Footer'
-import { Header } from '@/app/features/Header'
+import { Footer } from '@/features/Footer'
+import { Header } from '@/features/Header'
 
 export const AppShell = ({ children }: PropsWithChildren) => {
   return (

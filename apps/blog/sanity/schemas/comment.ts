@@ -19,7 +19,7 @@ const commentDefinition: DocumentDefinition = {
       title: 'Password',
       validation: Rule =>
         Rule.required().max(20).error(errorMessage('password')),
-      hidden:true,
+      hidden: true,
       readOnly: true,
     },
     {

@@ -1,8 +1,8 @@
 import { Card } from '@zakelstorm/ui'
 import { notFound } from 'next/navigation'
 
-import { PortableText } from '@/app/components/PortableText/WrappedPortableText'
-import { getAllArticles, getArticle } from '@/app/lib/action'
+import { getAllArticles, getArticle } from '@/action/article'
+import { PortableText } from '@/components/PortableText/WrappedPortableText'
 import { CATEGORIES } from '@/consts'
 
 export async function generateStaticParams() {

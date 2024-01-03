@@ -3,7 +3,7 @@ import { visionTool } from '@sanity/vision'
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 
-import { schemaTypes } from './apis/schemas'
+import { schemaTypes } from './sanity/schemas'
 
 export default defineConfig({
   name: 'default',

@@ -4,10 +4,10 @@ import { PortableText } from '@portabletext/react'
 import { Flex, List, Typo } from '@zakelstorm/ui'
 import { isEmpty } from 'lodash-es'
 
-import { Article } from '@/apis/schemas/article'
-import { formatDate } from '@/app/util/dayjs'
 import Calendar from '@/public/calendar.svg'
 import Folder from '@/public/folder.svg'
+import { Article } from '@/types/article'
+import { formatDate } from '@/util/dayjs'
 
 export interface ArticleListProps {
   articles: Partial<Article>[]

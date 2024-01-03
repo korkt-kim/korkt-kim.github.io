@@ -75,7 +75,11 @@ export function Pagination({
               return null
             }
 
-            return <IconButton {...getItemProps(page)}>{page}</IconButton>
+            return (
+              <IconButton {...getItemProps(page)} key={index}>
+                {page}
+              </IconButton>
+            )
           })
           .filter(Boolean)}
       </div>
