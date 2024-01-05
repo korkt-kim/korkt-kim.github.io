@@ -2,6 +2,7 @@ import { Card } from '@zakelstorm/ui'
 import { notFound } from 'next/navigation'
 
 import { getAllArticles, getArticle } from '@/action/article'
+import { getAllcommentsByArticleId } from '@/action/comment'
 import { PortableText } from '@/components/PortableText/WrappedPortableText'
 import { CATEGORIES } from '@/consts'
 
@@ -29,12 +30,13 @@ export default async function Page({
     notFound()
   }
 
-  const allArticles = await getAllArticles([_category])
   const article = await getArticle(post)
 
-  if (!(article && allArticles.map(item => item._id).includes(article._id))) {
+  if (!article) {
     notFound()
   }
+
+  const comments = await getAllcommentsByArticleId(article._id)
 
   return (
     <Card title={article.title}>
