@@ -30,16 +30,10 @@ const commentDefinition: DocumentDefinition = {
         Rule.required().max(120).error(errorMessage('content')),
     },
     {
-      name: 'article',
-      type: 'object',
-      fields: [
-        {
-          name: 'article',
-          type: 'reference',
-          title: 'Article',
-          to: [{ type: 'article' }],
-        },
-      ],
+      name: 'relatedArticle',
+      type: 'reference',
+      title: 'RelatedArticle',
+      to: [{ type: 'article' }],
     },
   ],
 }

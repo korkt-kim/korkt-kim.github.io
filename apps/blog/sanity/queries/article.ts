@@ -1,12 +1,14 @@
 import { groq } from 'next-sanity'
 
+const type = 'article'
+
 export const allArticlesQuery = (query?: { category?: string[] }) => {
   const _query = `${query?.category ? '&&' : ''} ${(query?.category ?? [])
     .map(item => `'${item}' in category`)
     .join('&&')}`
 
   return groq`
-    *[_type=="article" ${_query}] | order(publishedAt desc, _createdAt desc) {
+    *[_type=="${type}" ${_query}] | order(publishedAt desc, _createdAt desc) {
         title,
         category,
         content,
@@ -19,12 +21,12 @@ export const allArticlesQuery = (query?: { category?: string[] }) => {
 
 export const allArticleTotalCount = () => {
   return groq`
-    count(*[_type=="article" ])
+    count(*[_type=="${type}" ])
   `
 }
 
 export const articleQuery = groq`
-    *[_type=="article" && _id==$id]  {
+    *[_type=="${type}" && _id==$id]  {
         title,
         category,
         content,
@@ -34,14 +36,14 @@ export const articleQuery = groq`
 `
 
 export const paginatedArticleQuery = groq`
-    *[_type == "article" && _id > $lastId] | order(publishedAt desc, _createdAt desc) [0...100] {
+    *[_type == "${type}" && _id > $lastId] | order(publishedAt desc, _createdAt desc) [0...100] {
         title,
         category
     }
 `
 
 export const paginatedArticleByCategoryQuery = groq`
-    *[_type == "article" && _id > $lastId && count(category[@ in ^.category]) > 0] | order(publishedAt desc, _createdAt desc) [0...100] {
+    *[_type == "${type}" && _id > $lastId && count(category[@ in ^.category]) > 0] | order(publishedAt desc, _createdAt desc) [0...100] {
         title,
         category
     }
