@@ -5,6 +5,8 @@ import { Inter } from 'next/font/google'
 import Script from 'next/script'
 import { PropsWithChildren } from 'react'
 
+import { AppShell } from '@/features/layouts/AppShell'
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -18,7 +20,9 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <Script src='/env.js' type='text/javascript' />
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <AppShell>{children}</AppShell>
+      </body>
     </html>
   )
 }

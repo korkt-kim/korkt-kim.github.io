@@ -26,7 +26,7 @@ const GlobalNav = () => {
       <Flex>
         <NavIcon href='/' title='Home' Icon={<Home />} />
         <NavIcon href='/category' title='Category' Icon={<Category />} />
-        <NavIcon href='/' title='User' Icon={<User />} />
+        <NavIcon href='/user' title='User' Icon={<User />} />
       </Flex>
     </Navbar>
   )

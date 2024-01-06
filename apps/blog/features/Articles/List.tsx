@@ -51,7 +51,7 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
             </span>
             {/*@TODO: link 수정 */}
             <Typo.Link
-              href={`/category/${article.category?.[0]}/${article._id}`}
+              href={`/${article._id}`}
               className='bg-black p-10 rounded text-white'>
               Read More
             </Typo.Link>
