@@ -1,6 +1,8 @@
 import { Flex } from '@zakelstorm/ui'
 import { PropsWithChildren, ReactNode } from 'react'
 
+import { MainSidebar } from '@/features/Sidebars/Main'
+
 type LayoutProps = Partial<PropsWithChildren>
 
 interface LayoutPropsExtended extends LayoutProps {
@@ -14,9 +16,12 @@ export default function Layout(props: LayoutProps | LayoutPropsExtended) {
   }
 
   return (
-    <Flex dir='v'>
-      {children}
-      {comment}
-    </Flex>
+    <>
+      <Flex direction='v'>
+        {children}
+        {comment}
+      </Flex>
+      <MainSidebar />
+    </>
   )
 }

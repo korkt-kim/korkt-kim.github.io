@@ -1,6 +1,6 @@
 window.__ENV = {
-    "NEXT_PUBLIC_SANITY_STUDIO_URL": "http://locahost:3333",
-    "NEXT_PUBLIC_BASE_URL": "https://c3f0-117-111-16-218.ngrok-free.app",
+    "NEXT_PUBLIC_SANITY_STUDIO_URL": "http://localhost:3333",
+    "NEXT_PUBLIC_BASE_URL": "http://localhost:3000",
     "NEXT_PUBLIC_SANITY_DATASET": "production",
     "NEXT_PUBLIC_SANITY_PROJECT_ID": "n322w4lp",
     "NEXT_PUBLIC_SANITY_ADMIN_TOKEN": "sk5LWALYTqPBhweS5NFVUp53QPlxtJ9CMJsCLBIJf46aw3hOIOGjCAaaEXwPM34n24m5cvBfrleHFuKK54atCB1ght2tJUgAkqegd2TwDAR2izSHFDb0WqpW7H0beIWgK8k18wGAxWwbzefl0uojDtKlFaUTJ0OvW9AnkO7YqObUKTz0R2au",
