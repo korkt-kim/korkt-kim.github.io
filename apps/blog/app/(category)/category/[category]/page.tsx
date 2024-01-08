@@ -27,5 +27,5 @@ export default async function Page({
 
   const res = await getAllArticles([_category])
 
-  return <ArticleList articles={res} />
+  return <ArticleList articles={res.items} />
 }

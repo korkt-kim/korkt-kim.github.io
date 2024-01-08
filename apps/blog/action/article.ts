@@ -10,10 +10,10 @@ import {
   paginatedArticleByCategoryQuery,
   paginatedArticleQuery,
 } from '@/sanity/queries/article'
-import { Article } from '@/types/article'
+import { Article, ArticleResponse } from '@/types/article'
 
 export async function getAllArticles(category?: string[]) {
-  return sanityFetch<Partial<Article>[]>(client, {
+  return sanityFetch<ArticleResponse>(client, {
     query: allArticlesQuery({ category }),
     params: {},
     tags: articleQueryKeys.all,

@@ -4,9 +4,10 @@ import { env } from '@/env'
 import { sanityFetch } from '@/sanity'
 import { client } from '@/sanity/client'
 import { allcommentsByArticleId } from '@/sanity/queries/comment'
+import { CommentResponse } from '@/types/comment'
 
 export async function getAllcommentsByArticleId(articleId: string) {
-  return sanityFetch<Partial<Comment>[]>(client, {
+  return sanityFetch<CommentResponse>(client, {
     query: allcommentsByArticleId({ articleId }),
     params: {},
     tags: commentQueryKeys.all,
