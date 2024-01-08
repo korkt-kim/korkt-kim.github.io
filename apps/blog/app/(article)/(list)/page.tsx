@@ -4,5 +4,5 @@ import { ArticleList } from '@/features/Articles/List'
 export default async function Page() {
   const res = await getAllArticles()
 
-  return <ArticleList articles={res} />
+  return <ArticleList articles={res.items} />
 }

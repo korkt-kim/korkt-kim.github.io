@@ -15,7 +15,7 @@ import { ListItem } from './ListItem'
 
 import { listStyle } from './theme'
 import { Pagination, PaginationProps } from '../Pagination'
-import { chunk, defaults } from 'lodash-es'
+import { chunk, defaults, isEmpty } from 'lodash-es'
 import { Flex } from '../Flex'
 
 type Placement = 'left' | 'right' | 'center'
@@ -68,7 +68,7 @@ function _List<T extends any>(
     setCurrentPage(index)
   }
 
-  if (!pagination) {
+  if (!pagination || isEmpty(data)) {
     return (
       <ul {...rest} ref={ref} className={listClasses}>
         {typeof children === 'function'

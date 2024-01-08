@@ -7,15 +7,17 @@ export const allArticlesQuery = (query?: { category?: string[] }) => {
     .map(item => `'${item}' in category`)
     .join('&&')}`
 
-  return groq`
-    *[_type=="${type}" ${_query}] | order(publishedAt desc, _createdAt desc) {
+  return groq`{
+    "items": *[_type=="${type}" ${_query}] | order(publishedAt desc, _createdAt desc) {
         title,
         category,
         content,
         _createdAt,
         _id,
-        "totalCount": count(*[_type=="article" ${_query}])
-    }
+        
+    },
+    "totalCount": count(*[_type=="${type}" ${_query}])
+  }
 `
 }
 

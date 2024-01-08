@@ -4,13 +4,13 @@ import { PortableText } from '@portabletext/react'
 import { Flex, List, Typo } from '@zakelstorm/ui'
 import { isEmpty } from 'lodash-es'
 
+import { Date } from '@/components/ColumnRenderer/Date'
 import Calendar from '@/public/calendar.svg'
 import Folder from '@/public/folder.svg'
-import { Article } from '@/types/article'
-import { formatDate } from '@/util/dayjs'
+import { ArticleResponse } from '@/types/article'
 
 export interface ArticleListProps {
-  articles: Partial<Article>[]
+  articles: ArticleResponse['items']
 }
 // @TODO
 export const ArticleList = ({ articles }: ArticleListProps) => {
@@ -36,7 +36,7 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
                 className={`[&>*]:text-gray-400 [&>*]:text-sm [&_svg]:stroke-gray-500 [&>*]:inline-flex [&>*]:items-center`}>
                 <Typo.Text>
                   <Calendar className='text-transparent inline mx-6' />
-                  Posted On {formatDate(article._createdAt!)} |
+                  Posted On <Date date={article._createdAt} /> |
                 </Typo.Text>
                 <Typo.Link href={`/category/${article.category?.[0]}`}>
                   <Folder className='text-transparent inline mx-6' /> In{' '}

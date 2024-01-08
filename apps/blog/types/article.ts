@@ -1,12 +1,13 @@
 import { PortableTextBlock } from 'sanity'
 
+import { Response } from './util'
+
+export type ArticleResponse = Response<Article>
 export interface Article extends ArticleBody {
   _id: string
   _createdAt: string
   _rev: string
   _type: 'article'
-  blockTweet: boolean
-  totalCount: number
 }
 
 export type ArticleBody = {
