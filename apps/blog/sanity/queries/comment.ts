@@ -7,8 +7,8 @@ export const allcommentsByArticleId = (query: { articleId: string }) => {
 
   return groq`{
       "items": *[_type=="${type}" ${_query}] | order(publishedAt desc, _createdAt desc) {
-        title,
-        category,
+        password,
+        username,
         content,
         _createdAt,
         _id

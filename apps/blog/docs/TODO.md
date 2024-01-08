@@ -1,6 +1,7 @@
 # Feature
 
 1. Custom Theme Provider 적용
+2. Spinner Lottie 쓰기
 
 # Refactoring
 
