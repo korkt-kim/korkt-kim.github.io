@@ -1,4 +1,5 @@
 import '@/styles/globals.css'
+import '@zakelstorm/ui/dist/index.css'
 
 import { ToastCtx } from '@zakelstorm/ui'
 import type { Metadata } from 'next'

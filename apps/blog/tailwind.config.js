@@ -18,6 +18,7 @@ module.exports = {
       md: { min: '1101px' },
     },
     extend: {
+      background: 'hsl(var(--background))',
       borderWidth: px0_10,
       fontSize: px0_100,
       lineHeight: px0_100,
