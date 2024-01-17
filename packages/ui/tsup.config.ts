@@ -4,15 +4,20 @@ import { defineConfig } from 'tsup'
 
 import react18Plugin from 'esbuild-plugin-react18'
 
+const genrateEntry = (pattern: string) => {
+  return glob.sync(pattern).reduce((obj, path) => {
+    return {
+      ...obj,
+      [path.replace(/\.ts(x)?$/, '')]: path,
+    }
+  }, {})
+}
+
 export default defineConfig([
   {
     entry: {
-      ...glob.sync('components/**/*/index.tsx').reduce((obj, path) => {
-        return {
-          ...obj,
-          [path.replace(/\.tsx$/, '')]: path,
-        }
-      }, {}),
+      ...genrateEntry('components/**/*/index.tsx'),
+      ...genrateEntry('hooks/**/*/index.ts'),
       index: 'index.ts',
     },
     dts: true,
@@ -29,7 +34,7 @@ export default defineConfig([
       {
         name: 'import-path',
         setup(build) {
-          build.onResolve({ filter: /^\.\/components\/*/ }, args => {
+          build.onResolve({ filter: /^\.\/components|hooks\/*/ }, args => {
             if (args.importer.endsWith('/packages/ui/index.ts')) {
               return {
                 path:
