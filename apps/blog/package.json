@@ -39,6 +39,7 @@
     "tailwind-merge": "^2.1.0"
   },
   "devDependencies": {
+    "@heroicons/react": "^2.1.1",
     "@next/eslint-plugin-next": "^14.0.4",
     "@sanity/eslint-config-studio": "^3.0.1",
     "@svgr/webpack": "^8.1.0",
