@@ -9,7 +9,10 @@
       "types": "./dist/index.d.ts",
       "default": "./dist/index.mjs"
     },
-    "./dist/index.css": "./dist/index.css"
+    "./globals.css": {
+      "import": "./dist/index.css",
+      "require": "./dist/index.css"
+    }
   },
   "main": "./dist/index.mjs",
   "typings": "./dist/index.d.ts",

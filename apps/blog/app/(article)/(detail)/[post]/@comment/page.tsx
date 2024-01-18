@@ -1,6 +1,10 @@
 import { Flex, Typo } from '@zakelstorm/ui'
 
-import { createComment, getAllcommentsByArticleId } from '@/action/comment'
+import {
+  createComment,
+  deleteComment,
+  getAllcommentsByArticleId,
+} from '@/action/comment'
 import { CreateCommentForm } from '@/features/Comments/CreateCommentForm'
 import { CommentList } from '@/features/Comments/List'
 
@@ -20,6 +24,14 @@ export default async function Page({ params }: { params: { post: string } }) {
     })
   }
 
+  const _deleteComment = async (commentId: string) => {
+    'use server'
+
+    await deleteComment({
+      commentId,
+    })
+  }
+
   return (
     <Flex direction='v' className='w-full'>
       <Flex justify='between' className='w-full'>
@@ -36,7 +48,7 @@ export default async function Page({ params }: { params: { post: string } }) {
         </Flex>
       </Flex>
       <div className='w-full'>
-        <CommentList contents={comments.items} />
+        <CommentList contents={comments.items} onDelete={_deleteComment} />
       </div>
       <CreateCommentForm onSubmit={_createComment} />
     </Flex>

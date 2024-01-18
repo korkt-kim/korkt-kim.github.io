@@ -1,7 +1,8 @@
 import { ComponentPropsWithoutRef, ReactNode, useEffect, useState } from 'react'
 import { ToastRoot } from './Root'
+import { uniqueId } from 'lodash-es'
 
-const TOAST_LIMIT = 1
+const TOAST_LIMIT = 3
 const TOAST_REMOVE_DELAY = 1000000
 
 type ToastProps = ComponentPropsWithoutRef<typeof ToastRoot> & {
@@ -16,13 +17,6 @@ const actionTypes = {
   DISMISS_TOAST: 'DISMISS_TOAST',
   REMOVE_TOAST: 'REMOVE_TOAST',
 } as const
-
-let count = 0
-
-function genId() {
-  count = (count + 1) % Number.MAX_VALUE
-  return count.toString()
-}
 
 type ActionType = typeof actionTypes
 
@@ -135,7 +129,7 @@ function dispatch(action: Action) {
 type Toast = Omit<ToastProps, 'id'>
 
 function toast({ ...props }: Toast) {
-  const id = genId()
+  const id = uniqueId()
 
   const update = (props: ToastProps) =>
     dispatch({

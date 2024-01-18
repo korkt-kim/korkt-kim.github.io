@@ -39,7 +39,7 @@ import { Animation } from '../../util/type'
 
 export interface PopoverProps extends PropsWithChildren {
   open?: boolean
-  handler?: Dispatch<React.SetStateAction<any>>
+  handler?: (isOpen: boolean) => void
   placement?: Placement
   offset?:
     | number

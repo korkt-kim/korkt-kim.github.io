@@ -39,6 +39,21 @@ export async function createComment({
   return JSON.stringify(data)
 }
 
+export async function deleteComment({ commentId }: { commentId: string }) {
+  const res = await fetch(
+    `${env('NEXT_PUBLIC_BASE_URL')}/api/comment/${commentId}`,
+    {
+      method: 'DELETE',
+      cache: 'no-store',
+    }
+  )
+
+  const data = await res.json()
+  revalidateTag('comment')
+
+  return JSON.stringify(data)
+}
+
 const commentQueryKeys = {
   all: ['comment'],
   getMany: (articleId: string) => [
