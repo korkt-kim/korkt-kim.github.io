@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 
 import { getAllArticles } from '@/action/article'
 import { CATEGORIES } from '@/consts'
-import { ArticleList } from '@/features/Articles/List'
+import { ArticleList } from '@/features/List/ArticleList'
 
 export async function generateStaticParams() {
   return CATEGORIES.map(category => ({

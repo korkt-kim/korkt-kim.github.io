@@ -1,3 +1,5 @@
+'use server'
+
 import { revalidateTag } from 'next/cache'
 
 import { env } from '@/env'
@@ -10,7 +12,7 @@ import {
   paginatedArticleByCategoryQuery,
   paginatedArticleQuery,
 } from '@/sanity/queries/article'
-import { Article, ArticleResponse } from '@/types/article'
+import { Article, ArticleBody, ArticleResponse } from '@/types/article'
 
 export async function getAllArticles(category?: string[]) {
   return sanityFetch<ArticleResponse>(client, {
@@ -62,21 +64,23 @@ export async function getPaginatedArticlesByCategoryId(
   })
 }
 
-export async function createArticle() {
-  const res = await fetch(`${env('NEXT_PUBLIC_BASE_URL')}/api/article`, {
-    body: JSON.stringify({
-      title: 'k',
+export async function createArticle({ title, content, category }: ArticleBody) {
+  const res = await client.create(
+    {
+      _type: 'article',
+      title,
+      content,
       password: 'rnrn0808!!',
-      category: ['Typescript'],
-    }),
-    method: 'POST',
-    cache: 'no-store',
-  })
+      category: [category],
+    },
+    {
+      token: env('NEXT_PUBLIC_SANITY_ADMIN_TOKEN'),
+    }
+  )
 
-  const data = await res.json()
   revalidateTag('article')
 
-  return JSON.stringify(data)
+  return JSON.stringify(res)
 }
 
 const articleQueryKeys = {

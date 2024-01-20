@@ -1,36 +1,13 @@
 import { Flex, Typo } from '@zakelstorm/ui'
 
-import {
-  createComment,
-  deleteComment,
-  getAllcommentsByArticleId,
-} from '@/action/comment'
-import { CreateCommentForm } from '@/features/Comments/CreateCommentForm'
-import { CommentList } from '@/features/Comments/List'
+import { getAllcommentsByArticleId } from '@/action/comment'
+import { CreateCommentForm } from '@/features/Form/CreateCommentForm'
+import { CommentList } from '@/features/List/CommentList'
 
 export default async function Page({ params }: { params: { post: string } }) {
-  const { post } = params
+  const { post: articleId } = params
 
-  const comments = await getAllcommentsByArticleId(post)
-
-  const _createComment = async (formData: FormData) => {
-    'use server'
-
-    await createComment({
-      articleId: post,
-      content: formData.get('content') as string,
-      username: formData.get('name') as string,
-      password: formData.get('password') as string,
-    })
-  }
-
-  const _deleteComment = async (commentId: string) => {
-    'use server'
-
-    await deleteComment({
-      commentId,
-    })
-  }
+  const comments = await getAllcommentsByArticleId(articleId)
 
   return (
     <Flex direction='v' className='w-full'>
@@ -48,9 +25,9 @@ export default async function Page({ params }: { params: { post: string } }) {
         </Flex>
       </Flex>
       <div className='w-full'>
-        <CommentList contents={comments.items} onDelete={_deleteComment} />
+        <CommentList contents={comments.items} />
       </div>
-      <CreateCommentForm onSubmit={_createComment} />
+      <CreateCommentForm articleId={articleId} />
     </Flex>
   )
 }
