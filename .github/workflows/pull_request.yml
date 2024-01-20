@@ -6,6 +6,8 @@ on:
     branches: ['main']
   pull_request:
     types: [opened, synchronize]
+  issue_comment:
+    types: [created]
 
 jobs:
   build:
@@ -13,6 +15,13 @@ jobs:
     timeout-minutes: 15
     runs-on: ubuntu-latest
     steps:
+      - uses: khan/pull-request-comment-trigger@v1.1.0
+        id: check
+        with:
+          trigger: 'test'
+          reaction: rocket
+        env:
+          GITHUB_TOKEN: '${{ secrets.GIT_TOKEN }}'
       - name: Check out code
         uses: actions/checkout@v3
         with:
