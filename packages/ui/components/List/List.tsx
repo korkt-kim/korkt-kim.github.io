@@ -84,7 +84,9 @@ function _List<T extends any>(
     <div>
       <ul {...rest} ref={ref} className={listClasses}>
         {typeof children === 'function'
-          ? chunkedData[currentPage - 1].map(item => children(item))
+          ? chunkedData[Math.min(currentPage, chunkedData.length) - 1].map(
+              item => children(item)
+            )
           : children}
       </ul>
       <Flex
@@ -95,7 +97,7 @@ function _List<T extends any>(
         }>
         <Pagination
           total={data.length}
-          current={currentPage}
+          current={Math.min(currentPage, chunkedData.length)}
           onChange={onChangePagination}
           pageSize={pageSize}
           sectionSize={sectionSize}

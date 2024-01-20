@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { ArrowRightIcon, ArrowLeftIcon } from '@heroicons/react/24/outline'
 import { Button } from '../Button'
@@ -25,6 +25,10 @@ export function Pagination({
   const totalPage = Math.ceil(total / pageSize)
   const currentSection = Math.ceil(active / sectionSize)
   const lastSection = Math.ceil(totalPage / sectionSize)
+
+  useEffect(() => {
+    setActive(current)
+  }, [current])
 
   const getItemProps = (index: number) =>
     ({

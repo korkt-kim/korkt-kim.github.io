@@ -1,3 +1,5 @@
+'use server'
+
 import { revalidateTag } from 'next/cache'
 
 import { env } from '@/env'
@@ -17,41 +19,37 @@ export async function getAllcommentsByArticleId(articleId: string) {
 }
 
 export async function createComment({
-  articleId,
   content,
-  password,
   username,
+  password,
+  articleId,
 }: CommentBody & { articleId: string }) {
-  const res = await fetch(`${env('NEXT_PUBLIC_BASE_URL')}/api/comment`, {
-    body: JSON.stringify({
+  const res = await client.create(
+    {
+      _type: 'comment',
       content,
       username,
       password,
       relatedArticle: toReference(articleId),
-    }),
-    method: 'POST',
-    cache: 'no-store',
-  })
-
-  const data = await res.json()
-  revalidateTag('comment')
-
-  return JSON.stringify(data)
-}
-
-export async function deleteComment({ commentId }: { commentId: string }) {
-  const res = await fetch(
-    `${env('NEXT_PUBLIC_BASE_URL')}/api/comment/${commentId}`,
+    },
     {
-      method: 'DELETE',
-      cache: 'no-store',
+      token: env('NEXT_PUBLIC_SANITY_ADMIN_TOKEN'),
     }
   )
 
-  const data = await res.json()
   revalidateTag('comment')
 
-  return JSON.stringify(data)
+  return JSON.stringify(res)
+}
+
+export async function deleteComment({ commentId }: { commentId: string }) {
+  const res = await client.delete(commentId, {
+    token: env('NEXT_PUBLIC_SANITY_ADMIN_TOKEN'),
+  })
+
+  revalidateTag('comment')
+
+  return JSON.stringify(res)
 }
 
 const commentQueryKeys = {

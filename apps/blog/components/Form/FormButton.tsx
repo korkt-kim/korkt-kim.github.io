@@ -4,14 +4,14 @@ import { Button, IconButton } from '@zakelstorm/ui'
 import { ComponentProps } from 'react'
 import { useFormStatus } from 'react-dom'
 
-type FormButtonProps = ComponentProps<typeof Button> & {
+export interface FormButtonProps extends ComponentProps<typeof Button> {
   isIcon?: boolean
 }
 
-export const FormButton = (props: FormButtonProps) => {
+export const FormButton = ({ isIcon, ...props }: FormButtonProps) => {
   const { pending } = useFormStatus()
 
-  if (props.isIcon) {
+  if (isIcon) {
     return (
       <IconButton disabled={pending} {...props}>
         {props.children}

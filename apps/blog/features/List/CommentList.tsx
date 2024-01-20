@@ -2,7 +2,6 @@
 
 import { CheckCircleIcon, TrashIcon } from '@heroicons/react/16/solid'
 import {
-  Flex,
   IconButton,
   Input,
   List,
@@ -13,20 +12,51 @@ import {
   useToast,
 } from '@zakelstorm/ui'
 import { useState } from 'react'
+import { useFormState } from 'react-dom'
 
+import { deleteComment } from '@/action/comment'
 import { Date } from '@/components/ColumnRenderer/Date'
 import { FormButton } from '@/components/Form/FormButton'
 import { CommentResponse } from '@/types/comment'
 
 export interface CommentListProps {
   contents: CommentResponse['items']
-  onDelete: (commentId: string) => Promise<void>
 }
 // @TODO /Resource NotFound 공용 컴포넌트로 빼기
-export const CommentList = ({ contents, onDelete }: CommentListProps) => {
+export const CommentList = ({ contents }: CommentListProps) => {
   const { toast } = useToast()
   const [password, setPassword] = useState('')
   const [open, setOpen] = useState<string | undefined>()
+
+  const _deleteComment = async (_: string, formData: FormData) => {
+    const commentId = formData.get('commentId') as string
+    const _password = formData.get('password') as string
+
+    let res = ''
+    try {
+      if (!commentId) {
+        throw new Error('Undefined Id')
+      }
+      if (_password !== password) {
+        throw new Error('잘못된 비밀번호가 입력되었습니다.')
+      }
+
+      res = await deleteComment({ commentId })
+      toast({
+        title: 'Success',
+        description: '댓글이 성공적으로 삭제되었습니다.',
+      })
+    } catch (e: any) {
+      toast({
+        title: 'Error',
+        description: e.message ?? '댓글 삭제에 실패했습니다.',
+      })
+    }
+
+    return res
+  }
+
+  const [_, submitDeleteComment] = useFormState(_deleteComment, '')
 
   return (
     <List data={contents} pagination>
@@ -62,29 +92,14 @@ export const CommentList = ({ contents, onDelete }: CommentListProps) => {
                 <PopoverContent className='p-2'>
                   <form
                     className='flex gap-0 items-center'
-                    action={async () => {
-                      try {
-                        if (!content._id) {
-                          throw new Error('Undefined Id')
-                        }
-                        if (content.password !== password) {
-                          throw new Error('잘못된 비밀번호가 입력되었습니다.')
-                        }
-
-                        await onDelete(content._id)
-
-                        toast({
-                          title: 'Success',
-                          description: '댓글이 성공적으로 삭제되었습니다.',
-                        })
-                      } catch (e: any) {
-                        toast({
-                          title: 'Error',
-                          description: e.message ?? '댓글 삭제에 실패했습니다.',
-                        })
-                      }
-                    }}>
+                    action={submitDeleteComment}>
                     <Input
+                      defaultValue={content._id}
+                      name='commentId'
+                      containerProps={{ className: 'hidden' }}
+                    />
+                    <Input
+                      name='password'
                       value={password}
                       label='password'
                       className='!h-30 !text-10'
