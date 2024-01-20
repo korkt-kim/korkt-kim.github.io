@@ -22,7 +22,7 @@ export default async function Page({ params }: { params: { post: string } }) {
   }
 
   return (
-    <Card title={article.title} className='w-full'>
+    <Card title={article.title} className='w-full' id='container'>
       <PortableText value={article.content} />
     </Card>
   )
