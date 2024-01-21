@@ -1,7 +1,7 @@
 import { Flex } from '@zakelstorm/ui'
 import { PropsWithChildren, ReactNode } from 'react'
 
-import { MainSidebar } from '@/features/Sidebars/Main'
+import { ArticleSidebar } from '@/features/Sidebars/ArticleSidebar'
 
 type LayoutProps = Partial<PropsWithChildren>
 
@@ -21,7 +21,7 @@ export default function Layout(props: LayoutProps | LayoutPropsExtended) {
         {children}
         {comment}
       </Flex>
-      <MainSidebar />
+      <ArticleSidebar />
     </>
   )
 }

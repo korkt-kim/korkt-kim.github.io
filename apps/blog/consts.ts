@@ -13,3 +13,5 @@ export const CATEGORIES = [
   'Browser',
   'ETC',
 ] as const
+
+export const articleContainerId = 'article_container'

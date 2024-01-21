@@ -14,9 +14,7 @@ export const Sidebar = ({ children, ...props }: SidebarProps) => {
         className
       )}
       {...rest}>
-      <Flex direction='v' align='center'>
-        {children}
-      </Flex>
+      {children}
     </aside>
   )
 }

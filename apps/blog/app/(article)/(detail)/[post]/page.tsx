@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 
 import { getAllArticles, getArticle } from '@/action/article'
 import { PortableText } from '@/components/PortableText'
+import { articleContainerId } from '@/consts'
 
 export async function generateStaticParams() {
   const articles = await getAllArticles()
@@ -22,7 +23,7 @@ export default async function Page({ params }: { params: { post: string } }) {
   }
 
   return (
-    <Card title={article.title} className='w-full' id='container'>
+    <Card title={article.title} className='w-full' id={articleContainerId}>
       <PortableText value={article.content} />
     </Card>
   )
