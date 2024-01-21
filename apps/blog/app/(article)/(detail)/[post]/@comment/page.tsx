@@ -1,6 +1,7 @@
 import { Flex, Typo } from '@zakelstorm/ui'
 
 import { getAllcommentsByArticleId } from '@/action/comment'
+import { articleContainerId } from '@/consts'
 import { CreateCommentForm } from '@/features/Form/CreateCommentForm'
 import { CommentList } from '@/features/List/CommentList'
 
@@ -19,7 +20,7 @@ export default async function Page({ params }: { params: { post: string } }) {
           </Typo.Text>
         </div>
         <Flex>
-          <Typo.Link href='#container' className='text-black'>
+          <Typo.Link href={`#${articleContainerId}`} className='text-black'>
             본문 보기
           </Typo.Link>
         </Flex>
