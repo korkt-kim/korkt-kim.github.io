@@ -23,7 +23,7 @@ export interface ListProps<T> {
   data: T[]
   pagination?:
     | boolean
-    | (Omit<PaginationProps, 'total'> & {
+    | (Partial<Omit<PaginationProps, 'total'>> & {
         placement?: Placement
       })
   children?: ReactNode | ((item: T) => ReactNode)

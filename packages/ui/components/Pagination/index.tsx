@@ -65,7 +65,7 @@ export function Pagination({
         className='flex items-center gap-2'
         onClick={prev}
         disabled={currentSection === 1}>
-        <ArrowLeftIcon strokeWidth={2} className='h-4 w-4' /> Previous
+        <ArrowLeftIcon strokeWidth={2} className='h-4 w-4' />
       </Button>
       <div className='flex items-center gap-2'>
         {Array(sectionSize)
@@ -92,7 +92,6 @@ export function Pagination({
         className='flex items-center gap-2'
         onClick={next}
         disabled={currentSection == lastSection}>
-        Next
         <ArrowRightIcon strokeWidth={2} className='h-4 w-4' />
       </Button>
     </div>

@@ -37,7 +37,10 @@ export const CommentList = ({ contents }: CommentListProps) => {
       if (!commentId) {
         throw new Error('Undefined Id')
       }
-      if (_password !== password) {
+      if (
+        _password !==
+        contents.find(content => content._id === commentId)?.password
+      ) {
         throw new Error('잘못된 비밀번호가 입력되었습니다.')
       }
 
@@ -63,17 +66,15 @@ export const CommentList = ({ contents }: CommentListProps) => {
       {content => {
         return (
           <List.Item
-            className='border text-11 grid grid-cols-9 items-center gap-16 !pr-40 relative'
+            className='border md:text-11 sm:text-9 grid md:grid-cols-9 sm:grid-cols-12 items-center md:gap-16 sm:gap-4 md:!pr-40 sm:!pr-28 relative'
             key={content._id}>
-            <div className='col-span-1'>
-              <Typo.Text className='text-ellipsis overflow-hidden'>
-                {content.username}
-              </Typo.Text>
+            <div className='md:col-span-1 sm:col-span-2'>
+              <Typo.Text className='break-all'>{content.username}</Typo.Text>
             </div>
-            <div className='col-span-7'>
+            <div className='md:col-span-7 sm:col-span-6'>
               <Typo.Text className='break-all'>{content.content}</Typo.Text>
             </div>
-            <div className='col-span-1 text-end grid-cols-subgrid  text-gray-400'>
+            <div className='md:col-span-1 sm:col-span-4  text-end grid-cols-subgrid  text-gray-400'>
               <Date date={content._createdAt} />
             </div>
             <div className='absolute right-10'>
