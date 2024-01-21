@@ -37,24 +37,6 @@ module.exports = {
             maxWidth: theme('screens.md.min'),
           },
         },
-
-        '._section-title': {
-          fontSize: theme('fontSize.3xl'),
-          fontWeight: theme('fontWeight.bold'),
-          marginBottom: theme('spacing.5'),
-          '@screen md': {
-            fontSize: theme('fontSize.4xl'),
-          },
-        },
-
-        '._section-desc': {
-          color: theme('colors.txt3'),
-          fontSize: theme('fontSize.sm'),
-          marginBottom: theme('spacing.5'),
-          '@screen md': {
-            fontSize: theme('fontSize.xl'),
-          },
-        },
       })
     }),
   ],

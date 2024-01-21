@@ -6,6 +6,7 @@ import { useFormState } from 'react-dom'
 
 import { createComment } from '@/action/comment'
 import { FormButton } from '@/components/Form/FormButton'
+import { useBreakPoint } from '@/hooks/useBreakPoint'
 
 export interface CreateCommentFormProps {
   articleId: string
@@ -37,7 +38,7 @@ export const CreateCommentForm = ({ articleId }: CreateCommentFormProps) => {
 
     return res
   }
-
+  const { breakPoint } = useBreakPoint()
   const [_, submitComment] = useFormState(_createComment, '')
   const [content, setContent] = useState('')
   const [name, setName] = useState('')
@@ -50,7 +51,8 @@ export const CreateCommentForm = ({ articleId }: CreateCommentFormProps) => {
         name='articleId'
         defaultValue={articleId}
       />
-      <Flex>
+
+      <Flex direction={`${breakPoint === 'desktop' ? `h` : `v`}`}>
         <Flex direction='v'>
           <Input
             label='닉네임'

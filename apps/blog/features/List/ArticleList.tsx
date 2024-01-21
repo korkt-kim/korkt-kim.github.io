@@ -1,10 +1,13 @@
 'use client'
 
 import { PortableText } from '@portabletext/react'
-import { Flex, List, Typo } from '@zakelstorm/ui'
+import { Flex, List, ListProps, Typo, useWindowSize } from '@zakelstorm/ui'
+import { PaginationProps } from '@zakelstorm/ui/components/Pagination'
 import { isEmpty } from 'lodash-es'
+import { useMemo } from 'react'
 
 import { Date } from '@/components/ColumnRenderer/Date'
+import { useBreakPoint } from '@/hooks/useBreakPoint'
 import Calendar from '@/public/calendar.svg'
 import Folder from '@/public/folder.svg'
 import { ArticleResponse } from '@/types/article'
@@ -14,6 +17,16 @@ export interface ArticleListProps {
 }
 // @TODO
 export const ArticleList = ({ articles }: ArticleListProps) => {
+  const { breakPoint } = useBreakPoint()
+  const pagination: ListProps<unknown>['pagination'] = useMemo(() => {
+    if (breakPoint === 'desktop') {
+      return true
+    }
+
+    return {
+      sectionSize: 3,
+    }
+  }, [breakPoint])
   if (isEmpty(articles)) {
     return (
       <Flex direction='v' align='center' className='p-200'>
@@ -24,11 +37,11 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
   }
 
   return (
-    <List data={articles} pagination>
+    <List data={articles} pagination={pagination}>
       {article => {
         return (
           <List.Item
-            className='border flex-col items-center gap-16 !px-100'
+            className='border flex-col items-center gap-16 md:!px-100 sm:!px-10'
             key={article._id}>
             <Flex noGap direction='v' align='center'>
               <Typo.Title level={1}>{article.title}</Typo.Title>
