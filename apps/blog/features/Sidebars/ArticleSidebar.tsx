@@ -1,6 +1,6 @@
 'use client'
 
-import { Flex, Typo, useIntersectionObserver } from '@zakelstorm/ui'
+import { Flex, Spinner, Typo, useIntersectionObserver } from '@zakelstorm/ui'
 import { unescape } from 'lodash-es'
 import { useEffect, useMemo, useRef, useState } from 'react'
 
@@ -59,27 +59,31 @@ export const ArticleSidebar = (props: SidebarProps) => {
       <Typo.Title level={4} className='mb-20 text-center'>
         Table of Contents
       </Typo.Title>
-      <ol className='list-decimal text-12 pl-20'>
-        {articleContainer
-          ? Array.from(
-              articleContainer.querySelectorAll(`#${articleContainerId}>h2`)
-            )
-              .map(item => item.innerHTML)
-              .map((subTitle, index) => {
-                return (
-                  <li
-                    key={index}
-                    onClick={() => scrollToSubTitle(index)}
-                    style={{ marginBlockStart: 5 }}
-                    className={`hover:underline hover:cursor-pointer ${
-                      active === index ? `text-blue-400` : ``
-                    }`}>
-                    <Typo.Text>{unescape(subTitle)}</Typo.Text>
-                  </li>
-                )
-              })
-          : null}
-      </ol>
+      {articleContainer ? (
+        <ol className='list-decimal text-12 pl-20'>
+          {Array.from(
+            articleContainer.querySelectorAll(`#${articleContainerId}>h2`)
+          )
+            .map(item => item.innerHTML)
+            .map((subTitle, index) => {
+              return (
+                <li
+                  key={index}
+                  onClick={() => scrollToSubTitle(index)}
+                  style={{ marginBlockStart: 5 }}
+                  className={`hover:underline hover:cursor-pointer ${
+                    active === index ? `text-blue-400` : ``
+                  }`}>
+                  <Typo.Text>{unescape(subTitle)}</Typo.Text>
+                </li>
+              )
+            })}
+        </ol>
+      ) : (
+        <Flex justify='center'>
+          <Spinner />
+        </Flex>
+      )}
     </Sidebar>
   )
 }
