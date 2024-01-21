@@ -3,17 +3,12 @@ import { PropsWithChildren, ReactNode } from 'react'
 
 import { ArticleSidebar } from '@/features/Sidebars/ArticleSidebar'
 
-type LayoutProps = Partial<PropsWithChildren>
-
-interface LayoutPropsExtended extends LayoutProps {
-  comment?: ReactNode
+interface LayoutProps extends PropsWithChildren {
+  comment: ReactNode
 }
 
-export default function Layout(props: LayoutProps | LayoutPropsExtended) {
-  const { children, comment } = {
-    comment: undefined,
-    ...props,
-  }
+export default function Layout(props: LayoutProps) {
+  const { children, comment } = props
 
   return (
     <>
