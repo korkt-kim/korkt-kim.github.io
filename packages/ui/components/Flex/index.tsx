@@ -75,6 +75,4 @@ export const Flex = memo(
   )
 )
 
-if (process.env.NODE_ENV !== 'production') {
-  Flex.displayName = 'Flex'
-}
+Flex.displayName = 'Flex'

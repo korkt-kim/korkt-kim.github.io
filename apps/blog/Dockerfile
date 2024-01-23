@@ -14,6 +14,7 @@ COPY .npmrc .
 
 COPY apps/blog ./apps/blog
 COPY packages ./packages
+RUN rm -rf ./.next/cache
 
 RUN apk add --no-cache libc6-compat
 RUN apk update

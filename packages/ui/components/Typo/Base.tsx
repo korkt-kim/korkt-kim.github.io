@@ -38,8 +38,6 @@ export const Typography = memo(
   )
 )
 
-if (process.env.NODE_ENV !== 'production') {
-  Typography.displayName = 'Typography'
-}
+Typography.displayName = 'Typography'
 
 export default Typography
