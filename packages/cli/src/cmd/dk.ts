@@ -25,51 +25,51 @@ export const options: [
   command: string,
   description: string,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  builder: BuilderCallback<any, any>
+  builder: BuilderCallback<any, any>,
 ] = [
-    'dk <scope>',
-    '프로젝트 도커라이징',
-    y => {
-      y.positional('scope', {
-        desc: '도커라이징 대상 패키지',
+  'dk <scope>',
+  '프로젝트 도커라이징',
+  y => {
+    y.positional('scope', {
+      desc: '도커라이징 대상 패키지',
+      type: 'string',
+    }).options({
+      name: {
+        alias: 'n',
+        desc: '이미지 이름 [기본값: <scope>]',
         type: 'string',
-      }).options({
-        name: {
-          alias: 'n',
-          desc: '이미지 이름 [기본값: <scope>]',
-          type: 'string',
-        },
-        tag: {
-          alias: 't',
-          desc: '이미지 태그 [기본값: "yyMMdd_HHmmss"]',
-          type: 'string',
-        },
-        buildEnv: {
-          alias: 'e',
-          desc: '빌드 환경변수 파일 경로 [기본값: <scope>의 .env]. 혹은 <varname>=<value>형태의 값',
-          type: 'string',
-          array: true,
-        },
-        file: {
-          alias: 'f',
-          desc: 'Dockerfile 위치 [기본값: <scope>의 Dockerfile]',
-          type: 'string',
-        },
-        cache: {
-          alias: 'c',
-          desc: 'docker 캐시 사용 여부',
-          type: 'boolean',
-          default: false,
-        },
-        skip: {
-          alias: 'y',
-          desc: '모든 프롬프트에 yes로 응답. 바로 빌드를 실행함',
-          type: 'boolean',
-          default: false,
-        },
-      })
-    },
-  ]
+      },
+      tag: {
+        alias: 't',
+        desc: '이미지 태그 [기본값: "yyMMdd_HHmmss"]',
+        type: 'string',
+      },
+      buildEnv: {
+        alias: 'e',
+        desc: '빌드 환경변수 파일 경로 [기본값: <scope>의 .env]. 혹은 <varname>=<value>형태의 값',
+        type: 'string',
+        array: true,
+      },
+      file: {
+        alias: 'f',
+        desc: 'Dockerfile 위치 [기본값: <scope>의 Dockerfile]',
+        type: 'string',
+      },
+      cache: {
+        alias: 'c',
+        desc: 'docker 캐시 사용 여부',
+        type: 'boolean',
+        default: false,
+      },
+      skip: {
+        alias: 'y',
+        desc: '모든 프롬프트에 yes로 응답. 바로 빌드를 실행함',
+        type: 'boolean',
+        default: false,
+      },
+    })
+  },
+]
 
 export async function command(parsed: ReturnType<Argv<DKProps>['parseSync']>) {
   const { scope } = parsed
@@ -186,7 +186,7 @@ ${buildEnvParts.join('\n') ?? '환경변수 없음'}`,
 
   const cmd = `docker build -f ${dockerPath} . -t ${name} ${buildArgs.join(
     ' '
-  )}`
+  )} --platform linux/amd64`
 
   console.log(cmd)
 
