@@ -15,7 +15,7 @@ module.exports = {
   async headers() {
     return [{ source: '/:path*', headers: securityHeaders }]
   },
-
+  exports: 'standalone',
   swcMinify: true,
   reactStrictMode: false,
   images: { unoptimized: true },
