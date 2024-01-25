@@ -1,4 +1,8 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
+const _withRoutes = require('nextjs-routes/config')
+
+const withRoutes = _withRoutes()
 
 const securityHeaders = [
   { key: 'X-XSS-Protection', value: '1; mode=block' },
@@ -10,12 +14,12 @@ const securityHeaders = [
   { key: 'X-Content-Type-Options', value: 'nosniff' },
   { key: 'Referrer-Policy', value: 'origin-when-cross-origin' },
 ]
-
-module.exports = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   async headers() {
     return [{ source: '/:path*', headers: securityHeaders }]
   },
-  exports: 'standalone',
+  output: 'standalone',
   swcMinify: true,
   reactStrictMode: false,
   images: { unoptimized: true },
@@ -52,3 +56,5 @@ module.exports = {
     return config
   },
 }
+
+module.exports = withRoutes(nextConfig)

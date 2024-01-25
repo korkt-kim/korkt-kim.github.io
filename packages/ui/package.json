@@ -20,7 +20,6 @@
     "build": "tsup",
     "build-storybook": "storybook build",
     "dev": "tsup --watch",
-    "generate:component": "turbo gen react-component",
     "lint": "eslint . --max-warnings 0",
     "storybook": "storybook dev -p 6006"
   },

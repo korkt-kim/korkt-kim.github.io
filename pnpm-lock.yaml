@@ -53,6 +53,9 @@ importers:
       dotenv:
         specifier: ^16.3.1
         version: 16.3.1
+      framer-motion:
+        specifier: ^10.16.16
+        version: 10.16.16(react-dom@18.2.0)(react@18.2.0)
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21
@@ -65,6 +68,9 @@ importers:
       next-sanity-image:
         specifier: ^6.1.1
         version: 6.1.1(@sanity/client@6.10.0)(next@14.0.4)(react@18.2.0)
+      nextjs-routes:
+        specifier: ^2.1.0
+        version: 2.1.0(next@14.0.4)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -11712,6 +11718,16 @@ packages:
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
+    dev: false
+
+  /nextjs-routes@2.1.0(next@14.0.4):
+    resolution: {integrity: sha512-co/bo6XVQYTBu9u9bFE4SVDjKecqJQEbggCr47Z9nbjW4/uPqrn6VniqYCxuWj6lK+S8qzVlXp0uWFCCfdPv7g==}
+    hasBin: true
+    peerDependencies:
+      next: '*'
+    dependencies:
+      chokidar: 3.5.3
+      next: 14.0.4(@babel/core@7.23.6)(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
   /no-case@2.3.2:
