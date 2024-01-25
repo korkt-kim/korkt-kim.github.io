@@ -23,6 +23,9 @@ const nextConfig = {
   swcMinify: true,
   reactStrictMode: false,
   images: { unoptimized: true },
+  experimental: {
+    typedRoutes: true,
+  },
   webpack(config) {
     {
       const fileLoaderRule = config.module.rules.find(rule =>

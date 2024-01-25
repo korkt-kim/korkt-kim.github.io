@@ -2,15 +2,16 @@ import { Flex, Typo } from '@zakelstorm/ui'
 import Image from 'next/image'
 
 import { getArticleTotalCount } from '@/action/article'
-import { Sidebar, SidebarProps } from '@/components/Sidebar'
 import { CATEGORIES } from '@/consts'
 import Avatar from '@/public/avatar.jpeg'
 
-export const MainSidebar = async (props: SidebarProps) => {
+import { SidebarWrapper } from './SidebarWrapper'
+
+export const MainSidebar = async () => {
   const res = await getArticleTotalCount()
 
   return (
-    <Sidebar {...props}>
+    <SidebarWrapper>
       <Flex direction='v' align='center'>
         <Image
           src={Avatar}
@@ -34,7 +35,7 @@ export const MainSidebar = async (props: SidebarProps) => {
           />
         </Flex>
       </Flex>
-    </Sidebar>
+    </SidebarWrapper>
   )
 }
 

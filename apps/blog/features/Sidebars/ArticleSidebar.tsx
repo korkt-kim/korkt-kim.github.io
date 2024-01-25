@@ -2,14 +2,13 @@
 
 import { Flex, Spinner, Typo, useIntersectionObserver } from '@zakelstorm/ui'
 import { unescape } from 'lodash-es'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
-import { Sidebar, SidebarProps } from '@/components/Sidebar'
 import { articleContainerId } from '@/consts'
 
-export type ArticleSidebarProps = SidebarProps
+import { SidebarWrapper } from './SidebarWrapper'
 
-export const ArticleSidebar = (props: SidebarProps) => {
+export const ArticleSidebar = () => {
   const [articleContainer, setArticleContainer] = useState<Element | null>(null)
   const [active, setActive] = useState(-1)
   const [subTitleRefs, setSubTitleRefs] = useState<HTMLElement[]>([])
@@ -55,7 +54,7 @@ export const ArticleSidebar = (props: SidebarProps) => {
   }
 
   return (
-    <Sidebar {...props}>
+    <SidebarWrapper>
       <Typo.Title level={4} className='mb-20 text-center'>
         Table of Contents
       </Typo.Title>
@@ -84,6 +83,6 @@ export const ArticleSidebar = (props: SidebarProps) => {
           <Spinner />
         </Flex>
       )}
-    </Sidebar>
+    </SidebarWrapper>
   )
 }
