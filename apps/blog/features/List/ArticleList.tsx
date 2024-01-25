@@ -1,9 +1,9 @@
 'use client'
 
 import { PortableText } from '@portabletext/react'
-import { Flex, List, ListProps, Typo, useWindowSize } from '@zakelstorm/ui'
-import { PaginationProps } from '@zakelstorm/ui/components/Pagination'
+import { Flex, List, ListProps, Typo } from '@zakelstorm/ui'
 import { isEmpty } from 'lodash-es'
+import Link from 'next/link'
 import { useMemo } from 'react'
 
 import { Date } from '@/components/ColumnRenderer/Date'
@@ -51,10 +51,10 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
                   <Calendar className='text-transparent inline mx-6' />
                   Posted On <Date date={article._createdAt} /> |
                 </Typo.Text>
-                <Typo.Link href={`/category/${article.category?.[0]}`}>
+                <Link href={`/category/${article.category?.[0]}`}>
                   <Folder className='text-transparent inline mx-6' /> In{' '}
                   {article.category!.join('/')}
-                </Typo.Link>
+                </Link>
               </div>
             </Flex>
             <span className='w-full text-center [&>p]:truncate'>
@@ -63,11 +63,11 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
               )}
             </span>
             {/*@TODO: link 수정 */}
-            <Typo.Link
+            <Link
               href={`/${article._id}`}
               className='bg-black p-10 rounded text-white'>
               Read More
-            </Typo.Link>
+            </Link>
           </List.Item>
         )
       }}

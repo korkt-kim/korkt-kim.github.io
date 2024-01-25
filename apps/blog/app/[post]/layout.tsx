@@ -16,7 +16,7 @@ export default function Layout(props: LayoutProps) {
         {children}
         {comment}
       </Flex>
-      <ArticleSidebar className='sm:hidden' />
+      <ArticleSidebar />
     </>
   )
 }

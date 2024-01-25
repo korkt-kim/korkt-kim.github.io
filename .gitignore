@@ -12,7 +12,8 @@ node_modules
 .env.development
 .env.test.local
 .env.production.local
-.env.js
+.env.production
+env.js
 
 # Testing
 coverage

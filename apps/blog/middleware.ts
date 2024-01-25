@@ -3,8 +3,18 @@ import { NextRequest, NextResponse } from 'next/server'
 export function middleware(request: NextRequest) {
   const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
   const cspHeader = `
-      
-  `
+  default-src 'self';
+  script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-eval';
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data: cdn.sanity.io;
+  font-src 'self';
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+  frame-ancestors 'none';
+  block-all-mixed-content;
+  upgrade-insecure-requests;
+`
   // Replace newline characters and spaces
   const contentSecurityPolicyHeaderValue = cspHeader
     .replace(/\s{2,}/g, ' ')
@@ -19,7 +29,9 @@ export function middleware(request: NextRequest) {
   )
 
   const response = NextResponse.next({
-    request: {},
+    request: {
+      headers: requestHeaders,
+    },
   })
   response.headers.set(
     'Content-Security-Policy',
@@ -28,7 +40,6 @@ export function middleware(request: NextRequest) {
 
   return response
 }
-
 export const config = {
   matcher: [
     /*
