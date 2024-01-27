@@ -1,5 +1,6 @@
 import '@/styles/globals.css'
 import '@zakelstorm/ui/globals.css'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 import { ToastCtx } from '@zakelstorm/ui'
 import type { Metadata } from 'next'

@@ -1,8 +1,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import 'react-loading-skeleton/dist/skeleton.css';
-
 :root {
   --background: 0 0% 100%;
   --max-width: 1100px;

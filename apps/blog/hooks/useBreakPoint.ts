@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 
 const listener = (width: number) => {
   if (typeof window === 'undefined') {
-    return
+    return undefined
   }
 
   if (width < 1100) {
