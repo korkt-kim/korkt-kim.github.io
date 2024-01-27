@@ -3,10 +3,12 @@
 import { Flex, Input, Textarea, useToast } from '@zakelstorm/ui'
 import { useState } from 'react'
 import { useFormState } from 'react-dom'
+import Skeleton from 'react-loading-skeleton'
 
 import { createComment } from '@/action/comment'
 import { FormButton } from '@/components/Form/FormButton'
 import { useBreakPoint } from '@/hooks/useBreakPoint'
+import { useCommentStore } from '@/store/commentStore'
 
 export interface CreateCommentFormProps {
   articleId: string
@@ -14,11 +16,12 @@ export interface CreateCommentFormProps {
 
 export const CreateCommentForm = ({ articleId }: CreateCommentFormProps) => {
   const { toast } = useToast()
+  const { username, password, setUsername, setPassword } = useCommentStore()
 
   const _createComment = async (_: string, formData: FormData) => {
     const [content, username, password, articleId] = [
       formData.get('content') as string,
-      formData.get('name') as string,
+      formData.get('username') as string,
       formData.get('password') as string,
       formData.get('articleId') as string,
     ]
@@ -41,8 +44,10 @@ export const CreateCommentForm = ({ articleId }: CreateCommentFormProps) => {
   const { breakPoint } = useBreakPoint()
   const [_, submitComment] = useFormState(_createComment, '')
   const [content, setContent] = useState('')
-  const [name, setName] = useState('')
-  const [password, setPassword] = useState('')
+
+  if (!breakPoint) {
+    return <CreateCommentFormSkeleton />
+  }
 
   return (
     <form className='w-full' action={submitComment}>
@@ -57,9 +62,9 @@ export const CreateCommentForm = ({ articleId }: CreateCommentFormProps) => {
           <Input
             label='닉네임'
             type='text'
-            name='name'
-            value={name}
-            onChange={e => setName(e.target.value)}
+            name='username'
+            value={username}
+            onChange={e => setUsername(e.target.value)}
           />
           <Input
             label='비밀번호'
@@ -77,10 +82,22 @@ export const CreateCommentForm = ({ articleId }: CreateCommentFormProps) => {
         />
       </Flex>
       <Flex justify='end'>
-        <FormButton type='submit' disabled={!name || !password || !content}>
+        <FormButton type='submit' disabled={!username || !password || !content}>
           등록
         </FormButton>
       </Flex>
     </form>
+  )
+}
+
+const CreateCommentFormSkeleton = () => {
+  return (
+    <Flex className='sm:!flex-col md:!flex-row w-full'>
+      <Flex className='w-[30%]' direction='v'>
+        <Skeleton containerClassName='w-full' height={40} />
+        <Skeleton containerClassName='w-full' height={40} />
+      </Flex>
+      <Skeleton containerClassName={'w-full block'} height={100} />
+    </Flex>
   )
 }
