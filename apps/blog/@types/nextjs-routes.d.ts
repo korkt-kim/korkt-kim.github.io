@@ -15,6 +15,7 @@ declare module "nextjs-routes" {
     | DynamicRoute<"/category/[category]", { "category": string }>
     | StaticRoute<"/category">
     | StaticRoute<"/">
+    | StaticRoute<"/search">
     | DynamicRoute<"/[post]/@comment", { "post": string }>
     | DynamicRoute<"/[post]", { "post": string }>
     | StaticRoute<"/api/revalidate">;

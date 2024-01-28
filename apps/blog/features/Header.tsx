@@ -6,6 +6,7 @@ import { ReactNode } from 'react'
 import { MotionDiv } from '@/libs/framer'
 import Category from '@/public/category.svg'
 import Home from '@/public/home.svg'
+import Search from '@/public/search.svg'
 import User from '@/public/user.svg'
 
 export const Header = () => {
@@ -36,6 +37,11 @@ const GlobalNav = () => {
           Icon={<Category />}
         />
         <NavIcon href={{ pathname: '/about' }} title='About' Icon={<User />} />
+        <NavIcon
+          href={{ pathname: '/search' }}
+          title='Search'
+          Icon={<Search />}
+        />
       </Flex>
     </Navbar>
   )
