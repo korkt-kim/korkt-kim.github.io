@@ -8,6 +8,7 @@ import { Inter } from 'next/font/google'
 import { PropsWithChildren } from 'react'
 
 import { AppShell } from '@/features/layouts/AppShell'
+import { BasicPageTemplate } from '@/templates/BasicPageTemplate'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,7 +23,11 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <AppShell>{children}</AppShell>
+        <AppShell>
+          <BasicPageTemplate>
+            <BasicPageTemplate.Content>{children}</BasicPageTemplate.Content>
+          </BasicPageTemplate>
+        </AppShell>
         <ToastCtx />
       </body>
     </html>
