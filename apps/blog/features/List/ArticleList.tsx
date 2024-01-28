@@ -29,7 +29,7 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
   }, [breakPoint])
   if (isEmpty(articles)) {
     return (
-      <Flex direction='v' align='center' className='p-200'>
+      <Flex direction='v' align='center' className='py-200'>
         <Typo.Title>No Resource Found</Typo.Title>
         <Typo.Text>Could not find requested resource</Typo.Text>
       </Flex>
@@ -41,7 +41,7 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
       {article => {
         return (
           <List.Item
-            className='border flex-col items-center gap-16 md:!px-100 sm:!px-10'
+            className='border flex-col items-center gap-16'
             key={article._id}>
             <Flex noGap direction='v' align='center'>
               <Typo.Title level={1}>{article.title}</Typo.Title>
