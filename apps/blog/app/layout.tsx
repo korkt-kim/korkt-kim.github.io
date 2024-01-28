@@ -15,6 +15,11 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: '코딩하는 폴제트',
   description: '프론트엔드 개발자, 코딩하는 폴제트의 작은 공간입니다.',
+  openGraph: {
+    title: '코딩하는 폴제트',
+    description: '프론트엔드 개발자, 코딩하는 폴제트의 작은 공간입니다.',
+    images: ['/avatar.jpeg'],
+  },
 }
 
 export default function RootLayout({
