@@ -5,6 +5,8 @@
   "scripts": {
     "build": "next build",
     "dev": "scripts/nextEnv.js && next dev",
+    "docker-sanity:dev": "scripts/docker.mjs -p development -f Dockerfile-sanity",
+    "docker-sanity:prod": "scripts/docker.mjs -p production -f Dockerfile-sanity",
     "docker:dev": "scripts/docker.mjs -p development",
     "docker:prod": "scripts/docker.mjs -p production",
     "docker:stage": "scripts/docker.mjs -p stage",

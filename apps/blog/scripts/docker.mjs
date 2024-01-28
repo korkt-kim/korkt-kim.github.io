@@ -27,16 +27,17 @@ const args = yargs(process.argv.slice(2))
     },
     e: { alias: 'env', type: 'array' },
     c: { alias: 'cache', type: 'boolean', default: false },
+    f: { alias: 'file', type: 'string' },
   })
 
-const { t, p, e, c } = args.argv
+const { t, p, e, c, f } = args.argv
 const source = `${NAME}:${t}`
 const target = `${REPOSITORY}/${NAME}:${t}`
 
 process.env.FORCE_COLOR = '1'
 
 $`cd ../../
-pnpm zakelstorm dk @${NAME} -t ${t} -e ${PATH}/.env.${p} ${
+pnpm zakelstorm dk @${NAME} -t ${t} -e ${PATH}/.env.${p} ${f ? `-f apps/blog/${f}` : ''} ${
   c ? '' : '--no-cache'
 } -y ${(e ?? []).map(v => `-e="${v}"`)}
 

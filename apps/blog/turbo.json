@@ -12,6 +12,7 @@
       "persistent": true
     },
     "sanity-dev": { "cache": false, "persistent": true },
+    "sanity-build": { "cache": true },
     "sanity-start": { "cache": false, "persistent": true }
   }
 }
