@@ -11,10 +11,10 @@ declare module "nextjs-routes" {
   } from "next";
 
   export type Route =
+    | StaticRoute<"/about">
     | DynamicRoute<"/category/[category]", { "category": string }>
     | StaticRoute<"/category">
     | StaticRoute<"/">
-    | StaticRoute<"/user">
     | DynamicRoute<"/[post]/@comment", { "post": string }>
     | DynamicRoute<"/[post]", { "post": string }>
     | StaticRoute<"/api/revalidate">;

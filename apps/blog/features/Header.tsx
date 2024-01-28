@@ -35,7 +35,7 @@ const GlobalNav = () => {
           title='Category'
           Icon={<Category />}
         />
-        <NavIcon href={{ pathname: '/user' }} title='User' Icon={<User />} />
+        <NavIcon href={{ pathname: '/about' }} title='About' Icon={<User />} />
       </Flex>
     </Navbar>
   )
