@@ -4,7 +4,7 @@ export function middleware(request: NextRequest) {
   const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
   const cspHeader = `
   default-src 'self';
-  script-src 'self' 'nonce-${nonce}' 'unsafe-eval';
+  script-src 'self' 'unsafe-inline' 'unsafe-eval';
   style-src 'self' 'unsafe-inline';
   img-src 'self' data: cdn.sanity.io;
   font-src 'self';

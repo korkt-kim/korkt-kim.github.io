@@ -1,6 +1,6 @@
 FROM node:lts-alpine
 WORKDIR /app
-RUN npm install -g pnpm turbo pm2
+RUN npm install -g pnpm turbo 
 
 ARG PHASE
 ENV TURBO_TOKEN=zakelstorm
@@ -16,12 +16,13 @@ COPY apps/blog ./apps/blog
 COPY packages ./packages
 RUN rm -rf ./.next/cache
 
+
 RUN apk add --no-cache libc6-compat
 RUN apk update
 
 RUN pnpm install
 RUN pnpm turbo run sanity-build --filter @zakelstorm/blog
 
-EXPOSE 80
+EXPOSE 3333
 
 CMD ["pnpm", "--filter", "@zakelstorm/blog", "sanity-start"]

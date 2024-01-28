@@ -13,6 +13,8 @@
     },
     "sanity-dev": { "cache": false, "persistent": true },
     "sanity-build": { "cache": true },
-    "sanity-start": { "cache": false, "persistent": true }
+    "sanity-start": { "cache": false, "persistent": true },
+    "docker-sanity:dev": { "cache": false },
+    "docker-sanity:prod": { "cache": false }
   }
 }
