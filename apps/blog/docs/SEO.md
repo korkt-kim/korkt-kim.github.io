@@ -29,7 +29,7 @@
 - api 응답에따라 dynamic하게 metadata및 openGraph를 생성할 수 있다.
 - 부모의 image를 끌고 올 수 있다.
 
-## Sitemap
+## Sitemap ([format](https://www.sitemaps.org/protocol.html))
 
 - Sitemap을 제출하면 일반적인 크롤링 과정에서 발견되지 않는 웹페이지도 문제없이 크롤링 될 수 있다.
   - `sitemap.xml`을 제출한다. `sitemap.xml`은 웹사이트 내 모든 페이지의 목록을 나열한 파일.
