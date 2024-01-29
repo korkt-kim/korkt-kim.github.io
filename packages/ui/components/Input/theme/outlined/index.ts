@@ -25,7 +25,7 @@ const inputOutlined = {
       position: '-top-1.5',
       fontSize: 'peer-placeholder-shown:text-sm',
       floated: {
-        fontSize: 'text-[11px] peer-focus:text-[11px]',
+        fontSize: 'text-[1rem] peer-focus:text-[1rem]',
       },
       before: {
         content: "before:content[' ']",
@@ -139,7 +139,7 @@ const inputOutlined = {
       borderTop: '!border-t-transparent',
     },
     label: {
-      fontSize: '!text-[11px]',
+      fontSize: '!text-[1rem]',
       lineHeight: '!leading-tight',
       borderColor: 'before:!border-blue-gray-200 after:!border-blue-gray-200',
     },

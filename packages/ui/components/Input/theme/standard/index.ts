@@ -20,7 +20,7 @@ const inputStandard = {
       position: '-top-1.5',
       fontSize: 'peer-placeholder-shown:text-sm',
       floated: {
-        fontSize: 'text-[11px] peer-focus:text-[11px]',
+        fontSize: 'text-[1rem] peer-focus:text-[1rem]',
       },
       after: {
         content: "after:content['']",
@@ -104,7 +104,7 @@ const inputStandard = {
   shrink: {
     input: {},
     label: {
-      fontSize: '!text-[11px]',
+      fontSize: '!text-[1rem]',
       lineHeight: '!leading-tight',
     },
   },

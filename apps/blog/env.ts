@@ -12,6 +12,7 @@ interface APP_ENV {
   NEXT_PUBLIC_SANITY_REVALIDATE_SECRET: string
   NEXT_PUBLIC_BASE_URL: string
   NEXT_PUBLIC_CONTACT_EMAIL: string
+  NEXT_PUBLIC_GA_ID: string
 }
 
 export function env(name: keyof APP_ENV): string {

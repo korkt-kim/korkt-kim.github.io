@@ -2,6 +2,7 @@ import '@/styles/globals.css'
 import '@zakelstorm/ui/globals.css'
 import 'react-loading-skeleton/dist/skeleton.css'
 
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { ToastCtx } from '@zakelstorm/ui'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -9,10 +10,9 @@ import Head from 'next/head'
 import Script from 'next/script'
 import { PropsWithChildren } from 'react'
 
+import { env } from '@/env'
 import { AppShell } from '@/features/layouts/AppShell'
 import { BasicPageTemplate } from '@/templates/BasicPageTemplate'
-
-import * as gtag from '../libs/gtag'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -31,26 +31,7 @@ export default function RootLayout({
 }: PropsWithChildren): JSX.Element {
   return (
     <html lang='en'>
-      <Head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-
-              gtag('config', '${gtag.GA_TRACKING_ID}', {
-                page_path: window.location.pathname,
-              });
-            `,
-          }}
-        />
-      </Head>
       <body className={inter.className}>
-        <Script
-          strategy='afterInteractive'
-          src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
-        />
         <AppShell>
           <BasicPageTemplate>
             <BasicPageTemplate.Content>{children}</BasicPageTemplate.Content>
@@ -58,6 +39,7 @@ export default function RootLayout({
         </AppShell>
         <ToastCtx />
       </body>
+      <GoogleAnalytics gaId={env('NEXT_PUBLIC_GA_ID')} />
     </html>
   )
 }
