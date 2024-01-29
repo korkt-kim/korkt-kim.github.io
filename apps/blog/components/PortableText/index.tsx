@@ -34,8 +34,14 @@ const serializers = {
     normal: ({ children }: { children: ReactNode }) => {
       return <p className='leading-30'>{children}</p>
     },
+    h1: ({ children }: { children: ReactNode }) => {
+      return <h1 className='text-3xl my-20'>{children}</h1>
+    },
     h2: ({ children }: { children: ReactNode }) => {
       return <h2 className='text-2xl my-20'>{children}</h2>
+    },
+    h3: ({ children }: { children: ReactNode }) => {
+      return <h3 className='text-xl my-20'>{children}</h3>
     },
     h4: ({ children }: { children: ReactNode }) => {
       return <h4 className='text-lg my-5'>{children}</h4>

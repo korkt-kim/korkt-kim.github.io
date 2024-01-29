@@ -1,45 +1,30 @@
 'use client'
 
-import { isArray, isEmpty } from 'lodash-es'
-import { useEffect, useState } from 'react'
+import { RefObject, useEffect, useState } from 'react'
 
 export const useIntersectionObserver = (
-  ref: HTMLElement | HTMLElement[],
+  ref: RefObject<HTMLElement>,
   options: IntersectionObserverInit
-): IntersectionObserverEntry[] | null => {
-  const [intersectionObserverEntry, setIntersectionObserverEntry] = useState<
-    IntersectionObserverEntry[] | null
-  >(null)
+): IntersectionObserverEntry | null => {
+  const [intersectionObserverEntry, setIntersectionObserverEntry] =
+    useState<IntersectionObserverEntry | null>(null)
 
   useEffect(() => {
-    if (typeof IntersectionObserver !== 'function') {
-      return
+    if (ref.current && typeof IntersectionObserver === 'function') {
+      const handler = (entries: IntersectionObserverEntry[]) => {
+        setIntersectionObserverEntry(entries[0])
+      }
+
+      const observer = new IntersectionObserver(handler, options)
+      observer.observe(ref.current)
+
+      return () => {
+        setIntersectionObserverEntry(null)
+        observer.disconnect()
+      }
     }
-
-    if (!ref || (isArray(ref) && isEmpty(ref))) {
-      return
-    }
-
-    const handler = (entries: IntersectionObserverEntry[]) => {
-      setIntersectionObserverEntry(entries)
-    }
-
-    const observer = new IntersectionObserver(handler, options)
-
-    if (isArray(ref)) {
-      ref.forEach(item => {
-        observer.observe(item)
-      })
-    } else {
-      observer.observe(ref)
-    }
-
-    return () => {
-      setIntersectionObserverEntry(null)
-
-      observer.disconnect()
-    }
-  }, [ref, options])
+    return () => {}
+  }, [ref.current, options.threshold, options.root, options.rootMargin])
 
   return intersectionObserverEntry
 }
