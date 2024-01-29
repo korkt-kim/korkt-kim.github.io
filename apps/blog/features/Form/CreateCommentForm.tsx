@@ -1,6 +1,7 @@
 'use client'
 
 import { Flex, Input, Textarea, useToast } from '@zakelstorm/ui'
+import { isNil, trim } from 'lodash-es'
 import { useState } from 'react'
 import { useFormState } from 'react-dom'
 import Skeleton from 'react-loading-skeleton'
@@ -82,7 +83,11 @@ export const CreateCommentForm = ({ articleId }: CreateCommentFormProps) => {
         />
       </Flex>
       <Flex justify='end'>
-        <FormButton type='submit' disabled={!username || !password || !content}>
+        <FormButton
+          type='submit'
+          disabled={
+            isNil(trim(username)) || isNil(password) || isNil(trim(content))
+          }>
           등록
         </FormButton>
       </Flex>

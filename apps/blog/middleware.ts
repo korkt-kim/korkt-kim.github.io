@@ -3,8 +3,8 @@ import { NextRequest, NextResponse } from 'next/server'
 export function middleware(request: NextRequest) {
   const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
   const cspHeader = `
-  default-src 'self';
-  script-src 'self' 'unsafe-inline' 'unsafe-eval';
+  default-src 'self' https://www.google-analytics.com;
+  script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google-analytics.com/ https://tagmanager.google.com/ https://www.googletagmanager.com/;
   style-src 'self' 'unsafe-inline';
   img-src 'self' data: cdn.sanity.io;
   font-src 'self';

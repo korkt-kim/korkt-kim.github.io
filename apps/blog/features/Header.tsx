@@ -13,7 +13,7 @@ export const Header = () => {
     <MotionDiv
       initial={{ translateY: '-100%', opacity: 0 }}
       animate={{ translateY: 0, opacity: 1 }}
-      transition={{ delay: 1, duration: 0.5 }}>
+      transition={{ delay: 2, duration: 0.5 }}>
       <Flex direction='v' align='center' justify='center' className='h-200'>
         <Link href='/' className='bg-black text-white px-20'>
           코딩하는 폴제트

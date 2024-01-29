@@ -13,6 +13,12 @@ const articleDefinition: DocumentDefinition = {
       validation: Rule => Rule.required().max(50).error(errorMessage('title')),
     },
     {
+      name: 'description',
+      type: 'string',
+      title: 'Description',
+      validation: Rule => Rule.max(100).error(errorMessage('description')),
+    },
+    {
       name: 'password',
       type: 'string',
       title: 'Password',

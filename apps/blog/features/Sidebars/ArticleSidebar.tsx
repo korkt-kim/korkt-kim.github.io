@@ -1,8 +1,8 @@
 'use client'
 
-import { Flex, Spinner, Typo, useIntersectionObserver } from '@zakelstorm/ui'
+import { Flex, Spinner, Typo } from '@zakelstorm/ui'
 import { unescape } from 'lodash-es'
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { articleContainerId } from '@/consts'
 
@@ -10,38 +10,41 @@ import { SidebarWrapper } from './SidebarWrapper'
 
 export const ArticleSidebar = () => {
   const [articleContainer, setArticleContainer] = useState<Element | null>(null)
-  const [active, setActive] = useState(-1)
+  const [active, setActive] = useState(0)
   const [subTitleRefs, setSubTitleRefs] = useState<HTMLElement[]>([])
-  const options = useRef({
-    root: null,
-    rootMargin: '0px',
-    threshold: 1,
-  })
 
-  const intersections = useIntersectionObserver(subTitleRefs, options.current)
+  const setActiveSubtitle = useCallback((refs: HTMLElement[]) => {
+    setActive(
+      refs.reduce((acc, item, index) => {
+        if (item.offsetTop <= window.scrollY + 5) {
+          acc = index
+        }
+        return acc
+      }, 0)
+    )
+  }, [])
 
   useEffect(() => {
     const articleContainer = document.querySelector(`#${articleContainerId}`)
     setArticleContainer(articleContainer)
     if (articleContainer) {
-      setSubTitleRefs(
-        Array.from(
-          articleContainer.querySelectorAll(`#${articleContainerId}>h2`)
-        )
-      )
+      const subTitleRefs = Array.from(
+        articleContainer.querySelectorAll(`#${articleContainerId}>h2`)
+      ) as HTMLElement[]
+      setSubTitleRefs(subTitleRefs)
+
+      setActiveSubtitle(subTitleRefs)
     }
-  }, [])
+  }, [setActiveSubtitle])
 
   useEffect(() => {
-    intersections?.forEach(intersection => {
-      if (intersection.isIntersecting) {
-        const index = subTitleRefs.findIndex(
-          subTitleRef => subTitleRef === intersection.target
-        )
-        setActive(index)
-      }
-    })
-  }, [intersections, subTitleRefs])
+    document.addEventListener('scroll', () => setActiveSubtitle(subTitleRefs))
+    return () => {
+      return document.removeEventListener('scroll', () =>
+        setActiveSubtitle(subTitleRefs)
+      )
+    }
+  }, [subTitleRefs, setActiveSubtitle])
 
   const scrollToSubTitle = (index: number) => {
     if (!articleContainer) {
@@ -50,7 +53,7 @@ export const ArticleSidebar = () => {
 
     articleContainer
       .querySelectorAll(`#${articleContainerId}>h2`)
-      [index].scrollIntoView()
+      [index].scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
   return (

@@ -1,5 +1,5 @@
 import { SanityImageSource } from '@sanity/image-url/lib/types/types'
-import Image from "next/image"
+import Image from 'next/image'
 import { useNextSanityImage } from 'next-sanity-image'
 
 import sanityConfig from '@/sanity.config'
@@ -17,12 +17,14 @@ export const SanityImage = ({ asset }: SanityImageProps) => {
 
   return (
     <Image
+      loading='lazy'
       alt={''}
       {...imageProps}
       sizes='(max-width: 800px) 100vw, 800px'
       style={{
-        width: "100%",
-        height: "auto"
-      }} />
-  );
+        width: 'auto',
+        height: 'auto',
+      }}
+    />
+  )
 }
