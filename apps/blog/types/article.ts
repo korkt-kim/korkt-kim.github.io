@@ -15,4 +15,5 @@ export type ArticleBody = {
   password: string
   category: string[]
   content: PortableTextBlock[]
+  description?: string
 }
