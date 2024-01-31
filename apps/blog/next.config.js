@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
 const _withRoutes = require('nextjs-routes/config')
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
 
 const withRoutes = _withRoutes()
 
@@ -22,7 +25,6 @@ const nextConfig = {
   output: 'standalone',
   swcMinify: true,
   reactStrictMode: false,
-  images: { unoptimized: true },
   experimental: {
     typedRoutes: true,
   },
@@ -60,4 +62,4 @@ const nextConfig = {
   },
 }
 
-module.exports = withRoutes(nextConfig)
+module.exports = withBundleAnalyzer(withRoutes(nextConfig))

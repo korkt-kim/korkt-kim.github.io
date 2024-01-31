@@ -15,6 +15,7 @@
     "sanity-build": { "cache": true },
     "sanity-start": { "cache": false, "persistent": true },
     "docker-sanity:dev": { "cache": false },
-    "docker-sanity:prod": { "cache": false }
+    "docker-sanity:prod": { "cache": false },
+    "analyze": { "cache": false }
   }
 }
