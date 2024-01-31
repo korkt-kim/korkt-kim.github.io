@@ -1,6 +1,5 @@
 'use client'
 
-import { PortableText } from '@portabletext/react'
 import { Flex, List, ListProps, Typo } from '@zakelstorm/ui'
 import { isEmpty } from 'lodash-es'
 import Link from 'next/link'
@@ -58,9 +57,7 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
               </div>
             </Flex>
             <span className='w-full text-center [&>p]:truncate'>
-              {article.content && (
-                <PortableText value={[article.content?.[0]]} />
-              )}
+              {article.description}
             </span>
             {/*@TODO: link 수정 */}
             <Link
