@@ -1,7 +1,5 @@
 @tailwind components;
 @tailwind utilities;
-@import '@zakelstorm/ui/dist/index.css';
-@import 'react-loading-skeleton/dist/skeleton.css';
 
 :root {
   --background: 0 0% 100%;
