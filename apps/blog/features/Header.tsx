@@ -11,9 +11,9 @@ import User from '@/public/user.svg'
 export const Header = () => {
   return (
     <MotionDiv
-      initial={{ translateY: '-100%', opacity: 0 }}
-      animate={{ translateY: 0, opacity: 1 }}
-      transition={{ delay: 2, duration: 0.5 }}>
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}>
       <Flex direction='v' align='center' justify='center' className='h-200'>
         <Link href='/' className='bg-black text-white px-20'>
           코딩하는 폴제트

@@ -53,7 +53,7 @@ export const ArticleSidebar = () => {
 
     articleContainer
       .querySelectorAll(`#${articleContainerId}>h2`)
-      [index].scrollIntoView({ behavior: 'smooth', block: 'start' })
+      [index].scrollIntoView({ block: 'start' })
   }
 
   return (

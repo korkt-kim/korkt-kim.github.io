@@ -5,10 +5,11 @@ import {
   PortableTextProps,
   PortableTextReactComponents,
 } from '@portabletext/react'
-import { CodeInputValue } from '@sanity/code-input'
-import { SanityImageSource } from '@sanity/image-url/lib/types/types'
-import { ReactNode } from 'react'
-import { PortableTextBlock } from 'sanity'
+import type { CodeInputValue } from '@sanity/code-input'
+import type { SanityImageSource } from '@sanity/image-url/lib/types/types'
+import { Flex } from '@zakelstorm/ui'
+import type { ReactNode } from 'react'
+import type { PortableTextBlock } from 'sanity'
 
 import { SanityCode } from './SanityCode'
 import { SanityImage } from './SanityImage'
@@ -54,9 +55,9 @@ const serializers = {
     },
     image: ({ value }: { value: { asset: SanityImageSource } }) => {
       return (
-        <figure className='mx-auto px-60 mt-20 h-auto max-w-full'>
+        <Flex justify='center'>
           <SanityImage {...value} />
-        </figure>
+        </Flex>
       )
     },
   },

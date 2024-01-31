@@ -20,7 +20,6 @@ export const SanityImage = ({ asset }: SanityImageProps) => {
       loading='lazy'
       alt={''}
       {...imageProps}
-      sizes='(max-width: 800px) 100vw, 800px'
       style={{
         width: 'auto',
         height: 'auto',
