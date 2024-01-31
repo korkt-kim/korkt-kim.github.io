@@ -71,10 +71,10 @@ export const CommentList = ({ contents }: CommentListProps) => {
             <div className='md:col-span-1 sm:col-span-2'>
               <Typo.Text className='break-all'>{content.username}</Typo.Text>
             </div>
-            <div className='md:col-span-7 sm:col-span-6'>
+            <div className='md:col-span-6 sm:col-span-6'>
               <Typo.Text className='break-all'>{content.content}</Typo.Text>
             </div>
-            <div className='md:col-span-1 sm:col-span-4  text-end grid-cols-subgrid  text-gray-400'>
+            <div className='md:col-span-2 sm:col-span-4  text-end grid-cols-subgrid  text-gray-400'>
               <Date date={content._createdAt} />
             </div>
             <div className='absolute right-10'>
@@ -86,8 +86,8 @@ export const CommentList = ({ contents }: CommentListProps) => {
                 }}
                 placement='bottom-end'>
                 <PopoverHandler>
-                  <IconButton className='shadow-none h-6 w-6'>
-                    <TrashIcon strokeWidth={2} className='h-4 w-4' />
+                  <IconButton className='shadow-none h-[1.5rem] w-[1.5rem]'>
+                    <TrashIcon strokeWidth={2} className='h-[1rem] w-[1rem]' />
                   </IconButton>
                 </PopoverHandler>
                 <PopoverContent className='p-2'>
@@ -110,8 +110,11 @@ export const CommentList = ({ contents }: CommentListProps) => {
                       labelProps={{ className: '!text-11' }}
                       onChange={e => setPassword(e.target.value)}
                     />
-                    <FormButton type='submit' className='h-6 w-6' isIcon>
-                      <CheckCircleIcon className='h-4 w-4' />
+                    <FormButton
+                      type='submit'
+                      className='h-[1.5rem] w-[1.5rem]'
+                      isIcon>
+                      <CheckCircleIcon className='h-[1rem] w-[1rem]' />
                     </FormButton>
                   </form>
                 </PopoverContent>
