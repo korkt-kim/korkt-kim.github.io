@@ -20,12 +20,9 @@
     "start:pm2": "pm2-runtime start pm2.config.js"
   },
   "dependencies": {
-    "@next/bundle-analyzer": "^14.1.0",
     "@next/third-parties": "^14.1.0",
     "@portabletext/react": "^3.0.11",
-    "@sanity/code-input": "^4.1.2",
     "@sanity/image-url": "^1.0.2",
-    "@sanity/vision": "^3.26.1",
     "@zakelstorm/ui": "workspace:*",
     "classnames": "^2.5.1",
     "dayjs": "^1.11.10",
@@ -42,14 +39,17 @@
     "react-refractor": "^2.1.7",
     "refractor": "^4.8.1",
     "sanity": "^3.26.1",
-    "styled-components": "^6.1.8",
+    "styled-components": "^5.2 || ^6",
     "tailwind-merge": "^2.2.1",
     "zustand": "^4.5.0"
   },
   "devDependencies": {
     "@heroicons/react": "^2.1.1",
+    "@next/bundle-analyzer": "^14.1.0",
     "@next/eslint-plugin-next": "^14.1.0",
+    "@sanity/code-input": "^4.1.2",
     "@sanity/eslint-config-studio": "^3.0.1",
+    "@sanity/vision": "^3.26.1",
     "@svgr/webpack": "^8.1.0",
     "@types/eslint": "^8.56.2",
     "@types/lodash-es": "^4.17.12",

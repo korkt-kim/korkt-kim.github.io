@@ -50,7 +50,7 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
                   <Calendar className='text-transparent inline mx-6' />
                   Posted On <Date date={article._createdAt} /> |
                 </Typo.Text>
-                <Link href={`/category/${article.category?.[0]}`}>
+                <Link href={`/category/${article.category?.[0]}`} prefetch>
                   <Folder className='text-transparent inline mx-6' /> In{' '}
                   {article.category!.join('/')}
                 </Link>
@@ -59,8 +59,8 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
             <span className='w-full text-center [&>p]:truncate'>
               {article.description}
             </span>
-            {/*@TODO: link 수정 */}
             <Link
+              prefetch={false}
               href={`/${article._id}`}
               className='bg-black p-10 rounded text-white'>
               Read More
