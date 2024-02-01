@@ -6,6 +6,7 @@
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
+    "start": { "cache": false, "persistent": true },
     "docker:dev": { "cache": false },
     "docker:stage": { "cache": false },
     "docker:prod": { "cache": false }
