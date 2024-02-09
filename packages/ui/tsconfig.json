@@ -1,13 +1,13 @@
 {
   "extends": "typescript-config/react-library.json",
   "compilerOptions": {
+    "target": "ES6",
+    "types": ["jest"],
     "lib": ["DOM", "ESNext"],
     "outDir": "dist",
     "isolatedModules": false,
     "resolveJsonModule": true,
     "downlevelIteration": true,
-    "typeRoots": []
   },
-  "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["dist", "build", "node_modules"]
+  "exclude": ["dist", "build", "node_modules"],
 }

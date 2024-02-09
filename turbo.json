@@ -9,6 +9,8 @@
     "start": { "cache": false, "persistent": true },
     "docker:dev": { "cache": false },
     "docker:stage": { "cache": false },
-    "docker:prod": { "cache": false }
+    "docker:prod": { "cache": false },
+    "test": { "cache": true },
+    "test:watch": { "cache": false, "persistent": true }
   }
 }

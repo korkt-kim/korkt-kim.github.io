@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 module.exports = {
   root: true,
+  env: { jest: true },
   extends: ['custom/react', 'plugin:storybook/recommended'],
   overrides: {
     files: ['*.stories.tsx', 'tsup.config.ts', 'interop.ts'],
