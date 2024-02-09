@@ -60,5 +60,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Test
+        run: pnpm turbo test
+
       - name: Build
         run: pnpm turbo build
