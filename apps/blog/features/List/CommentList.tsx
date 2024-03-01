@@ -18,6 +18,8 @@ import { deleteComment } from '@/action/comment'
 import { Date } from '@/components/ColumnRenderer/Date'
 import { FormButton } from '@/components/Form/FormButton'
 import { CommentResponse } from '@/types/comment'
+import { trpc } from '@/app/_trpc/client'
+import { useRouter } from 'next/navigation'
 
 export interface CommentListProps {
   contents: CommentResponse['items']
@@ -27,39 +29,52 @@ export const CommentList = ({ contents }: CommentListProps) => {
   const { toast } = useToast()
   const [password, setPassword] = useState('')
   const [open, setOpen] = useState<string | undefined>()
+  const res = trpc.comment.delete.useMutation()
+  const router = useRouter()
 
   const _deleteComment = async (_: string, formData: FormData) => {
     const commentId = formData.get('commentId') as string
     const _password = formData.get('password') as string
 
-    let res = ''
-    try {
-      if (!commentId) {
-        throw new Error('Undefined Id')
-      }
-      if (
-        _password !==
-        contents.find(content => content._id === commentId)?.password
-      ) {
-        throw new Error('잘못된 비밀번호가 입력되었습니다.')
-      }
-
-      res = await deleteComment({ commentId })
-      toast({
-        title: 'Success',
-        description: '댓글이 성공적으로 삭제되었습니다.',
-      })
-    } catch (e: any) {
+    if (!commentId) {
       toast({
         title: 'Error',
-        description: e.message ?? '댓글 삭제에 실패했습니다.',
+        description: 'Undefined Id',
       })
+      return ''
     }
 
-    return res
+    if (
+      _password !==
+      contents.find(content => content._id === commentId)?.password
+    ) {
+      toast({
+        title: 'Error',
+        description: '잘못된 비밀번호가 입력되었습니다.',
+      })
+      return ''
+    }
+
+    res
+      .mutateAsync(commentId)
+      .then(() => {
+        router.refresh()
+        toast({
+          title: 'Success',
+          description: '댓글이 성공적으로 삭제되었습니다.',
+        })
+      })
+      .catch(() => {
+        toast({
+          title: 'Error',
+          description: '댓글 삭제에 실패했습니다.',
+        })
+      })
+
+    return ''
   }
 
-  const [_, submitDeleteComment] = useFormState(_deleteComment, '')
+  const [, submitDeleteComment] = useFormState(_deleteComment, '')
 
   return (
     <List data={contents} pagination>
@@ -112,6 +127,7 @@ export const CommentList = ({ contents }: CommentListProps) => {
                     />
                     <FormButton
                       type='submit'
+                      loading={res.isPending}
                       className='h-[1.5rem] w-[1.5rem]'
                       isIcon>
                       <CheckCircleIcon className='h-[1rem] w-[1rem]' />

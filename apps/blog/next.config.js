@@ -22,7 +22,6 @@ const nextConfig = {
   async headers() {
     return [{ source: '/:path*', headers: securityHeaders }]
   },
-  output: 'standalone',
   swcMinify: true,
   reactStrictMode: false,
   experimental: {

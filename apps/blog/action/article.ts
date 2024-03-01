@@ -64,7 +64,11 @@ export async function getPaginatedArticlesByCategoryId(
   })
 }
 
-export async function createArticle({ title, content, category }: ArticleBody) {
+export async function createArticle({
+  title,
+  content,
+  category,
+}: Pick<ArticleBody, 'title' | 'content' | 'category'>) {
   const res = await client.create(
     {
       _type: 'article',

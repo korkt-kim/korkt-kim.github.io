@@ -7,6 +7,7 @@ import { isPortableTextSpan, PortableTextBlock } from 'sanity'
 import { getAllArticles, getArticle } from '@/action/article'
 import { PortableText } from '@/components/PortableText'
 import { articleContainerId } from '@/consts'
+import { caller } from '../_trpc/serverClient'
 
 interface Props {
   params: { post: string }
@@ -65,7 +66,7 @@ export async function generateStaticParams() {
 export default async function Page({ params }: Props) {
   const { post } = params
 
-  const article = await getArticle(post)
+  const article = await caller.article.get(post)
 
   if (!article) {
     notFound()
