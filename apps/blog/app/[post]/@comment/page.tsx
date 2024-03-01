@@ -1,14 +1,14 @@
 import { Flex, Typo } from '@zakelstorm/ui'
 
-import { getAllcommentsByArticleId } from '@/action/comment'
 import { articleContainerId } from '@/consts'
 import { CreateCommentForm } from '@/features/Form/CreateCommentForm'
 import { CommentList } from '@/features/List/CommentList'
+import { caller } from '@/app/_trpc/serverClient'
 
 export default async function Page({ params }: { params: { post: string } }) {
   const { post: articleId } = params
 
-  const comments = await getAllcommentsByArticleId(articleId)
+  const comments = await caller.comment.getAllByArticleId(articleId)
 
   return (
     <Flex direction='v' className='w-full'>

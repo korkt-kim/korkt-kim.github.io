@@ -12,6 +12,7 @@ import { env } from '@/env'
 import { AppShell } from '@/features/layouts/AppShell'
 import { domAnimation, LazyMotion } from '@/libs/framer'
 import { BasicPageTemplate } from '@/templates/BasicPageTemplate'
+import Provider from './_trpc/Provider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -35,14 +36,18 @@ export default function RootLayout({
       </head>
 
       <body className={inter.className}>
-        <LazyMotion features={domAnimation}>
-          <AppShell>
-            <BasicPageTemplate>
-              <BasicPageTemplate.Content>{children}</BasicPageTemplate.Content>
-            </BasicPageTemplate>
-          </AppShell>
-        </LazyMotion>
-        <ToastCtx />
+        <Provider>
+          <LazyMotion features={domAnimation}>
+            <AppShell>
+              <BasicPageTemplate>
+                <BasicPageTemplate.Content>
+                  {children}
+                </BasicPageTemplate.Content>
+              </BasicPageTemplate>
+            </AppShell>
+          </LazyMotion>
+          <ToastCtx />
+        </Provider>
       </body>
       <GoogleAnalytics gaId={env('NEXT_PUBLIC_GA_ID')} />
     </html>

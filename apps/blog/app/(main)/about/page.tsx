@@ -3,7 +3,7 @@ import { ComponentProps, PropsWithChildren } from 'react'
 
 import { env } from '@/env'
 
-export default async function Page() {
+export default function Page() {
   return (
     <>
       <Ul title='About Me'>

@@ -17,7 +17,8 @@ declare module "nextjs-routes" {
     | StaticRoute<"/">
     | DynamicRoute<"/[post]/@comment", { "post": string }>
     | DynamicRoute<"/[post]", { "post": string }>
-    | StaticRoute<"/api/revalidate">;
+    | StaticRoute<"/api/revalidate">
+    | DynamicRoute<"/api/trpc/[trpc]", { "trpc": string }>;
 
   interface StaticRoute<Pathname> {
     pathname: Pathname;
