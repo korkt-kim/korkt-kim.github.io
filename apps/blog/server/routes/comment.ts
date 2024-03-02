@@ -1,10 +1,12 @@
+import { z } from 'zod'
+
 import {
   createComment,
   deleteComment,
   getAllcommentsByArticleId,
 } from '@/action/comment'
+
 import { procedure, router } from '../trpc'
-import { z } from 'zod'
 
 export const commentRouter = router({
   getAllByArticleId: procedure

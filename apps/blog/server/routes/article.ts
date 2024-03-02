@@ -1,11 +1,13 @@
+import { z } from 'zod'
+
 import {
   createArticle,
   getAllArticles,
   getArticle,
   getArticleTotalCount,
 } from '@/action/article'
+
 import { procedure, router } from '../trpc'
-import { z } from 'zod'
 
 export const articleRouter = router({
   getAll: procedure

@@ -4,10 +4,10 @@ import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 import { isPortableTextSpan, PortableTextBlock } from 'sanity'
 
-import { getAllArticles, getArticle } from '@/action/article'
 import { PortableText } from '@/components/PortableText'
 import { articleContainerId } from '@/consts'
-import { caller } from '../_trpc/serverClient'
+
+import { api } from '../_trpc/serverInvoker'
 
 interface Props {
   params: { post: string }
@@ -21,7 +21,7 @@ export async function generateMetadata(
   const { post } = params
 
   // fetch data
-  const article = await getArticle(post)
+  const article = await api.article.get.query(post)
 
   // optionally access and extend (rather than replace) parent metadata
   const previousImages = (await parent).openGraph?.images || []
@@ -56,7 +56,7 @@ export async function generateMetadata(
 }
 
 export async function generateStaticParams() {
-  const articles = await getAllArticles()
+  const articles = await api.article.getAll.query()
 
   return articles.items.map(article => ({
     post: article._id,
@@ -66,7 +66,7 @@ export async function generateStaticParams() {
 export default async function Page({ params }: Props) {
   const { post } = params
 
-  const article = await caller.article.get(post)
+  const article = await api.article.get.query(post)
 
   if (!article) {
     notFound()

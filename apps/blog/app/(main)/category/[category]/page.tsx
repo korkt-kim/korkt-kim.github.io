@@ -1,9 +1,9 @@
 import { notFound } from 'next/navigation'
 
 import { getAllArticles } from '@/action/article'
+import { api } from '@/app/_trpc/serverInvoker'
 import { CATEGORIES } from '@/consts'
 import { ArticleList } from '@/features/List/ArticleList'
-import { caller } from '@/app/_trpc/serverClient'
 
 export async function generateStaticParams() {
   return CATEGORIES.map(category => ({
@@ -26,7 +26,7 @@ export default async function Page({
     notFound()
   }
 
-  const res = await caller.article.getAll([_category])
+  const res = await api.article.getAll.query([_category])
 
   return <ArticleList articles={res.items} />
 }
