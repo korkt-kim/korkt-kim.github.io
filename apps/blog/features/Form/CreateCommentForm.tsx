@@ -3,43 +3,30 @@
 import { Flex, Input, Textarea, useToast } from '@zakelstorm/ui'
 import { isNil, trim } from 'lodash-es'
 import { useState } from 'react'
-import { useFormState } from 'react-dom'
 import Skeleton from 'react-loading-skeleton'
 
+import { api } from '@/app/_trpc/clientInvoker'
 import { FormButton } from '@/components/Form/FormButton'
 import { useBreakPoint } from '@/hooks/useBreakPoint'
 import { useCommentStore } from '@/store/commentStore'
-import { trpc } from '@/app/_trpc/client'
-import { useRouter } from 'next/navigation'
 
 export interface CreateCommentFormProps {
   articleId: string
+  createAction: (formDate: FormData) => Promise<void>
 }
 
-export const CreateCommentForm = ({ articleId }: CreateCommentFormProps) => {
+export const CreateCommentForm = ({
+  articleId,
+  createAction,
+}: CreateCommentFormProps) => {
   const { toast } = useToast()
   const { username, password, setUsername, setPassword } = useCommentStore()
-  const res = trpc.comment.create.useMutation()
-  const router = useRouter()
 
-  const _createComment = async (_: string, formData: FormData) => {
-    const [content, username, password, articleId] = [
-      formData.get('content') as string,
-      formData.get('username') as string,
-      formData.get('password') as string,
-      formData.get('articleId') as string,
-    ]
-
-    res
-      .mutateAsync({
-        content,
-        username,
-        password,
-        articleId,
-      })
+  const submitCreateComment = (formData: FormData) => {
+    createAction(formData)
       .then(() => {
         setContent('')
-        router.refresh()
+
         toast({
           title: 'Success',
           description: '댓글이 성공적으로 등록되었습니다.',
@@ -48,21 +35,18 @@ export const CreateCommentForm = ({ articleId }: CreateCommentFormProps) => {
       .catch(() => {
         toast({ title: 'Error', description: '댓글 등록에 실패했습니다.' })
       })
-
-    return ''
   }
+
   const { breakPoint } = useBreakPoint()
-  const [_, submitComment] = useFormState(_createComment, '')
+
   const [content, setContent] = useState('')
 
   if (!breakPoint) {
     return <CreateCommentFormSkeleton />
   }
 
-  console.log(username, content, isNil(password) || isNil(trim(content)))
-
   return (
-    <form className='w-full' action={submitComment}>
+    <form className='w-full' action={submitCreateComment}>
       <Input
         containerProps={{ className: 'invisible' }}
         name='articleId'
@@ -96,7 +80,6 @@ export const CreateCommentForm = ({ articleId }: CreateCommentFormProps) => {
       <Flex justify='end'>
         <FormButton
           type='submit'
-          loading={res.isPending}
           disabled={
             trim(username) === '' || password === '' || trim(content) === ''
           }>

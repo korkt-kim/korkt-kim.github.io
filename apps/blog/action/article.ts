@@ -82,8 +82,6 @@ export async function createArticle({
     }
   )
 
-  revalidateTag('article')
-
   return JSON.stringify(res)
 }
 

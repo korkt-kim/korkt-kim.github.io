@@ -1,9 +1,9 @@
-import { getAllArticles } from '@/action/article'
 import { ArticleList } from '@/features/List/ArticleList'
-import { caller } from '../_trpc/serverClient'
+
+import { api } from '../_trpc/serverInvoker'
 
 export default async function Page() {
-  const res = await caller.article.getAll()
+  const res = await api.article.getAll.query()
 
   return <ArticleList articles={res.items} />
 }
