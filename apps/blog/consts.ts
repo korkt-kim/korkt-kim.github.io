@@ -15,3 +15,5 @@ export const CATEGORIES = [
 ] as const
 
 export const articleContainerId = 'article_container'
+
+export const CONTACT_EMAIL = 'gnscott6@naver.com'

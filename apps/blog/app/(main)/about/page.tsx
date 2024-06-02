@@ -1,7 +1,7 @@
 import { Typo } from '@zakelstorm/ui'
 import { ComponentProps, PropsWithChildren } from 'react'
 
-import { env } from '@/env'
+import { CONTACT_EMAIL } from '@/consts'
 
 export default function Page() {
   return (
@@ -31,9 +31,7 @@ export default function Page() {
           </Typo.Link>
         </li>
         <li>
-          <Typo.Link href={`mailto:${env('NEXT_PUBLIC_CONTACT_EMAIL')}`}>
-            Email
-          </Typo.Link>
+          <Typo.Link href={`mailto:${CONTACT_EMAIL}`}>Email</Typo.Link>
         </li>
       </Ul>
     </>
