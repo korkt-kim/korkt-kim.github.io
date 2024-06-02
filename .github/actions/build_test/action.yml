@@ -54,6 +54,14 @@ runs:
       working-directory: ./apps/blog
       shell: bash
 
+    - name: Cache dependencies
+      uses: actions/cache@v2
+      with:
+        path: ~/.pnpm-store
+        key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-
+
     - name: Install dependencies
       run: pnpm install
       shell: bash
