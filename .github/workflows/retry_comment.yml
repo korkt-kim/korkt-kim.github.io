@@ -1,0 +1,32 @@
+name: retry_comment
+
+on:
+  workflow_dispatch:
+  issue_comment:
+    types: [created]
+
+jobs:
+  retry:
+    name: Build and Test
+    timeout-minutes: 15
+    if: github.event.issue.pull_request != '' && contains(github.event.comment.body, '/retry')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Build and Test
+        uses: ./.github/actions/build_test
+        with:
+          node-version-file: '.nvmrc'
+          NEXT_PUBLIC_SANITY_STUDIO_URL: ${{ secrets.NEXT_PUBLIC_SANITY_STUDIO_URL }}
+          NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
+          NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
+          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+          NEXT_PUBLIC_SANITY_ADMIN_TOKEN: ${{ secrets.NEXT_PUBLIC_SANITY_ADMIN_TOKEN }}
+          NEXT_PUBLIC_SANITY_USER_TOKEN: ${{ secrets.NEXT_PUBLIC_SANITY_USER_TOKEN }}
+          NEXT_PUBLIC_SANITY_REVALIDATE_SECRET: ${{ secrets.NEXT_PUBLIC_SANITY_REVALIDATE_SECRET }}
+          NEXT_PUBLIC_SANITY_API_VERSION: ${{ secrets.NEXT_PUBLIC_SANITY_API_VERSION }}
