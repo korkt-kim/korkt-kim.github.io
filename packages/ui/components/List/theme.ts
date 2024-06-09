@@ -21,9 +21,9 @@ export const listStyle = {
       list: {
         display: 'flex',
         flexDirection: 'flex-col',
-        gap: 'gap-1',
+        gap: 'gap-[4px]',
         minWidth: 'min-w-[240px]',
-        p: 'p-2',
+        p: 'p-[8px]',
         fontFamily: 'font-sans',
         fontSize: 'text-base',
         fontWeight: 'font-normal',
@@ -34,7 +34,7 @@ export const listStyle = {
           display: 'flex',
           alignItems: 'items-center',
           width: 'w-full',
-          padding: 'p-3',
+          padding: 'p-[12px]',
           borderRadius: 'rounded-lg',
           textAlign: 'text-start',
           lightHeight: 'leading-tight',
@@ -61,7 +61,7 @@ export const listStyle = {
       itemPrefix: {
         display: 'grid',
         placeItems: 'place-items-center',
-        marginRight: 'mr-4',
+        marginRight: 'mr-[16px]',
       },
       itemSuffix: {
         display: 'grid',

@@ -1,11 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
-const _withRoutes = require('nextjs-routes/config')
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
-
-const withRoutes = _withRoutes()
 
 const securityHeaders = [
   { key: 'X-XSS-Protection', value: '1; mode=block' },
@@ -27,6 +24,7 @@ const nextConfig = {
   experimental: {
     typedRoutes: true,
   },
+  transpilePackages: ['@zakelstorm/ui'],
   webpack(config) {
     {
       const fileLoaderRule = config.module.rules.find(rule =>
@@ -61,4 +59,4 @@ const nextConfig = {
   },
 }
 
-module.exports = withBundleAnalyzer(withRoutes(nextConfig))
+module.exports = withBundleAnalyzer(nextConfig)

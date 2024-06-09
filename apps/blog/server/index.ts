@@ -1,6 +1,6 @@
-import { router } from './trpc'
 import { articleRouter } from './routes/article'
 import { commentRouter } from './routes/comment'
+import { router } from './trpc'
 
 export const appRouter = router({
   article: articleRouter,

@@ -59,15 +59,15 @@ export function Pagination({
   }
 
   return (
-    <div className='flex items-center gap-4'>
+    <div className='flex items-center gap-[16px]'>
       <Button
         variant='text'
-        className='flex items-center gap-2'
+        className='flex items-center gap-[8px]'
         onClick={prev}
         disabled={currentSection === 1}>
-        <ArrowLeftIcon strokeWidth={2} className='h-4 w-4' />
+        <ArrowLeftIcon strokeWidth={2} className='h-[16px] w-[16px]' />
       </Button>
-      <div className='flex items-center gap-2'>
+      <div className='flex items-center gap-[8px]'>
         {Array(sectionSize)
           .fill(null)
           .map((_, index) => {
@@ -89,10 +89,10 @@ export function Pagination({
       </div>
       <Button
         variant='text'
-        className='flex items-center gap-2'
+        className='flex items-center gap-[8px]'
         onClick={next}
         disabled={currentSection == lastSection}>
-        <ArrowRightIcon strokeWidth={2} className='h-4 w-4' />
+        <ArrowRightIcon strokeWidth={2} className='h-[16px] w-[16px]' />
       </Button>
     </div>
   )

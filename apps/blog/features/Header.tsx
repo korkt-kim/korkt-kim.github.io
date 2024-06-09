@@ -1,6 +1,6 @@
 import { Flex, Navbar, Typo } from '@zakelstorm/ui'
+import { Route } from 'next'
 import Link from 'next/link'
-import { Route } from 'nextjs-routes'
 import { ReactNode } from 'react'
 
 import { MotionDiv } from '@/libs/framer'
@@ -32,13 +32,9 @@ const GlobalNav = () => {
   return (
     <Navbar>
       <Flex>
-        <NavIcon href={{ pathname: '/' }} title='Home' Icon={<Home />} />
-        <NavIcon
-          href={{ pathname: '/category' }}
-          title='Category'
-          Icon={<Category />}
-        />
-        <NavIcon href={{ pathname: '/about' }} title='About' Icon={<User />} />
+        <NavIcon href='/' title='Home' Icon={<Home />} />
+        <NavIcon href='/category' title='Category' Icon={<Category />} />
+        <NavIcon href='/about' title='About' Icon={<User />} />
       </Flex>
     </Navbar>
   )
@@ -54,7 +50,7 @@ const NavIcon = ({
   title: string
 }) => {
   return (
-    <Link href={href} className='text-neutral-600'>
+    <Link href={href} className='text-neutral-600' prefetch={false}>
       <div className='flex justify-center text-transparent'>{Icon}</div>
       {title}
     </Link>

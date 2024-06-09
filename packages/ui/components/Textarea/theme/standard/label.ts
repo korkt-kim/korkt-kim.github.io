@@ -1,5 +1,5 @@
 export const label = {
-  position: '-top-1.5',
+  position: '-top-[6px]',
   placeholderSize: 'peer-placeholder-shown:text-sm',
 
   fontSize: 'text-[11px] peer-focus:text-[11px]',
@@ -11,7 +11,7 @@ export const label = {
     position: 'after:absolute',
     bottom: 'after:-bottom-0',
     left: 'left-0',
-    borderWidth: 'after:border-b-2',
+    borderWidth: 'after:border-b-[2px]',
     scale: 'after:scale-x-0 peer-focus:after:scale-x-100',
 
     transition: 'after:transition-transform after:duration-300',

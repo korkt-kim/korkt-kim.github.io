@@ -1,5 +1,4 @@
 import '@/styles/globals.css'
-import '@zakelstorm/ui/dist/index.css'
 import 'react-loading-skeleton/dist/skeleton.css'
 
 import { GoogleAnalytics } from '@next/third-parties/google'

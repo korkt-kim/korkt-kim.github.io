@@ -14,7 +14,7 @@ export function ToastCtx() {
       {toasts.map(function ({ id, title, description, ...props }) {
         return (
           <ToastRoot key={id} {...props}>
-            <div className='grid gap-1'>
+            <div className='grid gap-[4px]'>
               {title && <ToastTitle>{title}</ToastTitle>}
               {description && (
                 <ToastDescription>{description}</ToastDescription>

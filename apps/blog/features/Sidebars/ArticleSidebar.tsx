@@ -25,6 +25,10 @@ export const ArticleSidebar = () => {
   }, [])
 
   useEffect(() => {
+    if (typeof document === 'undefined') {
+      return
+    }
+
     const articleContainer = document.querySelector(`#${articleContainerId}`)
     setArticleContainer(articleContainer)
     if (articleContainer) {
