@@ -10,7 +10,7 @@ export const outlined = {
       borderColor:
         'placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200',
       floated: {
-        borderWidth: 'border focus:border-2',
+        borderWidth: 'border focus:border-[2px]',
         borderColor: 'focus:border-t-transparent',
       },
     },
@@ -19,12 +19,12 @@ export const outlined = {
   sizes: {
     md: {
       container: {
-        height: 'h-10',
+        height: 'h-[40px]',
       },
       textarea: {
         fontSize: 'text-sm',
-        px: 'px-3',
-        py: 'py-2.5',
+        px: 'px-[12px]',
+        py: 'py-[10px]',
         borderRadius: 'rounded-[7px]',
       },
       label: {
@@ -33,12 +33,12 @@ export const outlined = {
     },
     lg: {
       container: {
-        height: 'h-11',
+        height: 'h-[44px]',
       },
       textarea: {
         fontSize: 'text-sm',
-        px: 'px-3',
-        py: 'py-3',
+        px: 'px-[12px]',
+        py: 'py-[12px]',
         borderRadius: 'rounded-md',
       },
       label: {

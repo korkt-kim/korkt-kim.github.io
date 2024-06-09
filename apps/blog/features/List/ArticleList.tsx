@@ -2,6 +2,7 @@
 
 import { Flex, List, ListProps, Typo } from '@zakelstorm/ui'
 import { isEmpty } from 'lodash-es'
+import { Route } from 'next'
 import Link from 'next/link'
 import { useMemo } from 'react'
 
@@ -50,7 +51,9 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
                   <Calendar className='text-transparent inline mx-6' />
                   Posted On <Date date={article._createdAt} /> |
                 </Typo.Text>
-                <Link href={`/category/${article.category?.[0]}`} prefetch>
+                <Link
+                  href={`/category/${article.category?.[0]}`}
+                  prefetch={false}>
                   <Folder className='text-transparent inline mx-6' /> In{' '}
                   {article.category!.join('/')}
                 </Link>
@@ -61,7 +64,7 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
             </span>
             <Link
               prefetch={false}
-              href={`/${article._id}`}
+              href={`/${article._id}` as Route}
               className='bg-black p-10 rounded text-white'>
               Read More
             </Link>

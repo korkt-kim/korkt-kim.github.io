@@ -48,8 +48,8 @@ export const Button = memo(
             [recordValuesToString(base.fullWidth)]: fullWidth,
           },
           {
-            'flex items-center gap-2': loading,
-            'gap-3': size === 'lg',
+            'flex items-center gap-[8px]': loading,
+            'gap-[12px]': size === 'lg',
           }
         ),
         className
@@ -57,8 +57,8 @@ export const Button = memo(
 
       const spinnerClass = twMerge(
         classnames({
-          'w-4 h-4': true,
-          'w-5 h-5': size === 'lg',
+          'w-[16px] h-[16px]': true,
+          'w-[20px] h-[20px]': size === 'lg',
         })
       )
 

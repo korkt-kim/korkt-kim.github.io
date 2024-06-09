@@ -14,13 +14,13 @@ export const standard = {
   sizes: {
     md: {
       container: {
-        height: 'h-11',
+        height: 'h-[44px]',
       },
       textarea: {
         fontSize: 'text-sm',
-        pt: 'pt-4',
-        pb: 'pb-1.5',
-        mt: 'mt-1.5',
+        pt: 'pt-[16px]',
+        pb: 'pb-[6px]',
+        mt: 'mt-[6px]',
       },
       label: {
         lineHeight: 'peer-placeholder-shown:leading-[4.25]',
@@ -28,13 +28,13 @@ export const standard = {
     },
     lg: {
       container: {
-        height: 'h-12',
+        height: 'h-[48px]',
       },
       textarea: {
         fontSize: 'text-sm',
         px: 'px-px',
-        pt: 'pt-5',
-        pb: 'pb-2',
+        pt: 'pt-[20px]',
+        pb: 'pb-[8px]',
       },
       label: {
         lineHeight: 'peer-placeholder-shown:leading-[4.875]',

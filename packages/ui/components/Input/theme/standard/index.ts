@@ -9,7 +9,7 @@ const inputStandard = {
       placeholder: 'placeholder:opacity-0 focus:placeholder:opacity-100',
     },
     inputWithIcon: {
-      pr: '!pr-7',
+      pr: '!pr-[28px]',
     },
     icon: {
       top: 'top-2/4',
@@ -17,10 +17,10 @@ const inputStandard = {
       transform: '-translate-y-1/4',
     },
     label: {
-      position: '-top-1.5',
+      position: '-top-[6px]',
       fontSize: 'peer-placeholder-shown:text-sm',
       floated: {
-        fontSize: 'text-[1rem] peer-focus:text-[1rem]',
+        fontSize: 'text-[16px] peer-focus:text-[16px]',
       },
       after: {
         content: "after:content['']",
@@ -29,7 +29,7 @@ const inputStandard = {
         position: 'after:absolute',
         bottom: 'after:-bottom-1.5',
         left: 'left-0',
-        borderWidth: 'after:border-b-2',
+        borderWidth: 'after:border-b-[2px]',
         scale: 'after:scale-x-0',
         floated: {
           scale: 'peer-focus:after:scale-x-100',
@@ -41,37 +41,37 @@ const inputStandard = {
   sizes: {
     md: {
       container: {
-        height: 'h-11',
+        height: 'h-[44px]',
       },
       input: {
         fontSize: 'text-sm',
-        pt: 'pt-4',
-        pb: 'pb-1.5',
+        pt: 'pt-[16px]',
+        pb: 'pb-[6px]',
       },
       label: {
         lineHeight: 'peer-placeholder-shown:leading-[4.25]',
       },
       icon: {
-        width: 'w-5',
-        height: 'h-5',
+        width: 'w-[20px]',
+        height: 'h-[20px]',
       },
     },
     lg: {
       container: {
-        height: 'h-12',
+        height: 'h-[48px]',
       },
       input: {
         fontSize: 'text-sm',
         px: 'px-px',
-        pt: 'pt-5',
-        pb: 'pb-2',
+        pt: 'pt-[20px]',
+        pb: 'pb-[8px]',
       },
       label: {
         lineHeight: 'peer-placeholder-shown:leading-[4.875]',
       },
       icon: {
-        width: 'w-6',
-        height: 'h-6',
+        width: 'w-[24px]',
+        height: 'h-[24px]',
       },
     },
   },
@@ -104,7 +104,7 @@ const inputStandard = {
   shrink: {
     input: {},
     label: {
-      fontSize: '!text-[1rem]',
+      fontSize: '!text-[4px]',
       lineHeight: '!leading-tight',
     },
   },

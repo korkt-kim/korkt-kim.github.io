@@ -11,7 +11,7 @@ export const popoverStyle = {
   styles: {
     base: {
       bg: 'bg-white',
-      p: 'p-4',
+      p: 'p-[16px]',
       border: 'border border-blue-gray-50',
       borderRadius: 'rounded-lg',
       boxShadow: 'shadow-lg shadow-blue-gray-500/10',

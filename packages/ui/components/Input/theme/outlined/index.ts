@@ -31,10 +31,10 @@ const inputOutlined = {
         content: "before:content[' ']",
         display: 'before:block',
         boxSizing: 'before:box-border',
-        width: 'before:w-2.5',
-        height: 'before:h-1.5',
+        width: 'before:w-[10px]',
+        height: 'before:h-[6px]',
         mt: 'before:mt-[6.5px]',
-        mr: 'before:mr-1',
+        mr: 'before:mr-[4px]',
         borderColor: 'peer-placeholder-shown:before:border-transparent',
         borderRadius: 'before:rounded-tl-md',
         floated: {
@@ -50,15 +50,15 @@ const inputOutlined = {
         display: 'after:block',
         flexGrow: 'after:flex-grow',
         boxSizing: 'after:box-border',
-        width: 'after:w-2.5',
-        height: 'after:h-1.5',
+        width: 'after:w-[10px]',
+        height: 'after:h-[6px]',
         mt: 'after:mt-[6.5px]',
-        ml: 'after:ml-1',
+        ml: 'after:ml-[4px]',
         borderColor: 'peer-placeholder-shown:after:border-transparent',
         borderRadius: 'after:rounded-tr-md',
         floated: {
-          bt: 'after:border-t peer-focus:after:border-t-2',
-          br: 'after:border-r peer-focus:after:border-r-2',
+          bt: 'after:border-t peer-focus:after:border-t-[2px]',
+          br: 'after:border-r peer-focus:after:border-r-[2px]',
         },
         pointerEvents: 'after:pointer-events-none',
         transition: 'after:transition-all',
@@ -69,38 +69,38 @@ const inputOutlined = {
   sizes: {
     md: {
       container: {
-        height: 'h-10',
+        height: 'h-[40px]',
       },
       input: {
         fontSize: 'text-sm',
-        px: 'px-3',
-        py: 'py-2.5',
+        px: 'px-[12px]',
+        py: 'py-[10px]',
         borderRadius: 'rounded-[7px]',
       },
       label: {
         lineHeight: 'peer-placeholder-shown:leading-[3.75]',
       },
       icon: {
-        width: 'w-5',
-        height: 'h-5',
+        width: 'w-[20px]',
+        height: 'h-[20px]',
       },
     },
     lg: {
       container: {
-        height: 'h-11',
+        height: 'h-[44px]',
       },
       input: {
         fontSize: 'text-sm',
-        px: 'px-3',
-        py: 'py-3',
+        px: 'px-[12px]',
+        py: 'py-[12px]',
         borderRadius: 'rounded-md',
       },
       label: {
         lineHeight: 'peer-placeholder-shown:leading-[4.1]',
       },
       icon: {
-        width: 'w-6',
-        height: 'h-6',
+        width: 'w-[24px]',
+        height: 'h-[24px]',
       },
     },
   },
@@ -139,7 +139,7 @@ const inputOutlined = {
       borderTop: '!border-t-transparent',
     },
     label: {
-      fontSize: '!text-[1rem]',
+      fontSize: '!text-[16px]',
       lineHeight: '!leading-tight',
       borderColor: 'before:!border-blue-gray-200 after:!border-blue-gray-200',
     },
