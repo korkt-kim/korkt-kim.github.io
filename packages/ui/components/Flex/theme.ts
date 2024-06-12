@@ -1,22 +1,3 @@
-import { getDefaultConfig } from 'tailwind-merge'
-import { FlexProps } from '.'
-import { Join } from 'type-fest'
-import { Prefix } from '../../util/type'
-
-const alignItems = getDefaultConfig().classGroups[
-  'align-items'
-][0].items.reduce(
-  (acc, item) => {
-    return { ...acc, [item]: { alignItems: `items-${item}` } }
-  },
-  {} as Record<
-    NonNullable<FlexProps['align']>,
-    Record<'alignItems', Prefix<'items-', NonNullable<FlexProps['align']>>>
-  >
-)
-const justifyContents =
-  getDefaultConfig().classGroups['justify-content'][0].justify
-
 export const flexStyle = {
   defaultProps: {
     gap: 'md',

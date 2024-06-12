@@ -1,18 +1,16 @@
-import React, { ComponentProps, PropsWithChildren } from 'react'
-
 // utils
-
 import classnames from 'classnames'
+import { ComponentProps, forwardRef, PropsWithChildren } from 'react'
 import { twMerge } from 'tailwind-merge'
 
+import { recordValuesToString } from '../../util/recordValuesToString'
+import { ButtonProps } from '../Button'
 // context
 import { iconButtonStyle } from './theme'
-import { ButtonProps } from '../Button'
-import { recordValuesToString } from '../../util/recordValuesToString'
 
 export type IconButtonProps = Omit<ButtonProps, 'loading' | 'fullWidth'>
 
-export const IconButton = React.forwardRef<
+export const IconButton = forwardRef<
   HTMLButtonElement,
   IconButtonProps & PropsWithChildren<ComponentProps<'button'>>
 >(({ variant, size, className, children, ...rest }, ref) => {

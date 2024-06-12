@@ -1,6 +1,7 @@
-import { HTMLAttributes, forwardRef, memo } from 'react'
+import { forwardRef, HTMLAttributes, memo } from 'react'
+
 import type { TypographyProps } from './Base'
-import Base from './Base'
+import { Typography as Base } from './Base'
 
 export interface TextProps
   extends TypographyProps<'span'>,

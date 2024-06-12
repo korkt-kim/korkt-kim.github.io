@@ -1,8 +1,7 @@
+import { ButtonProps } from '../Button'
 import { buttonFilled } from '../Button/theme/buttonFilled'
 import { buttonOutlined } from '../Button/theme/buttonOutlined'
 import { buttonText } from '../Button/theme/buttonText'
-
-import { ButtonProps } from '../Button'
 
 export interface IconButtonStyleTypes {
   defaultProps?: ButtonProps

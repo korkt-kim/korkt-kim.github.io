@@ -1,15 +1,11 @@
-import type { ReactNode } from 'react'
-
-import React from 'react'
-
 // utils
 import classnames from 'classnames'
-
-// context
-import { inputStyle } from './theme'
+import { uniqueId } from 'lodash-es'
+import { forwardRef, type ReactNode } from 'react'
 
 import { recordValuesToString } from '../../util/recordValuesToString'
-import { defaults } from 'lodash-es'
+// context
+import { inputStyle } from './theme'
 
 export type variant = 'standard' | 'outlined'
 export type size = 'md' | 'lg'
@@ -42,7 +38,9 @@ export interface InputProps
   inputRef?: React.Ref<HTMLInputElement>
 }
 
-export const Input = React.forwardRef<HTMLInputElement, InputProps>(
+const ID_PREFIX = 'zk-input-'
+
+export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
       variant,
@@ -117,18 +115,19 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       recordValuesToString(inputSize.icon)
     )
     const asteriskClasses = classnames(recordValuesToString(base.asterisk))
-
+    const id = `${ID_PREFIX}${uniqueId()}`
     // 4. return
     return (
       <div {...containerProps} ref={ref} className={containerClasses}>
         {icon && <div className={iconClasses}>{icon}</div>}
         <input
+          id={id}
           {...rest}
           ref={inputRef}
           className={inputClasses}
           placeholder={rest?.placeholder || ' '}
         />
-        <label {...labelProps} className={labelClasses}>
+        <label {...labelProps} className={labelClasses} htmlFor={id}>
           {label}{' '}
           {rest.required ? <span className={asteriskClasses}>*</span> : ''}
         </label>
@@ -138,5 +137,3 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 )
 
 Input.displayName = 'Input'
-
-export default Input

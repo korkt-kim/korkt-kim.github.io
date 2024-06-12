@@ -1,22 +1,19 @@
+import classnames from 'classnames'
+import { chunk, defaults, isEmpty } from 'lodash-es'
 import {
   ComponentProps,
   ForwardedRef,
-  ReactNode,
   forwardRef,
+  ReactNode,
   useState,
 } from 'react'
-
-import { recordValuesToString } from '../../util/recordValuesToString'
-
-import classnames from 'classnames'
 import { twMerge } from 'tailwind-merge'
 
-import { ListItem } from './ListItem'
-
-import { listStyle } from './theme'
-import { Pagination, PaginationProps } from '../Pagination'
-import { chunk, defaults, isEmpty } from 'lodash-es'
+import { recordValuesToString } from '../../util/recordValuesToString'
 import { Flex } from '../Flex'
+import { Pagination, PaginationProps } from '../Pagination'
+import { ListItem } from './ListItem'
+import { listStyle } from './theme'
 
 type Placement = 'left' | 'right' | 'center'
 export interface ListProps<T> {
@@ -29,7 +26,7 @@ export interface ListProps<T> {
   children?: ReactNode | ((item: T) => ReactNode)
 }
 
-function _List<T extends any>(
+function _List<T>(
   {
     className,
     data,

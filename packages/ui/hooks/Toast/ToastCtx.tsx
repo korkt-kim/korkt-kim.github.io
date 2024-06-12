@@ -1,9 +1,10 @@
 import { ToastProvider } from '@radix-ui/react-toast'
-import { useToast } from './useToast'
+
 import { ToastClose } from './Close'
 import { ToastDescription } from './Description'
 import { ToastRoot } from './Root'
 import { ToastTitle } from './Title'
+import { useToast } from './useToast'
 import { ToastViewport } from './ViewPort'
 
 export function ToastCtx() {

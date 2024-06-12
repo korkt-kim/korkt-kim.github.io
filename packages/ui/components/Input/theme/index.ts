@@ -1,5 +1,5 @@
-import inputOutlined from './outlined'
-import inputStandard from './standard'
+import { inputOutlined } from './outlined'
+import { inputStandard } from './standard'
 
 export interface InputSizeStylesType {
   container?: object

@@ -1,13 +1,11 @@
-import React, { ComponentProps, PropsWithChildren, forwardRef } from 'react'
-
 // utils
 import classnames from 'classnames'
+import { ComponentProps, forwardRef, PropsWithChildren } from 'react'
 import { twMerge } from 'tailwind-merge'
 
+import { recordValuesToString } from '../../util/recordValuesToString'
 // context
 import { navbarStyle } from './theme'
-import { recordValuesToString } from '../../util/recordValuesToString'
-import { GetTailwindVariant } from '../../util/type'
 
 export interface NavbarProps {
   shadow?: boolean
@@ -39,7 +37,7 @@ export const Navbar = forwardRef<
 
   // 4. return
   return (
-    <nav {...rest} ref={ref} className={navbarClasses}>
+    <nav {...rest} ref={ref} className={navbarClasses} role='navigation'>
       {children}
     </nav>
   )

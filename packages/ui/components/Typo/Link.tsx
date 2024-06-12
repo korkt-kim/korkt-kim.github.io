@@ -1,6 +1,7 @@
 import { AnchorHTMLAttributes, forwardRef, memo } from 'react'
+
 import type { TypographyProps } from './Base'
-import Base from './Base'
+import { Typography as Base } from './Base'
 
 export interface LinkProps
   extends TypographyProps<'a'>,

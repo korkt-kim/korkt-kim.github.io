@@ -62,7 +62,7 @@ export const ArticleSidebar = () => {
 
   return (
     <SidebarWrapper>
-      <Typo.Title level={4} className='mb-20 text-center'>
+      <Typo.Title level={1} className='mb-20 text-center text-base'>
         Table of Contents
       </Typo.Title>
       {articleContainer ? (
@@ -75,12 +75,21 @@ export const ArticleSidebar = () => {
               return (
                 <li
                   key={index}
-                  onClick={() => scrollToSubTitle(index)}
+                  aria-current={active === index}
                   style={{ marginBlockStart: 5 }}
                   className={`hover:underline hover:cursor-pointer ${
-                    active === index ? `text-blue-400` : ``
+                    active === index ? `text-blue-400` : `!text-gray-300`
                   }`}>
-                  <Typo.Text>{unescape(subTitle)}</Typo.Text>
+                  <Typo.Link
+                    className='text-inherit'
+                    href='#'
+                    onClick={e => {
+                      e.preventDefault()
+
+                      scrollToSubTitle(index)
+                    }}>
+                    {unescape(subTitle)}
+                  </Typo.Link>
                 </li>
               )
             })}

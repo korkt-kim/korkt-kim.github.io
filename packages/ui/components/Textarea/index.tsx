@@ -1,10 +1,9 @@
+import classnames from 'classnames'
+import { uniqueId } from 'lodash-es'
 import { ComponentProps, forwardRef } from 'react'
 
-import classnames from 'classnames'
-
-import { textareaStyle } from './theme'
-
 import { recordValuesToString } from '../../util/recordValuesToString'
+import { textareaStyle } from './theme'
 
 type variant = 'standard' | 'outlined'
 type labelProps = {
@@ -27,6 +26,8 @@ export interface TextareaProps {
   containerProps?: containerProps
   shrink?: boolean
 }
+
+const ID_PREFIX = 'zk-textarea-'
 
 export const Textarea = forwardRef<
   HTMLDivElement,
@@ -100,15 +101,19 @@ export const Textarea = forwardRef<
       labelProps?.className
     )
 
+    const id = `${ID_PREFIX}${uniqueId()}`
     // 4. return
     return (
       <div ref={ref} className={containerClasses}>
         <textarea
+          id={id}
           {...rest}
           className={textareaClasses}
           placeholder={rest?.placeholder || ' '}
         />
-        <label className={labelClasses}>{label}</label>
+        <label className={labelClasses} htmlFor={id}>
+          {label ?? ' '}
+        </label>
       </div>
     )
   }

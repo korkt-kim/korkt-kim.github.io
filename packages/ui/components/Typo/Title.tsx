@@ -1,6 +1,7 @@
-import { HTMLAttributes, forwardRef, memo } from 'react'
+import { forwardRef, HTMLAttributes, memo } from 'react'
+
 import type { TypographyProps } from './Base'
-import Base from './Base'
+import { Typography as Base } from './Base'
 
 const TITLE_ELE_LIST = [1, 2, 3, 4, 5] as const
 

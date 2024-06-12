@@ -1,5 +1,5 @@
 export interface ListStylesType {
-  defaultProps?: {}
+  defaultProps?: object
   styles?: {
     base?: {
       list?: object

@@ -1,7 +1,7 @@
 import { colors } from './colors'
 import { labelColors } from './labelColors'
 
-const inputOutlined = {
+export const inputOutlined = {
   base: {
     input: {
       borderWidth: 'placeholder-shown:border',
@@ -145,5 +145,3 @@ const inputOutlined = {
     },
   },
 }
-
-export default inputOutlined

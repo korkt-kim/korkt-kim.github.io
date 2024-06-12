@@ -1,7 +1,7 @@
 'use client'
 
 import { Flex, Input, Textarea, useToast } from '@zakelstorm/ui'
-import { isNil, trim } from 'lodash-es'
+import { isNil, trim, uniqueId } from 'lodash-es'
 import { useState } from 'react'
 import Skeleton from 'react-loading-skeleton'
 
@@ -70,7 +70,10 @@ export const CreateCommentForm = ({
             onChange={e => setPassword(e.target.value)}
           />
         </Flex>
+
         <Textarea
+          label='댓글 입력'
+          labelProps={{ className: 'text-transparent' }}
           value={content}
           onChange={e => setContent(e.target.value)}
           name='content'
