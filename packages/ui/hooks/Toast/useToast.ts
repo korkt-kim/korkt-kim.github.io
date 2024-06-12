@@ -1,6 +1,7 @@
-import { ComponentPropsWithoutRef, ReactNode, useEffect, useState } from 'react'
-import { ToastRoot } from './Root'
 import { uniqueId } from 'lodash-es'
+import { ComponentPropsWithoutRef, ReactNode, useEffect, useState } from 'react'
+
+import { ToastRoot } from './Root'
 
 const TOAST_LIMIT = 3
 const TOAST_REMOVE_DELAY = 1000000
@@ -145,7 +146,9 @@ function toast({ ...props }: Toast) {
       id,
       open: true,
       onOpenChange: open => {
-        if (!open) dismiss()
+        if (!open) {
+          dismiss()
+        }
       },
     },
   })
@@ -177,4 +180,4 @@ function useToast() {
   }
 }
 
-export { useToast, toast }
+export { toast, useToast }

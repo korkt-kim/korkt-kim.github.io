@@ -45,19 +45,22 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
             key={article._id}>
             <Flex noGap direction='v' align='center'>
               <Typo.Title level={1}>{article.title}</Typo.Title>
-              <div
-                className={`[&>*]:text-gray-400 [&>*]:text-sm [&_svg]:stroke-gray-500 [&>*]:inline-flex [&>*]:items-center`}>
+
+              <Flex
+                gap='sm'
+                className={`[&>*]:text-black [&>*]:text-sm [&_svg]:stroke-gray-500 `}>
                 <Typo.Text>
                   <Calendar className='text-transparent inline mx-6' />
-                  Posted On <Date date={article._createdAt} /> |
+                  Posted On <Date date={article._createdAt} />
                 </Typo.Text>
+                <Typo.Text>|</Typo.Text>
                 <Link
                   href={`/category/${article.category?.[0]}`}
                   prefetch={false}>
-                  <Folder className='text-transparent inline mx-6' /> In{' '}
+                  <Folder className='text-transparent inline mr-6' /> In{' '}
                   {article.category!.join('/')}
                 </Link>
-              </div>
+              </Flex>
             </Flex>
             <span className='w-full text-center [&>p]:truncate'>
               {article.description}
@@ -66,7 +69,7 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
               prefetch={false}
               href={`/${article._id}` as Route}
               className='bg-black p-10 rounded text-white'>
-              Read More
+              Read Article
             </Link>
           </List.Item>
         )

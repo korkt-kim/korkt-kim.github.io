@@ -14,6 +14,7 @@ module.exports = {
     'plugin:import/typescript',
     'plugin:@next/next/recommended',
     'plugin:react-hooks/recommended',
+    'plugin:jsx-a11y/recommended',
     './baseRules.js',
   ],
   plugins: ['@typescript-eslint', 'simple-import-sort', 'import'],

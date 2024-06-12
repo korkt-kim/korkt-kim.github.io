@@ -15,9 +15,9 @@ export const Header = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}>
       <Flex direction='v' align='center' justify='center' className='h-200'>
-        <Link href='/' className='bg-black text-white px-20'>
+        <Typo.Title level={1} className='bg-black text-white px-20'>
           코딩하는 폴제트
-        </Link>
+        </Typo.Title>
         <Typo.Text>
           프론트엔드 개발자, 코딩하는 폴제트의 작은 공간입니다.
         </Typo.Text>

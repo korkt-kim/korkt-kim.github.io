@@ -1,11 +1,10 @@
 import classnames from 'classnames'
+import { ComponentProps, forwardRef, memo, PropsWithChildren } from 'react'
 import { twMerge } from 'tailwind-merge'
 
+import { recordValuesToString } from '../../util/recordValuesToString'
 import Spinner from '../Spinner'
 import { buttonStyle } from './theme'
-
-import { ComponentProps, PropsWithChildren, forwardRef, memo } from 'react'
-import { recordValuesToString } from '../../util/recordValuesToString'
 
 type variant = 'filled' | 'outlined' | 'text'
 type size = 'sm' | 'md' | 'lg'
@@ -64,15 +63,17 @@ export const Button = memo(
 
       // 5. return
       return (
-        <button
-          {...rest}
-          disabled={rest.disabled ?? loading}
-          ref={ref}
-          className={classes}
-          type={rest.type || 'button'}>
-          {loading && <Spinner className={spinnerClass} />}
-          {children}
-        </button>
+        <>
+          <button
+            {...rest}
+            disabled={rest.disabled ?? loading}
+            ref={ref}
+            className={classes}
+            type={rest.type || 'button'}>
+            {loading && <Spinner className={spinnerClass} />}
+            {children}
+          </button>
+        </>
       )
     }
   )

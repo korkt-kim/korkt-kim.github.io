@@ -1,7 +1,7 @@
 import { colors } from './colors'
 import { labelColors } from './labelColors'
 
-const inputStandard = {
+export const inputStandard = {
   base: {
     input: {
       borderWidth: 'border-b',
@@ -109,5 +109,3 @@ const inputStandard = {
     },
   },
 }
-
-export default inputStandard

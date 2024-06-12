@@ -1,5 +1,5 @@
-import { label } from './label'
 import { colors } from './color'
+import { label } from './label'
 import { labelColors } from './labelColor'
 
 //@TODO 추후 TextArea Size,Color 옵션 추가

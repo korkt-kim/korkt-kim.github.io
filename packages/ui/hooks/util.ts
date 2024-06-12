@@ -1,6 +1,8 @@
 export function on<T extends Window | Document | HTMLElement | EventTarget>(
   obj: T | null,
-  ...args: Parameters<T['addEventListener']> | [string, Function | null, ...any]
+  ...args:
+    | Parameters<T['addEventListener']>
+    | [string, ((...args: any[]) => unknown) | null, ...any]
 ): void {
   if (obj && obj.addEventListener) {
     obj.addEventListener(
@@ -13,7 +15,7 @@ export function off<T extends Window | Document | HTMLElement | EventTarget>(
   obj: T | null,
   ...args:
     | Parameters<T['removeEventListener']>
-    | [string, Function | null, ...any]
+    | [string, ((...args: any[]) => unknown) | null, ...any]
 ): void {
   if (obj && obj.removeEventListener) {
     obj.removeEventListener(

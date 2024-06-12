@@ -1,9 +1,9 @@
 import {
   CSSProperties,
-  HTMLAttributes,
-  ReactNode,
   forwardRef,
+  HTMLAttributes,
   memo,
+  ReactNode,
 } from 'react'
 
 export interface TypographyProps<C extends keyof JSX.IntrinsicElements>
@@ -14,8 +14,8 @@ export interface TypographyProps<C extends keyof JSX.IntrinsicElements>
   component?: C
 }
 
-interface InternalTypographyProps<C extends keyof JSX.IntrinsicElements>
-  extends TypographyProps<C> {}
+type InternalTypographyProps<C extends keyof JSX.IntrinsicElements> =
+  TypographyProps<C>
 
 export const Typography = memo(
   forwardRef<HTMLElement, InternalTypographyProps<keyof JSX.IntrinsicElements>>(
@@ -39,5 +39,3 @@ export const Typography = memo(
 )
 
 Typography.displayName = 'Typography'
-
-export default Typography

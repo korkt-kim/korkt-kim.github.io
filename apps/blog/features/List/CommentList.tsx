@@ -62,7 +62,7 @@ export const CommentList = ({ contents, deleteAction }: CommentListProps) => {
             <div className='md:col-span-6 sm:col-span-6'>
               <Typo.Text className='break-all'>{content.content}</Typo.Text>
             </div>
-            <div className='md:col-span-2 sm:col-span-4  text-end grid-cols-subgrid  text-gray-400'>
+            <div className='md:col-span-2 sm:col-span-4  text-end grid-cols-subgrid'>
               <Date date={content._createdAt} />
             </div>
             <div className='absolute right-10'>
@@ -74,12 +74,16 @@ export const CommentList = ({ contents, deleteAction }: CommentListProps) => {
                 }}
                 placement='bottom-end'>
                 <PopoverHandler>
-                  <IconButton className='shadow-none h-[1.5rem] w-[1.5rem]'>
+                  <IconButton
+                    className='shadow-none h-[1.5rem] w-[1.5rem]'
+                    aria-controls='remove-comment-container'
+                    aria-label='댓글 삭제하기'>
                     <TrashIcon strokeWidth={2} className='h-[1rem] w-[1rem]' />
                   </IconButton>
                 </PopoverHandler>
                 <PopoverContent className='p-2'>
                   <form
+                    id='remove-comment-container'
                     className='flex gap-0 items-center'
                     action={submitDeleteComment}>
                     <Input

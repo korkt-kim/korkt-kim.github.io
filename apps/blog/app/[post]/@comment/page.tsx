@@ -59,10 +59,7 @@ export default async function Page({ params }: { params: { post: string } }) {
     <Flex direction='v' className='w-full'>
       <Flex justify='between' className='w-full'>
         <div>
-          <Typo.Text>
-            Comments <span className='text-red-500'>{comments.totalCount}</span>
-            개
-          </Typo.Text>
+          <Typo.Text>Comments {comments.totalCount}개</Typo.Text>
         </div>
         <Flex>
           <Typo.Link href={`#${articleContainerId}`} className='text-black'>

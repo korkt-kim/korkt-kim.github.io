@@ -1,8 +1,7 @@
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
-import * as Toast from '@radix-ui/react-toast'
-
-import { twMerge } from 'tailwind-merge'
 import { XMarkIcon } from '@heroicons/react/24/outline'
+import * as Toast from '@radix-ui/react-toast'
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 export const ToastClose = forwardRef<
   ElementRef<typeof Toast.Close>,

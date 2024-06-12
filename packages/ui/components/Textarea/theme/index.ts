@@ -1,6 +1,6 @@
+import { TextareaProps } from '..'
 import { outlined } from './outlined'
 import { standard } from './standard'
-import { TextareaProps } from '..'
 
 // types
 

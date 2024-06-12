@@ -1,6 +1,6 @@
 import { Link } from './Link'
-import { Title } from './Title'
 import { Text } from './Text'
+import { Title } from './Title'
 
 export const Typo = {
   Text,
