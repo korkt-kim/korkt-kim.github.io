@@ -76,7 +76,7 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
             className='border flex-col items-center gap-16'
             key={article._id}>
             <Flex noGap direction='v' align='center'>
-              <Typo.Title level={1}>{article.title}</Typo.Title>
+              <Typo.Text className='text-21'>{article.title}</Typo.Text>
 
               <Flex
                 gap='sm'

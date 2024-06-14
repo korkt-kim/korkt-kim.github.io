@@ -10,20 +10,22 @@ import User from '@/public/user.svg'
 
 export const Header = () => {
   return (
-    <MotionDiv
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}>
-      <Flex direction='v' align='center' justify='center' className='h-200'>
-        <Typo.Title level={1} className='bg-black text-white px-20'>
-          코딩하는 폴제트
-        </Typo.Title>
-        <Typo.Text>
-          프론트엔드 개발자, 코딩하는 폴제트의 작은 공간입니다.
-        </Typo.Text>
-        <GlobalNav />
-      </Flex>
-    </MotionDiv>
+    <header>
+      <MotionDiv
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}>
+        <Flex direction='v' align='center' justify='center' className='h-200'>
+          <Typo.Title level={1} className='bg-black text-white px-20'>
+            코딩하는 폴제트
+          </Typo.Title>
+          <Typo.Text>
+            프론트엔드 개발자, 코딩하는 폴제트의 작은 공간입니다.
+          </Typo.Text>
+          <GlobalNav />
+        </Flex>
+      </MotionDiv>
+    </header>
   )
 }
 
