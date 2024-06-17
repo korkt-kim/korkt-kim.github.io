@@ -28,29 +28,31 @@ import { parseBody } from 'next-sanity/webhook'
 
 import { env } from '@/env'
 
+// @TODO: NextJS 이슈로 인해 다음 코드 작동 안함. https://github.com/vercel/next.js/issues/55960
+//        추후 수정되면 개개별의 revalidateTag 삭제후 아래 api route로 revalidate 처리
 export async function POST(req: NextRequest) {
   try {
-    const { body, isValidSignature } = await parseBody<{
-      _type: string
-      slug?: string | undefined
-    }>(req, env('NEXT_PUBLIC_SANITY_REVALIDATE_SECRET'))
+    // const { body, isValidSignature } = await parseBody<{
+    //   _type: string
+    //   slug?: string | undefined
+    // }>(req, env('NEXT_PUBLIC_SANITY_REVALIDATE_SECRET'))
 
-    if (!isValidSignature) {
-      const message = 'Invalid signature'
-      return new Response(message, { status: 401 })
-    }
+    // if (!isValidSignature) {
+    //   const message = 'Invalid signature'
+    //   return new Response(message, { status: 401 })
+    // }
 
-    if (!body?._type) {
-      return new Response('Bad Request', { status: 400 })
-    }
+    // if (!body?._type) {
+    //   return new Response('Bad Request', { status: 400 })
+    // }
 
-    revalidateTag(body._type)
+    // revalidateTag(body._type)
 
     return NextResponse.json({
       status: 200,
       revalidated: true,
       now: Date.now(),
-      body,
+      // body,
     })
   } catch (err: any) {
     console.error(err)

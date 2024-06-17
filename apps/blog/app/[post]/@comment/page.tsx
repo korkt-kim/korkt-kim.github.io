@@ -10,6 +10,7 @@ import { CreateCommentForm } from '@/features/Form/CreateCommentForm'
 import { CommentList } from '@/features/List/CommentList'
 import { CommentResponse } from '@/types/comment'
 
+// server action은 async function 이어야한다. (Promise 반환함수로 대체안됨)
 const createComment = async (formData: FormData) => {
   'use server'
 
@@ -20,12 +21,14 @@ const createComment = async (formData: FormData) => {
     formData.get('articleId') as string,
   ]
 
-  _createComment({
+  await _createComment({
     content,
     username,
     password,
     articleId,
   })
+
+  return
 }
 
 const deleteComment = async (
@@ -47,7 +50,9 @@ const deleteComment = async (
     throw new Error('잘못된 비밀번호가 입력되었습니다.')
   }
 
-  _deleteComment(commentId)
+  await _deleteComment(commentId)
+
+  return
 }
 
 export default async function Page({ params }: { params: { post: string } }) {
