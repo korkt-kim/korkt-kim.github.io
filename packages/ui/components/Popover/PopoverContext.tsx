@@ -1,7 +1,8 @@
 'use client'
 import { FloatingContext, ReferenceType, Strategy } from '@floating-ui/react'
+import { createContext, HTMLProps, ReactNode, Ref, useContext } from 'react'
+
 import { Animation } from '../../util/type'
-import { HTMLProps, ReactNode, Ref, createContext, useContext } from 'react'
 
 export interface ContextValue {
   open?: boolean

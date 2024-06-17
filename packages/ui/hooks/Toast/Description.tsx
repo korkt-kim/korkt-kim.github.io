@@ -1,6 +1,5 @@
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 import * as Toast from '@radix-ui/react-toast'
-
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 export const ToastDescription = forwardRef<

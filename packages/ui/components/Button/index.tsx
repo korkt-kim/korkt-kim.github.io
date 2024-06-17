@@ -3,7 +3,7 @@ import { ComponentProps, forwardRef, memo, PropsWithChildren } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 import { recordValuesToString } from '../../util/recordValuesToString'
-import Spinner from '../Spinner'
+import { Spinner } from '../Spinner'
 import { buttonStyle } from './theme'
 
 type variant = 'filled' | 'outlined' | 'text'

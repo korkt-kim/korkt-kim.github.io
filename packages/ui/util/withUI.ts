@@ -1,11 +1,7 @@
-import { merge } from 'lodash-es'
+import { merge, omit } from 'lodash-es'
 
-export const withUI = (asdf: any) => {
-  return merge({}, asdf, {
-    content: [],
-    theme: {
-      extend: {},
-    },
-    plugins: [],
-  })
+import config from '../tailwind.config.js'
+
+export const withUI = (target: any) => {
+  return merge({}, target, omit(config, 'content'))
 }

@@ -9,7 +9,7 @@ export const ToastViewport = forwardRef<
   <Toast.Viewport
     ref={ref}
     className={twMerge(
-      'fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-[16px] sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]',
+      '[--viewport-padding:_25px] fixed bottom-0 right-0 flex flex-col p-[var(--viewport-padding)] gap-[10px] w-[390px] max-w-[100vw] m-0 list-none z-[2147483647] outline-none',
       className
     )}
     {...props}

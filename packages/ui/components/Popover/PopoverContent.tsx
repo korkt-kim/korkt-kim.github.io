@@ -2,25 +2,22 @@
 
 // @floating-ui
 import {
-  FloatingPortal,
   FloatingFocusManager,
+  FloatingPortal,
   useMergeRefs,
 } from '@floating-ui/react'
-
-// framer-motion
-import { AnimatePresence, m, LazyMotion, domAnimation } from 'framer-motion'
-
 // utils
 import classnames from 'classnames'
+// framer-motion
+import { AnimatePresence, domAnimation, LazyMotion, m } from 'framer-motion'
+import { ComponentProps, FC, forwardRef, memo } from 'react'
 import { twMerge } from 'tailwind-merge'
-
-// context
-import { popoverStyle } from './theme'
-import { usePopover } from './PopoverContext'
 
 import { recordValuesToString } from '../../util/recordValuesToString'
 import { NewAnimatePresenceProps } from '../../util/type'
-import { ComponentProps, FC, forwardRef, memo } from 'react'
+import { usePopover } from './PopoverContext'
+// context
+import { popoverStyle } from './theme'
 
 export type PopoverContentProps = ComponentProps<'div'>
 
@@ -93,5 +90,3 @@ export const PopoverContent = memo(
 )
 
 PopoverContent.displayName = 'PopoverContent'
-
-export default PopoverContent
