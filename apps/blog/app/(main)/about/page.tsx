@@ -1,7 +1,7 @@
 import { Typo } from '@zakelstorm/ui'
 import { ComponentProps, PropsWithChildren } from 'react'
 
-import { CONTACT_EMAIL } from '@/consts'
+import { CONTACT_EMAIL, MY_GITHUB_REPO } from '@/consts'
 
 export default function Page() {
   return (
@@ -26,7 +26,7 @@ export default function Page() {
 
       <Ul title='Contact'>
         <li>
-          <Typo.Link href='https://github.com/korkt-kim' target='_blank'>
+          <Typo.Link href={MY_GITHUB_REPO} target='_blank'>
             Github
           </Typo.Link>
         </li>
