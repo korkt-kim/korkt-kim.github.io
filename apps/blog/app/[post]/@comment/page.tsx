@@ -1,6 +1,10 @@
 import { Flex, Typo } from '@zakelstorm/ui'
 
-import { api } from '@/app/_trpc/serverInvoker'
+import {
+  createComment as _createComment,
+  deleteComment as _deleteComment,
+  getAllcommentsByArticleId,
+} from '@/action/comment'
 import { articleContainerId } from '@/consts'
 import { CreateCommentForm } from '@/features/Form/CreateCommentForm'
 import { CommentList } from '@/features/List/CommentList'
@@ -16,14 +20,12 @@ const createComment = async (formData: FormData) => {
     formData.get('articleId') as string,
   ]
 
-  await api.comment.create.mutate({
+  _createComment({
     content,
     username,
     password,
     articleId,
   })
-
-  await api.comment.getAllByArticleId.revalidate()
 }
 
 const deleteComment = async (
@@ -45,15 +47,13 @@ const deleteComment = async (
     throw new Error('잘못된 비밀번호가 입력되었습니다.')
   }
 
-  await api.comment.delete.mutate(commentId)
-
-  await api.comment.getAllByArticleId.revalidate()
+  _deleteComment(commentId)
 }
 
 export default async function Page({ params }: { params: { post: string } }) {
   const { post: articleId } = params
 
-  const comments = await api.comment.getAllByArticleId.query(articleId)
+  const comments = await getAllcommentsByArticleId(articleId)
 
   return (
     <Flex direction='v' className='w-full'>

@@ -1,7 +1,6 @@
 import { notFound } from 'next/navigation'
 
 import { getAllArticles } from '@/action/article'
-import { api } from '@/app/_trpc/serverInvoker'
 import { CATEGORIES } from '@/consts'
 import { ArticleList } from '@/features/List/ArticleList'
 
@@ -26,7 +25,7 @@ export default async function Page({
     notFound()
   }
 
-  const res = await api.article.getAll.query([_category])
+  const res = await getAllArticles([_category])
 
   return <ArticleList articles={res.items} />
 }
