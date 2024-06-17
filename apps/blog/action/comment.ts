@@ -37,6 +37,7 @@ export async function createComment({
     }
   )
 
+  revalidateTag('comment')
   return JSON.stringify(res)
 }
 
@@ -45,6 +46,7 @@ export async function deleteComment(commentId: string) {
     token: env('NEXT_PUBLIC_SANITY_ADMIN_TOKEN'),
   })
 
+  revalidateTag('comment')
   return JSON.stringify(res)
 }
 
