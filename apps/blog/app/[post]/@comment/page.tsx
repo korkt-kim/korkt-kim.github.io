@@ -28,7 +28,9 @@ const createComment = async (formData: FormData) => {
     articleId,
   })
 
-  return
+  return {
+    type: 'Success' as const,
+  }
 }
 
 const deleteComment = async (
@@ -41,18 +43,26 @@ const deleteComment = async (
   const _password = formData.get('password') as string
 
   if (!commentId) {
-    throw new Error('Undefined Id')
+    return {
+      type: 'Error' as const,
+      description: 'Invalid ID',
+    }
   }
 
   if (
     _password !== contents.find(content => content._id === commentId)?.password
   ) {
-    throw new Error('잘못된 비밀번호가 입력되었습니다.')
+    return {
+      type: 'Error' as const,
+      description: '잘못된 비밀번호가 입력되었습니다.',
+    }
   }
 
   await _deleteComment(commentId)
 
-  return
+  return {
+    type: 'Success' as const,
+  }
 }
 
 export default async function Page({ params }: { params: { post: string } }) {

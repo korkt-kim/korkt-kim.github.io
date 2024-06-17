@@ -11,7 +11,9 @@ import { useCommentStore } from '@/store/commentStore'
 
 export interface CreateCommentFormProps {
   articleId: string
-  createAction: (formDate: FormData) => Promise<void>
+  createAction: (
+    formDate: FormData
+  ) => Promise<{ type: 'Error' | 'Success'; description?: string }>
 }
 
 export const CreateCommentForm = ({
@@ -23,16 +25,29 @@ export const CreateCommentForm = ({
 
   const submitCreateComment = (formData: FormData) => {
     createAction(formData)
+      .then(res => {
+        toast({
+          title: res.type,
+          description:
+            res.type === 'Success'
+              ? '댓글이 성공적으로 등록되었습니다.'
+              : res.description,
+        })
+      })
+      .catch(() => {
+        toast({
+          title: 'Error',
+          description: '댓글 삭제에 실패했습니다.',
+        })
+      })
+
       .then(() => {
         setContent('')
 
         toast({
           title: 'Success',
-          description: '댓글이 성공적으로 등록되었습니다.',
+          description: '댓글 등록에 실패했습니다.',
         })
-      })
-      .catch(() => {
-        toast({ title: 'Error', description: '댓글 등록에 실패했습니다.' })
       })
   }
 

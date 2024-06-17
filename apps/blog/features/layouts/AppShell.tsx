@@ -7,7 +7,7 @@ import { Header } from '@/features/Header'
 export const AppShell = ({ children }: PropsWithChildren) => {
   return (
     <div
-      className={`md:pr-[var(--sidebar-width)] sm:mx-[10px] min-h-full relative pb-100 md:ml-80 `}>
+      className={`md:pr-[var(--sidebar-width)] sm:mx-[10px] min-h-full relative pb-150 md:ml-80 `}>
       <Header />
       <main>{children}</main>
       <Flex

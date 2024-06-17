@@ -75,17 +75,22 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
           <List.Item
             className='border flex-col items-center gap-16'
             key={article._id}>
-            <Flex noGap direction='v' align='center'>
-              <Typo.Text className='text-21'>{article.title}</Typo.Text>
+            <Flex
+              direction='v'
+              align={breakPoint === 'desktop' ? 'center' : 'start'}>
+              <Typo.Text className='text-21 break-all'>
+                {article.title}
+              </Typo.Text>
 
               <Flex
                 gap='sm'
-                className={`[&>*]:text-black [&>*]:text-sm [&_svg]:stroke-gray-500 `}>
+                noGap={breakPoint !== 'desktop'}
+                className={`[&>*]:text-black [&>*]:text-sm [&_svg]:stroke-gray-500 sm:flex-col`}>
                 <Typo.Text>
-                  <Calendar className='text-transparent inline mx-6' />
+                  <Calendar className='text-transparent inline mr-6' />
                   Posted On <Date date={article._createdAt} />
                 </Typo.Text>
-                <Typo.Text>|</Typo.Text>
+                <Typo.Text className='sm:hidden'>|</Typo.Text>
                 <Link
                   href={`/category/${article.category?.[0]}`}
                   prefetch={false}>

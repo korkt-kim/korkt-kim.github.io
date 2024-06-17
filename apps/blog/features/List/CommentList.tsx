@@ -5,16 +5,18 @@ import {
   IconButton,
   Input,
   List,
+  ListProps,
   Popover,
   PopoverContent,
   PopoverHandler,
   Typo,
   useToast,
 } from '@zakelstorm/ui'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 
 import { Date } from '@/components/ColumnRenderer/Date'
 import { FormButton } from '@/components/Form/FormButton'
+import { useBreakPoint } from '@/hooks/useBreakPoint'
 import { CommentResponse } from '@/types/comment'
 
 export interface CommentListProps {
@@ -22,35 +24,47 @@ export interface CommentListProps {
   deleteAction: (
     formData: FormData,
     contents: CommentResponse['items']
-  ) => Promise<void>
+  ) => Promise<{ type: 'Error' | 'Success'; description?: string }>
 }
 
 // @TODO /Resource NotFound 공용 컴포넌트로 빼기
 export const CommentList = ({ contents, deleteAction }: CommentListProps) => {
+  const { breakPoint } = useBreakPoint()
   const { toast } = useToast()
   const [password, setPassword] = useState('')
   const [open, setOpen] = useState<string | undefined>()
 
+  const pagination: ListProps<unknown>['pagination'] = useMemo(() => {
+    if (breakPoint === 'desktop') {
+      return {}
+    }
+
+    return {
+      sectionSize: 3,
+    }
+  }, [breakPoint])
+
   const submitDeleteComment = (formData: FormData) => {
     deleteAction(formData, contents)
-      .then(() => {
+      .then(res => {
         toast({
-          title: 'Success',
-          description: '댓글이 성공적으로 삭제되었습니다.',
+          title: res.type,
+          description:
+            res.type === 'Success'
+              ? '댓글이 성공적으로 삭제되었습니다.'
+              : res.description,
         })
       })
-      .catch(e => {
-        if (e instanceof Error) {
-          toast({
-            title: 'Error',
-            description: e.message ?? '댓글 삭제에 실패했습니다.',
-          })
-        }
+      .catch(() => {
+        toast({
+          title: 'Error',
+          description: '댓글 삭제에 실패했습니다.',
+        })
       })
   }
 
   return (
-    <List data={contents} pagination>
+    <List data={contents} pagination={pagination}>
       {content => {
         return (
           <List.Item
@@ -75,10 +89,13 @@ export const CommentList = ({ contents, deleteAction }: CommentListProps) => {
                 placement='bottom-end'>
                 <PopoverHandler>
                   <IconButton
-                    className='shadow-none h-[24px] w-[24px]'
+                    className='shadow-none md:h-[24px] md:w-[24px] sm:!h-[18px] sm:!w-[18px]'
                     aria-controls='remove-comment-container'
                     aria-label='댓글 삭제하기'>
-                    <TrashIcon strokeWidth={2} className='h-[16px] w-[16px]' />
+                    <TrashIcon
+                      strokeWidth={2}
+                      className='md:h-[16px] md:w-[16px] sm:h-[12px] sm:w-[12px]'
+                    />
                   </IconButton>
                 </PopoverHandler>
                 <PopoverContent className='p-2'>

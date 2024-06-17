@@ -18,8 +18,8 @@ module.exports = withUI({
   ],
   theme: {
     screens: {
-      sm: { max: '1100px' },
-      md: { min: '1101px' },
+      sm: { max: '800px' },
+      md: { min: '801px' },
     },
     extend: {
       background: 'hsl(var(--background))',

@@ -1,6 +1,7 @@
 'use client'
 
 import { Button, IconButton } from '@zakelstorm/ui'
+import { omit } from 'lodash-es'
 import { ComponentProps } from 'react'
 import { useFormStatus } from 'react-dom'
 
@@ -13,14 +14,19 @@ export const FormButton = ({ isIcon, ...props }: FormButtonProps) => {
 
   if (isIcon) {
     return (
-      <IconButton disabled={pending} {...props}>
+      <IconButton
+        disabled={pending || props.disabled}
+        {...omit(props, 'disabled')}>
         {props.children}
       </IconButton>
     )
   }
 
   return (
-    <Button loading={pending} {...props}>
+    <Button
+      loading={pending}
+      disabled={pending || props.disabled}
+      {...omit(props, 'disabled')}>
       {props.children}
     </Button>
   )
