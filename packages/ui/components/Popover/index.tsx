@@ -1,41 +1,31 @@
 'use client'
 
-import {
-  Dispatch,
-  PropsWithChildren,
-  Ref,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react'
-
 // @floating-ui
 import {
-  offset as fuiOffset,
-  flip,
-  shift,
   autoUpdate,
+  flip,
+  offset as fuiOffset,
+  Placement,
+  shift,
+  useClick,
+  useDismiss,
+  UseDismissProps,
   useFloating,
+  useId,
   useInteractions,
   useRole,
-  useDismiss,
-  useId,
-  useClick,
-  Placement,
-  UseDismissProps,
 } from '@floating-ui/react'
-
 // utils
 import { merge } from 'lodash-es'
+import { PropsWithChildren, Ref, useEffect, useMemo, useState } from 'react'
 
-// context
-import { popoverStyle } from './theme'
+import { Animation } from '../../util/type'
+import { PopoverContent, PopoverContentProps } from './PopoverContent'
 import { PopoverContextProvider, usePopover } from './PopoverContext'
-
 // popover components
 import { PopoverHandler, PopoverHandlerProps } from './PopoverHandler'
-import { PopoverContent, PopoverContentProps } from './PopoverContent'
-import { Animation } from '../../util/type'
+// context
+import { popoverStyle } from './theme'
 
 export interface PopoverProps extends PropsWithChildren {
   open?: boolean
@@ -151,9 +141,5 @@ const Popover = ({
 
 Popover.displayName = 'Popover'
 
-export type { PopoverHandlerProps, PopoverContentProps }
-export { Popover, PopoverHandler, PopoverContent, usePopover }
-export default Object.assign(Popover, {
-  Handler: PopoverHandler,
-  Content: PopoverContent,
-})
+export type { PopoverContentProps, PopoverHandlerProps }
+export { Popover, PopoverContent, PopoverHandler, usePopover }

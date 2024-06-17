@@ -1,15 +1,15 @@
 // @floating-ui
 import { useMergeRefs } from '@floating-ui/react'
+import {
+  cloneElement,
+  ComponentProps,
+  forwardRef,
+  memo,
+  ReactNode,
+} from 'react'
 
 // context
 import { usePopover } from './PopoverContext'
-import {
-  ComponentProps,
-  ReactNode,
-  cloneElement,
-  forwardRef,
-  memo,
-} from 'react'
 
 export interface PopoverHandlerProps extends ComponentProps<any> {
   children: ReactNode | ComponentProps<any>
@@ -33,5 +33,3 @@ export const PopoverHandler = memo(
 )
 
 PopoverHandler.displayName = 'PopoverHandler'
-
-export default PopoverHandler

@@ -25,7 +25,7 @@ export const inputOutlined = {
       position: '-top-1.5',
       fontSize: 'peer-placeholder-shown:text-sm',
       floated: {
-        fontSize: 'text-[1rem] peer-focus:text-[1rem]',
+        fontSize: 'text-[16px] peer-focus:text-[16px]',
       },
       before: {
         content: "before:content[' ']",

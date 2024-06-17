@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { buttonStyle } from './theme'
 
 import { Button } from './index'
+import { buttonStyle } from './theme'
 
 const meta: Meta<typeof Button> = {
   component: Button,

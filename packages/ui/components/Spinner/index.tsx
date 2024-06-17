@@ -1,7 +1,6 @@
-import React, { ComponentProps, forwardRef } from 'react'
-
 // utils
 import classnames from 'classnames'
+import { ComponentProps, forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 import { recordValuesToString } from '../../util/recordValuesToString'
@@ -57,5 +56,3 @@ export const Spinner = forwardRef<
 })
 
 Spinner.displayName = 'Spinner'
-
-export default Spinner

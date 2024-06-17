@@ -8,6 +8,7 @@
     "isolatedModules": false,
     "resolveJsonModule": true,
     "downlevelIteration": true,
+    "allowJs": true
   },
-  "exclude": ["dist", "build", "node_modules"],
+  "exclude": ["dist", "build", "node_modules"]
 }

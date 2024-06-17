@@ -75,10 +75,10 @@ export const CommentList = ({ contents, deleteAction }: CommentListProps) => {
                 placement='bottom-end'>
                 <PopoverHandler>
                   <IconButton
-                    className='shadow-none h-[1.5rem] w-[1.5rem]'
+                    className='shadow-none h-[24px] w-[24px]'
                     aria-controls='remove-comment-container'
                     aria-label='댓글 삭제하기'>
-                    <TrashIcon strokeWidth={2} className='h-[1rem] w-[1rem]' />
+                    <TrashIcon strokeWidth={2} className='h-[16px] w-[16px]' />
                   </IconButton>
                 </PopoverHandler>
                 <PopoverContent className='p-2'>
@@ -104,9 +104,9 @@ export const CommentList = ({ contents, deleteAction }: CommentListProps) => {
                     />
                     <FormButton
                       type='submit'
-                      className='h-[1.5rem] w-[1.5rem]'
+                      className='h-[24px] w-[24px]'
                       isIcon>
-                      <CheckCircleIcon className='h-[1rem] w-[1rem]' />
+                      <CheckCircleIcon className='h-[16px] w-[16px]' />
                     </FormButton>
                   </form>
                 </PopoverContent>
