@@ -23,7 +23,7 @@ export function Pagination({
 }: PaginationProps) {
   const [active, setActive] = useState(current)
   const totalPage = Math.ceil(total / pageSize)
-  const currentSection = Math.ceil(active / sectionSize)
+  const currentSection = Math.ceil((current ?? active) / sectionSize)
   const lastSection = Math.ceil(totalPage / sectionSize)
 
   const arrowDisabled = useMemo(() => {
@@ -39,7 +39,7 @@ export function Pagination({
 
   const getItemProps = (index: number) =>
     ({
-      variant: active === index ? 'filled' : 'text',
+      variant: (current ?? active) === index ? 'filled' : 'text',
       color: 'gray',
       onClick: () => {
         setActive(index)
@@ -85,7 +85,9 @@ export function Pagination({
           .fill(null)
           .map((_, index) => {
             const start =
-              Math.floor((active - 1) / sectionSize) * sectionSize + 1
+              Math.floor(((current ?? active) - 1) / sectionSize) *
+                sectionSize +
+              1
 
             const page = start + index
             if (page > totalPage) {
@@ -93,7 +95,7 @@ export function Pagination({
             }
 
             return (
-              <li aria-current={active === page} key={index}>
+              <li aria-current={(current ?? active) === page} key={index}>
                 <IconButton role='link' {...getItemProps(page)}>
                   {page}
                 </IconButton>

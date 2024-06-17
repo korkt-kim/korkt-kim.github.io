@@ -5,6 +5,7 @@ import {
   ForwardedRef,
   forwardRef,
   ReactNode,
+  useEffect,
   useState,
 } from 'react'
 import { twMerge } from 'tailwind-merge'
@@ -40,17 +41,24 @@ function _List<T>(
     typeof pagination === 'boolean' ? {} : pagination,
     {
       placement: 'center',
-      current: 1,
       pageSize: 10,
       sectionSize: 5,
     }
   )
 
-  const [currentPage, setCurrentPage] = useState(current)
+  const [currentPage, setCurrentPage] = useState(1)
 
   const {
     styles: { base },
   } = listStyle
+
+  useEffect(() => {
+    if (typeof current === 'undefined') {
+      return
+    }
+
+    setCurrentPage(current)
+  }, [current])
 
   const listClasses = twMerge(
     classnames(recordValuesToString(base.list)),
@@ -81,9 +89,9 @@ function _List<T>(
     <div>
       <ul {...rest} ref={ref} className={listClasses}>
         {typeof children === 'function'
-          ? chunkedData[Math.min(currentPage, chunkedData.length) - 1].map(
-              item => children(item)
-            )
+          ? chunkedData[
+              Math.min(current ?? currentPage, chunkedData.length) - 1
+            ].map(item => children(item))
           : children}
       </ul>
       <Flex
@@ -94,7 +102,7 @@ function _List<T>(
         }>
         <Pagination
           total={data.length}
-          current={Math.min(currentPage, chunkedData.length)}
+          current={Math.min(current ?? currentPage, chunkedData.length)}
           onChange={onChangePagination}
           pageSize={pageSize}
           sectionSize={sectionSize}
