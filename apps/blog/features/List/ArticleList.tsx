@@ -4,7 +4,8 @@ import { Flex, List, ListProps, Typo } from '@zakelstorm/ui'
 import { isEmpty } from 'lodash-es'
 import { Route } from 'next'
 import Link from 'next/link'
-import { useMemo } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { useEffect, useMemo, useState } from 'react'
 
 import { Date } from '@/components/ColumnRenderer/Date'
 import { useBreakPoint } from '@/hooks/useBreakPoint'
@@ -18,15 +19,46 @@ export interface ArticleListProps {
 // @TODO
 export const ArticleList = ({ articles }: ArticleListProps) => {
   const { breakPoint } = useBreakPoint()
+  const searchParams = useSearchParams()
+  const [current, setCurrent] = useState(0)
+  const router = useRouter()
+
   const pagination: ListProps<unknown>['pagination'] = useMemo(() => {
+    const commonOption = {
+      onChange: (page: number) => {
+        setCurrent(page)
+        router.push(`/?page=${page}`)
+      },
+      current,
+    }
     if (breakPoint === 'desktop') {
-      return true
+      return commonOption
     }
 
     return {
       sectionSize: 3,
+      ...commonOption,
     }
-  }, [breakPoint])
+  }, [breakPoint, current, router])
+
+  useEffect(() => {
+    if (!searchParams.get('page') || isNaN(Number(searchParams.get('page')))) {
+      router.replace(`?page=1`)
+    }
+  }, [searchParams, router])
+
+  useEffect(() => {
+    setCurrent(
+      !searchParams.get('page') || isNaN(Number(searchParams.get('page')))
+        ? 1
+        : Number(searchParams.get('page'))
+    )
+  }, [router, searchParams])
+
+  if (current === 0) {
+    return null
+  }
+
   if (isEmpty(articles)) {
     return (
       <Flex direction='v' align='center' className='py-200'>
