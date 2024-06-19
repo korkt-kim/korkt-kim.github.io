@@ -1,28 +1,15 @@
 'use client'
 
 import { Flex, Spinner, Typo } from '@zakelstorm/ui'
-import { unescape } from 'lodash-es'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
+import { Toc } from '@/components/Toc/Toc'
 import { articleContainerId } from '@/consts'
 
 import { SidebarWrapper } from './SidebarWrapper'
 
 export const ArticleSidebar = () => {
   const [articleContainer, setArticleContainer] = useState<Element | null>(null)
-  const [active, setActive] = useState(0)
-  const [subTitleRefs, setSubTitleRefs] = useState<HTMLElement[]>([])
-
-  const setActiveSubtitle = useCallback((refs: HTMLElement[]) => {
-    setActive(
-      refs.reduce((acc, item, index) => {
-        if (item.offsetTop <= window.scrollY + 5) {
-          acc = index
-        }
-        return acc
-      }, 0)
-    )
-  }, [])
 
   useEffect(() => {
     if (typeof document === 'undefined') {
@@ -31,34 +18,7 @@ export const ArticleSidebar = () => {
 
     const articleContainer = document.querySelector(`#${articleContainerId}`)
     setArticleContainer(articleContainer)
-    if (articleContainer) {
-      const subTitleRefs = Array.from(
-        articleContainer.querySelectorAll(`#${articleContainerId}>h2`)
-      ) as HTMLElement[]
-      setSubTitleRefs(subTitleRefs)
-
-      setActiveSubtitle(subTitleRefs)
-    }
-  }, [setActiveSubtitle])
-
-  useEffect(() => {
-    document.addEventListener('scroll', () => setActiveSubtitle(subTitleRefs))
-    return () => {
-      return document.removeEventListener('scroll', () =>
-        setActiveSubtitle(subTitleRefs)
-      )
-    }
-  }, [subTitleRefs, setActiveSubtitle])
-
-  const scrollToSubTitle = (index: number) => {
-    if (!articleContainer) {
-      return
-    }
-
-    articleContainer
-      .querySelectorAll(`#${articleContainerId}>h2`)
-      [index].scrollIntoView({ block: 'start' })
-  }
+  }, [])
 
   return (
     <SidebarWrapper>
@@ -66,35 +26,40 @@ export const ArticleSidebar = () => {
         Table of Contents
       </Typo.Title>
       {articleContainer ? (
-        <ol className='list-decimal text-12 pl-20'>
-          {Array.from(
-            articleContainer.querySelectorAll(`#${articleContainerId}>h2`)
-          )
-            .map(item => item.innerHTML)
-            .map((subTitle, index) => {
-              return (
-                <li
-                  key={index}
-                  aria-current={active === index}
-                  style={{ marginBlockStart: 5 }}
-                  className={`hover:underline hover:cursor-pointer ${
-                    active === index ? `text-blue-400` : `!text-gray-300`
-                  }`}>
-                  <Typo.Link
-                    className='text-inherit'
-                    href='#'
-                    onClick={e => {
-                      e.preventDefault()
-
-                      scrollToSubTitle(index)
-                    }}>
-                    {unescape(subTitle)}
-                  </Typo.Link>
-                </li>
-              )
-            })}
-        </ol>
+        <Toc
+          headingSelector={['h2']}
+          contentSelector={articleContainer}
+          activeStyle={{ color: 'rgb(96, 165, 250)' }}
+        />
       ) : (
+        // <ol className='list-decimal text-12 pl-20'>
+        //   {Array.from(
+        //     articleContainer.querySelectorAll(`#${articleContainerId}>h2`)
+        //   )
+        //     .map(item => item.innerHTML)
+        //     .map((subTitle, index) => {
+        //       return (
+        //         <li
+        //           key={index}
+        //           aria-current={active === index}
+        //           style={{ marginBlockStart: 5 }}
+        //           className={`hover:underline hover:cursor-pointer ${
+        //             active === index ? `text-blue-400` : `!text-gray-300`
+        //           }`}>
+        //           <Typo.Link
+        //             className='text-inherit'
+        //             href='#'
+        //             onClick={e => {
+        //               e.preventDefault()
+
+        //               scrollToSubTitle(index)
+        //             }}>
+        //             {unescape(subTitle)}
+        //           </Typo.Link>
+        //         </li>
+        //       )
+        //     })}
+        // </ol>
         <Flex justify='center'>
           <Spinner />
         </Flex>

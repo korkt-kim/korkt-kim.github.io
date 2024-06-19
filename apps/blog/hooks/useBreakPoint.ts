@@ -3,12 +3,14 @@
 import { useWindowSize } from '@zakelstorm/ui'
 import { useEffect, useState } from 'react'
 
+import { BREAK_POINT } from '@/consts'
+
 const listener = (width: number) => {
   if (typeof window === 'undefined') {
     return undefined
   }
 
-  if (width < 1100) {
+  if (width <= BREAK_POINT.tablet) {
     return 'tablet'
   }
 

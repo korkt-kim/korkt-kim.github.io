@@ -3,6 +3,7 @@
 /** @type {import('tailwindcss').Config} */
 const plugin = require('tailwindcss/plugin')
 const { withUI } = require('../../packages/ui/util/withUI')
+const { BREAK_POINT } = require('./consts')
 const px0_10 = { ...Array.from(Array(11)).map((_, i) => `${i}px`) }
 const px0_100 = { ...Array.from(Array(101)).map((_, i) => `${i}px`) }
 const px0_1000 = { ...Array.from(Array(1001)).map((_, i) => `${i}px`) }
@@ -18,8 +19,8 @@ module.exports = withUI({
   ],
   theme: {
     screens: {
-      sm: { max: '800px' },
-      md: { min: '801px' },
+      sm: { max: `${BREAK_POINT.tablet}px` },
+      md: { min: `${BREAK_POINT.tablet + 1}px` },
     },
     extend: {
       background: 'hsl(var(--background))',
