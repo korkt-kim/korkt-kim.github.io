@@ -72,8 +72,8 @@ export default async function Page({ params }: Props) {
   }
 
   return (
-    <article>
-      <Card title={article.title} className='w-full' id={articleContainerId}>
+    <article className='w-full'>
+      <Card title={article.title} id={articleContainerId}>
         <PortableText value={article.content} />
       </Card>
     </article>

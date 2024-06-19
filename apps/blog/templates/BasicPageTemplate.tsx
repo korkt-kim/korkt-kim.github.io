@@ -6,7 +6,11 @@ export const BasicPageTemplate = ({ children }: PropsWithChildren) => {
 }
 
 const Content = ({ children }: PropsWithChildren) => {
-  return <div className='md:w-750 sm:w-full'>{children}</div>
+  return (
+    <div className='md:w-[calc(100%-50px)] md:max-w-1000 sm:w-full'>
+      {children}
+    </div>
+  )
 }
 
 BasicPageTemplate.Content = Content
