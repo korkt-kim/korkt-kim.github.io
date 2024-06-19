@@ -26,6 +26,8 @@ export const CreateCommentForm = ({
   const submitCreateComment = (formData: FormData) => {
     createAction(formData)
       .then(res => {
+        setContent('')
+
         toast({
           title: res.type,
           description:
@@ -35,15 +37,6 @@ export const CreateCommentForm = ({
         })
       })
       .catch(() => {
-        toast({
-          title: 'Error',
-          description: '댓글 삭제에 실패했습니다.',
-        })
-      })
-
-      .then(() => {
-        setContent('')
-
         toast({
           title: 'Success',
           description: '댓글 등록에 실패했습니다.',

@@ -32,34 +32,6 @@ export const ArticleSidebar = () => {
           activeStyle={{ color: 'rgb(96, 165, 250)' }}
         />
       ) : (
-        // <ol className='list-decimal text-12 pl-20'>
-        //   {Array.from(
-        //     articleContainer.querySelectorAll(`#${articleContainerId}>h2`)
-        //   )
-        //     .map(item => item.innerHTML)
-        //     .map((subTitle, index) => {
-        //       return (
-        //         <li
-        //           key={index}
-        //           aria-current={active === index}
-        //           style={{ marginBlockStart: 5 }}
-        //           className={`hover:underline hover:cursor-pointer ${
-        //             active === index ? `text-blue-400` : `!text-gray-300`
-        //           }`}>
-        //           <Typo.Link
-        //             className='text-inherit'
-        //             href='#'
-        //             onClick={e => {
-        //               e.preventDefault()
-
-        //               scrollToSubTitle(index)
-        //             }}>
-        //             {unescape(subTitle)}
-        //           </Typo.Link>
-        //         </li>
-        //       )
-        //     })}
-        // </ol>
         <Flex justify='center'>
           <Spinner />
         </Flex>
