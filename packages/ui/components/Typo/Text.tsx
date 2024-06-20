@@ -12,6 +12,6 @@ export interface TextProps
 
 export const Text = memo(
   forwardRef<HTMLSpanElement, TextProps>((textProps, ref) => {
-    return <Base ref={ref} {...textProps} component='span' />
+    return <Base ref={ref} {...textProps} component='p' />
   })
 )

@@ -7,8 +7,7 @@ import GitHub from '@/public/github.svg'
 
 export function Footer() {
   return (
-    <footer
-      className={`absolute left-0  bottom-0 md:pr-[var(--sidebar-width)] w-full h-150`}>
+    <footer className='absolute left-0  bottom-0  w-full h-150'>
       <Flex
         direction='v'
         align='center'
@@ -17,12 +16,14 @@ export function Footer() {
         justify='center'>
         <Flex className='text-24 '>
           <Typo.Link
+            aria-label='Github'
             className='text-gray-500 hover:text-black'
             href={MY_GITHUB_REPO}
             target='_blank'>
             <GitHub />
           </Typo.Link>
           <Typo.Link
+            aria-label='Contact'
             className='text-gray-500 hover:text-black'
             href={`mailto:${CONTACT_EMAIL}`}>
             <Email />
