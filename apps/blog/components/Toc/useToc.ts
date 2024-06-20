@@ -22,13 +22,20 @@ export const useToc = <ContentSelector extends Element = Element>({
           return (item as HTMLElement).offsetTop <= window.scrollY
         })
         ?.getAttribute('data-toc')
-      console.log(tocRef)
 
       setActiveTocRef(typeof tocRef === 'string' ? tocRef : '')
     }
 
+    if (!window) {
+      return
+    }
+
     window.addEventListener('scroll', setActiveStyle)
     return () => {
+      if (!window) {
+        return
+      }
+
       window.removeEventListener('scroll', setActiveStyle)
     }
   }, [content])

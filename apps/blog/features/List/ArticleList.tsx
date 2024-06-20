@@ -1,6 +1,7 @@
 'use client'
 
 import { Flex, List, ListProps, Typo } from '@zakelstorm/ui'
+import { stagger, useAnimate, useInView } from 'framer-motion'
 import { isEmpty } from 'lodash-es'
 import { Route } from 'next'
 import Link from 'next/link'
@@ -22,6 +23,23 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
   const searchParams = useSearchParams()
   const [current, setCurrent] = useState(0)
   const router = useRouter()
+  const [scope, animate] = useAnimate<HTMLUListElement>()
+  const isInView = useInView(scope, { amount: 'some', once: true })
+
+  useEffect(() => {
+    if (!isInView && current === 0) {
+      return
+    }
+
+    console.log(isInView)
+    animate([
+      [
+        'li',
+        { transform: 'scale(1)', opacity: 1, filter: 'blur(0px)' },
+        { delay: stagger(0.05) },
+      ],
+    ])
+  }, [animate, isInView, current])
 
   const pagination: ListProps<unknown>['pagination'] = useMemo(() => {
     const commonOption = {
@@ -69,7 +87,7 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
   }
 
   return (
-    <List data={articles} pagination={pagination}>
+    <List data={articles} pagination={pagination} ref={scope}>
       {article => {
         return (
           <List.Item
@@ -87,15 +105,23 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
                 noGap={breakPoint !== 'desktop'}
                 className={`[&>*]:text-black [&>*]:text-sm [&_svg]:stroke-gray-500 sm:flex-col`}>
                 <Typo.Text>
-                  <Calendar className='text-transparent inline mr-6' />
+                  <Calendar
+                    role='presentation'
+                    className='text-transparent inline mr-6'
+                  />
                   Posted On <Date date={article._createdAt} />
                 </Typo.Text>
-                <Typo.Text className='sm:hidden'>|</Typo.Text>
+                <Typo.Text className='sm:hidden' role='presentation'>
+                  |
+                </Typo.Text>
                 <Link
                   href={`/category/${article.category?.[0]}`}
                   prefetch={false}>
-                  <Folder className='text-transparent inline mr-6' /> In{' '}
-                  {article.category!.join('/')}
+                  <Folder
+                    role='presentation'
+                    className='text-transparent inline mr-6'
+                  />{' '}
+                  In {article.category!.join('/')}
                 </Link>
               </Flex>
             </Flex>

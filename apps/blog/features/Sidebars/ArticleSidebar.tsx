@@ -1,7 +1,7 @@
 'use client'
 
 import { Flex, Spinner, Typo } from '@zakelstorm/ui'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { Toc } from '@/components/Toc/Toc'
 import { articleContainerId } from '@/consts'
