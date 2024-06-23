@@ -35,19 +35,16 @@ export const SidebarWrapper = ({
         ['path.top', { d: 'M 3 16.5 L 17 2.5' }],
         ['path.middle', { opacity: 0 }, { at: '<' }],
         ['path.bottom', { d: 'M 3 2.5 L 17 16.346' }, { at: '<' }],
-        ['aside', { transform: 'translateX(0)' }, { at: '<' }],
-        [
-          'li',
-          { transform: 'scale(1)', opacity: 1, filter: 'blur(0px)' },
-          { delay: stagger(0.05) },
-        ],
+        ['aside', { width: '250px' }, { at: '<' }],
+        ['aside *', { opacity: 1 }],
       ])
     } else {
       animate([
         ['path.top', { d: 'M 2 2.5 L 20 2.5' }],
         ['path.middle', { opacity: 1 }, { at: '<' }],
         ['path.bottom', { d: 'M 2 16.346 L 20 16.346' }, { at: '<' }],
-        ['aside', { transform: 'translateX(100%)' }, { at: '<' }],
+        ['aside *', { opacity: 0 }, { at: '<', duration: 0 }],
+        ['aside', { width: 0 }, { at: '<' }],
       ]).then(() => {
         aside.style.display = 'none'
       })
@@ -60,7 +57,7 @@ export const SidebarWrapper = ({
         id='sidebar'
         aria-hidden={!isOpen}
         className={twMerge(
-          `fixed right-0 bottom-0 top-0 bg-neutral-800 p-20 w-[var(--sidebar-width)] text-gray-300 translate-x-full`,
+          `fixed right-0 bottom-0 top-0 bg-neutral-800 p-20 w-0 text-gray-300 [&>*]:opacity-0`,
           className
         )}>
         {children}

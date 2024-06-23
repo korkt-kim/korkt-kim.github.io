@@ -1,9 +1,9 @@
 import { Flex, Navbar, Typo } from '@zakelstorm/ui'
+import { m } from 'framer-motion'
 import { Route } from 'next'
 import Link from 'next/link'
 import { ReactNode } from 'react'
 
-import { MotionDiv } from '@/libs/framer'
 import Category from '@/public/category.svg'
 import Home from '@/public/home.svg'
 import User from '@/public/user.svg'
@@ -11,10 +11,7 @@ import User from '@/public/user.svg'
 export const Header = () => {
   return (
     <header>
-      <MotionDiv
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}>
+      <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
         <Flex direction='v' align='center' justify='center' className='h-200'>
           <Typo.Title level={1} className='bg-black text-white px-20'>
             코딩하는 폴제트
@@ -24,7 +21,7 @@ export const Header = () => {
           </Typo.Text>
           <GlobalNav />
         </Flex>
-      </MotionDiv>
+      </m.div>
     </header>
   )
 }
