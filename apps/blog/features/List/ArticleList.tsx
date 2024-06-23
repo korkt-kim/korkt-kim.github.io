@@ -24,14 +24,12 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
   const [current, setCurrent] = useState(0)
   const router = useRouter()
   const [scope, animate] = useAnimate<HTMLUListElement>()
-  const isInView = useInView(scope, { amount: 'some', once: true })
 
   useEffect(() => {
-    if (!isInView && current === 0) {
+    if (current === 0 || !scope.current) {
       return
     }
 
-    console.log(isInView)
     animate([
       [
         'li',
@@ -39,7 +37,7 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
         { delay: stagger(0.05) },
       ],
     ])
-  }, [animate, isInView, current])
+  }, [animate, current, scope])
 
   const pagination: ListProps<unknown>['pagination'] = useMemo(() => {
     const commonOption = {
@@ -103,7 +101,7 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
               <Flex
                 gap='sm'
                 noGap={breakPoint !== 'desktop'}
-                className={`[&>*]:text-black [&>*]:text-sm [&_svg]:stroke-gray-500 sm:flex-col`}>
+                className={`[&>*]:text-black [&>*]:text-sm [&_svg]:stroke-gray-500 sm:flex-col self-center`}>
                 <Typo.Text>
                   <Calendar
                     role='presentation'

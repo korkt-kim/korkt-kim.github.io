@@ -30,7 +30,6 @@ export const SidebarWrapper = ({
     }
 
     if (isOpen && breakPoint === 'desktop') {
-      console.log(isOpen, breakPoint)
       aside.style.display = 'block'
       animate([
         ['path.top', { d: 'M 3 16.5 L 17 2.5' }],
@@ -44,7 +43,6 @@ export const SidebarWrapper = ({
         ],
       ])
     } else {
-      console.log(isOpen, breakPoint)
       animate([
         ['path.top', { d: 'M 2 2.5 L 20 2.5' }],
         ['path.middle', { opacity: 1 }, { at: '<' }],
