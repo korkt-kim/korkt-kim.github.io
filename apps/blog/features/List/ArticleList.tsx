@@ -33,8 +33,8 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
     animate([
       [
         'li',
-        { transform: 'scale(1)', opacity: 1, filter: 'blur(0px)' },
-        { delay: stagger(0.05) },
+        { opacity: 1, filter: 'blur(0px)', transform: 'translateY(0)' },
+        { delay: stagger(0.1), ease: 'easeInOut' },
       ],
     ])
   }, [animate, current, scope])
@@ -89,7 +89,7 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
       {article => {
         return (
           <List.Item
-            className='border flex-col items-center gap-16'
+            className='border flex-col items-center gap-16 opacity-0 blur-sm translate-y-[-10px]'
             key={article._id}>
             <Flex
               direction='v'
