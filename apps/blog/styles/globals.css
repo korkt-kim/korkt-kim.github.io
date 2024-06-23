@@ -24,6 +24,7 @@ body {
 
 body {
   margin: 0;
+  padding-inline: 10px;
 }
 
 a {

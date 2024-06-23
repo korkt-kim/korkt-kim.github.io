@@ -103,7 +103,7 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
               <Flex
                 gap='sm'
                 noGap={breakPoint !== 'desktop'}
-                className={`[&>*]:text-black [&>*]:text-sm [&_svg]:stroke-gray-500 sm:flex-col`}>
+                className={`[&>*]:text-black [&>*]:text-sm [&_svg]:stroke-gray-500 sm:flex-col self-center`}>
                 <Typo.Text>
                   <Calendar
                     role='presentation'
