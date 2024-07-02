@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "build": "tsup",
     "build-storybook": "storybook build",
     "dev": "tsup --watch",
     "lint": "eslint . --max-warnings 0",
