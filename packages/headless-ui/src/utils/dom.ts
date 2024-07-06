@@ -1,4 +1,4 @@
-export const getDocument = (el: Element | Window | Node | Document) => {
+export const getDocument = (el: Element | Window | Node | Document | null) => {
   if (isDocument(el)) {
     return el
   }
@@ -8,7 +8,7 @@ export const getDocument = (el: Element | Window | Node | Document) => {
   }
 
   // iframe 내 element의 ownerDocument는 iframe scope document
-  return el.ownerDocument ?? document
+  return el?.ownerDocument ?? document
 }
 
 export const getWindow = (
@@ -66,3 +66,5 @@ export const isElement = (el: unknown): el is Element => {
 
   return el.nodeType === Node.ELEMENT_NODE
 }
+
+export const dataAttr = (guard: boolean | undefined) => (guard ? '' : undefined)
