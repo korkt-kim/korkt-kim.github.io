@@ -1,5 +1,6 @@
 export interface UseCheckboxProps {
   checked?: boolean
+  defaultChecked?: boolean
   onChange?: (detail: CheckboxCurrentState) => void
   name?: string
   indeterminate?: boolean

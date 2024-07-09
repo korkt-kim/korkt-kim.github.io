@@ -28,16 +28,29 @@ export interface CheckboxProps {
    *  label
    */
   children?: ReactNode
+  /**
+   * Specifies whether the checkbox is checked on init
+   */
+  defaultChecked?: boolean
 }
 
 export const Checkbox = forwardRef<HTMLSpanElement, CheckboxProps>(
   (
-    { checked, children, disabled = false, indeterminate, name, onChange },
+    {
+      checked,
+      children,
+      disabled = false,
+      indeterminate,
+      name,
+      onChange,
+      defaultChecked = false,
+    },
     forwardedRef
   ) => {
     const _ref = useRef<HTMLSpanElement>(null)
     const api = useCheckbox({
       checked,
+      defaultChecked,
       disabled,
       indeterminate,
       name,

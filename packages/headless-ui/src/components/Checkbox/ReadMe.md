@@ -27,6 +27,11 @@
   - `boolean`
   - Whether the checkbox is checked.
 
+- defaultChecked
+
+  - `boolean`
+  - Whether the checkbox is checked on init.
+
 - indeterminate
 
   - `boolean`
