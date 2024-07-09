@@ -1,75 +1,80 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 
-import { Checkbox } from './Checkbox'
+import { PinInput } from './PinInput'
 
 const meta = {
-  title: 'Example/Checkbox',
-  component: Checkbox,
+  title: 'Example/PinInput',
+  component: PinInput,
   parameters: {
     layout: 'centered',
   },
 
   tags: ['autodocs'],
   argTypes: {
-    checked: { control: 'boolean' },
-    defaultChecked: { control: 'boolean' },
+    value: { control: 'text' },
+    defaultValue: { control: 'text' },
     name: { control: 'text' },
     disabled: { control: 'boolean' },
-    indeterminate: { control: 'boolean' },
+    length: { control: 'number' },
     children: { control: 'text' },
+    password: { control: 'boolean' },
   },
-} satisfies Meta<typeof Checkbox>
+} satisfies Meta<typeof PinInput>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  args: {},
+  args: {
+    length: 4,
+  },
 }
 
 export const Uncontrolled: Story = {
   render: args => (
-    <Checkbox
+    <PinInput
       {...args}
-      onChange={({ checked, indeterminate }) =>
-        console.log('current state: ', checked, indeterminate)
-      }>
+      onComplete={value => console.log('complete value: ', value)}
+      onChange={value => console.log('current value: ', value)}>
       {args.children}
-    </Checkbox>
+    </PinInput>
   ),
   args: {
+    length: 4,
     children: 'Uncontrolled',
   },
 }
 
+// @TODO: 4번째 값 먼저 입력시 1번째에 입력안되도록 로직 재설계
 export const Controlled: Story = {
   render: function Render(args) {
-    const [checked, setChecked] = useState(false)
+    const [value, setValue] = useState('')
 
     return (
-      <Checkbox
+      <PinInput
         {...args}
-        checked={args.checked ?? checked}
-        onChange={({ checked, indeterminate }) => {
-          console.log('current state: ', checked, indeterminate)
-          setChecked(checked)
+        value={args.value ?? value}
+        onChange={value => {
+          console.log('current state: ', value)
+          setValue(value)
+        }}
+        onComplete={value => {
+          console.log('complete value', value)
+          // setValue(value)
         }}>
         {args.children}
-      </Checkbox>
+      </PinInput>
     )
   },
   args: {
+    length: 4,
     children: 'Controlled',
   },
 }
 
-export const Indeterminate: Story = {
-  args: { indeterminate: true },
-}
-
 export const Disabled: Story = {
-  args: { disabled: true },
+  args: { length: 4, disabled: true },
 }
 
 export const WithForm: Story = {
@@ -85,9 +90,10 @@ export const WithForm: Story = {
         })
       }}>
       <fieldset disabled id='fieldset1'>
-        <Checkbox {...args}>
-          The checkbox is {args.checked ? 'checked' : 'unchecked'}
-        </Checkbox>
+        <PinInput
+          {...args}
+          onChange={value => console.log('current: ', value)}
+        />
       </fieldset>
 
       <button type='submit'>submit</button>
@@ -103,5 +109,5 @@ export const WithForm: Story = {
       </button>
     </form>
   ),
-  args: { name: 'checkbox' },
+  args: { length: 4, name: 'pininput' },
 }

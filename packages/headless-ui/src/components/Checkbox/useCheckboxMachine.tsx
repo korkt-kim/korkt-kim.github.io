@@ -94,7 +94,7 @@ export const useCheckboxMachine = (props?: UseCheckboxMachineProps) => {
   )
 
   const [state, dispatch] = useReducer(reducer, {
-    checked: !!props?.checked,
+    checked: !!(props?.checked ?? props?.defaultChecked),
     indeterminate: !!props?.indeterminate,
   })
 
