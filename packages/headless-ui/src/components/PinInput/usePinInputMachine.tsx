@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useReducer, useState } from 'react'
 
+import { useDeepEffect } from '../../hooks/useDeepEffect'
 import { createScope } from '../../utils/createScope'
 import { isInState as _isInState } from '../../utils/utils'
 import { UsePinInputProps } from './type'
@@ -38,7 +39,7 @@ export const usePinInputMachine = (props: UsePinInputMachineProps) => {
     (value: string[]) => {
       return props.length === value.join('').length
     },
-    [props]
+    [props.length]
   )
 
   const reducer = useCallback(
@@ -66,15 +67,10 @@ export const usePinInputMachine = (props: UsePinInputMachineProps) => {
           }
 
           //logic
-          const newValue = ctx.value
+          const newValue = [...ctx.value]
           newValue[ctx.focusedIndex] = action.value[0]
 
-          props.onChange?.(newValue.join(''))
-
-          // @TODO: watch로 대신하는 방법 찾기
-          if (isComplete(newValue)) {
-            props.onComplete?.(newValue.join(''))
-          }
+          // props.onChange?.(newValue.join(''))
 
           return {
             ...ctx,
@@ -127,10 +123,10 @@ export const usePinInputMachine = (props: UsePinInputMachineProps) => {
             return { ...ctx }
           }
 
-          const newValue = ctx.value
+          const newValue = [...ctx.value]
           newValue[ctx.focusedIndex] = ''
 
-          props.onChange?.(newValue.join(''))
+          // props.onChange?.(newValue.join(''))
 
           //logic
           return {
@@ -161,11 +157,7 @@ export const usePinInputMachine = (props: UsePinInputMachineProps) => {
             ...action.value.split(''),
           ].slice(0, newFocusedIndex + 1)
 
-          props.onChange?.(newValue.join(''))
-
-          if (isComplete(newValue)) {
-            props.onComplete?.(newValue.join(''))
-          }
+          // props.onChange?.(newValue.join(''))
 
           return {
             ...ctx,
@@ -178,7 +170,7 @@ export const usePinInputMachine = (props: UsePinInputMachineProps) => {
           return { ...ctx }
       }
     },
-    [getComputedState, isComplete, isInState, props, state]
+    [getComputedState, isInState, props, state]
   )
 
   const [context, dispatch] = useReducer(reducer, {
@@ -205,6 +197,19 @@ export const usePinInputMachine = (props: UsePinInputMachineProps) => {
       dom.getInputs().item(context.focusedIndex)?.focus()
     })
   }, [context.focusedIndex, dom])
+
+  useDeepEffect(() => {
+    props.onChange?.(context.value.join(''))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [context.value])
+
+  useDeepEffect(() => {
+    if (!isComplete(value)) {
+      return
+    }
+
+    props.onComplete?.(value.join(''))
+  }, [isComplete, value])
 
   return {
     state: { ...context, disabled, value: value.join('') },
