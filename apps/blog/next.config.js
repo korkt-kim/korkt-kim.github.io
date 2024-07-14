@@ -4,6 +4,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 
+const { withSentryConfig } = require('@sentry/nextjs')
+
 const securityHeaders = [
   { key: 'X-XSS-Protection', value: '1; mode=block' },
   {
@@ -59,4 +61,27 @@ const nextConfig = {
   },
 }
 
-module.exports = withBundleAnalyzer(nextConfig)
+module.exports =
+  process.env.NODE_ENV !== 'production'
+    ? withSentryConfig(withBundleAnalyzer(nextConfig), {
+        // For all available options, see:
+        // https://github.com/getsentry/sentry-webpack-plugin#options
+
+        org: 'zakelstorm-blog',
+        project: 'blog-frontend',
+
+        authToken: process.env.SENTRY_AUTH_TOKEN,
+
+        // Only print logs for uploading source maps in CI
+        silent: !process.env.CI,
+
+        // For all available options, see:
+        // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
+
+        // Upload a larger set of source maps for prettier stack traces (increases build time)
+        widenClientFileUpload: true,
+
+        // Automatically tree-shake Sentry logger statements to reduce bundle size
+        disableLogger: true,
+      })
+    : withBundleAnalyzer(nextConfig)

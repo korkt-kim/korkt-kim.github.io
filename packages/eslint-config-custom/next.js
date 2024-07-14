@@ -31,7 +31,7 @@ module.exports = {
   overrides: [
     {
       files: [
-        'app{/**,}/{page,layout,error,loading,not-found,template,sitemap,robots}.{ts,tsx}',
+        'app{/**,}/{page,layout,instrument,global-error,error,loading,not-found,template,sitemap,robots}.{ts,tsx}',
       ],
       rules: {
         'import/no-default-export': 0,
