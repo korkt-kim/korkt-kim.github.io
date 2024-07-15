@@ -25,4 +25,4 @@ RUN pnpm turbo run sanity-build --filter @zakelstorm/blog
 
 EXPOSE 3333
 
-CMD ["pnpm", "--filter", "@zakelstorm/blog", "sanity-start"]
+CMD ["pnpm", "--filter", "@zakelstorm/blog", "sanity-start", "--host=0.0.0.0"]

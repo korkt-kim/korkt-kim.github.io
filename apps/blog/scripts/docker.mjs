@@ -37,7 +37,7 @@ const target = `${REPOSITORY}/${NAME}:${t}`
 process.env.FORCE_COLOR = '1'
 
 $`cd ../../
-pnpm zakelstorm dk @${NAME} -t ${t} -e ${PATH}/.env.${p} ${f ? `-f apps/blog/${f}` : ''} ${
+pnpm zakelstorm dk @${NAME} -t ${t} -e ${PATH}/.env.${p} -f apps/blog/${f ? f : 'Dockerfile'} ${
   c ? '' : '--no-cache'
 } -y ${(e ?? []).map(v => `-e="${v}"`)}
 
