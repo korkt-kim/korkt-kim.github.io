@@ -1,6 +1,6 @@
-![pin-input statemachine](<스크린샷 2024-07-09 오후 9.34.56.png>)
+![pagination state-machine](<스크린샷 2024-07-16 오전 12.27.21.png>)
 
-# PinInput
+# Pagination
 
 ## Features
 
@@ -11,106 +11,105 @@
 
 ## Methods and Properties
 
-### usePinInput
+### usePagination
 
-- length
+- pageSize
 
   - `number`
   - required
-  - The number of inputs
+  - Total number of data items
+
+- count
+
+  - `number`
+  - required
+  - Whether the pagination is disabled.
+
+- siblingCount
+
+  - `number`
+  - required
+  - Number of pages to show beside active page
 
 - ids
 
-  - `Partial<{ root: string; input: string; label: string; }>`
-  - The ids of the elements in the pin-input. Useful for composition.
+  - `Partial<{ root: string; rightArrow: string; leftArrow: string; item: (index:number)=> string; ellipsis: (index:number) => string; }>`
+  - The ids of the elements in the pagination. Useful for composition.
 
-- disabled
+- currentPage
 
-  - `boolean`
-  - Whether the pin-input is disabled.
+  - `number`
+  - The active page
 
-- value
+- defaultCurrentPage
 
-  - `string`
-  - The input value of pin-input
-
-- defaultValue
-
-  - `string`
-  - The default input value of pin-input
-
-- password
-
-  - `boolean``
-  - If `true`, the value of input will be masked just like `type=password`
+  - `number`
+  - Default initial page number
 
 - onChange
 
-  - `(value: string) => void`
-  - The callback invoked when the input value of pin-input changes.
+  - `(page:number)=>void`
+  - The callback invoked when the currentPage of pagination changes.
 
-- onComplete
+- translation
 
-  - `(value: string) => void`
-  - The callback invoked when the input value of pin-input is fully filled.
+  - `Partial<{rootLabel: string; leftArrowLabel: string; rightArrowLabel: string; itemLabel: (props: { page: number, totalPages: number,currentPage: number }) => string}>`
+  - Specifies the localized strings that identifies the accessibility elements and their states.
 
-- name
+- setPage
 
-  - `string`
-  - The name of the input field in a pin-input. Useful for form submission.
+  - `(page:number) => void`
+  - Function to set the current page.
 
 - getRootNode
 
   - `() => ShadowRoot | Node | Document`
   - A root node to correctly resolve document in custom environments.
 
-### usePinInputMachine
+### usePaginationMachine
 
-- length
+- pageSize
 
   - `number`
   - required
-  - The number of inputs
+  - Total number of data items
+
+- count
+
+  - `number`
+  - required
+  - Whether the pagination is disabled.
+
+- siblingCount
+
+  - `number`
+  - required
+  - Number of pages to show beside active page
 
 - ids
 
-  - `Partial<{ root: string; input: string; label: string; }>`
-  - The ids of the elements in the pin-input. Useful for composition.
+  - `Partial<{ root: string; rightArrow: string; leftArrow: string; item: (index:number)=> string; ellipsis: (index:number) => string; }>`
+  - The ids of the elements in the pagination. Useful for composition.
 
-- disabled
+- currentPage
 
-  - `boolean`
-  - Whether the pin-input is disabled.
+  - `number`
+  - The active page
 
-- value
+- defaultCurrentPage
 
-  - `string`
-  - The input value of pin-input
-
-- defaultValue
-
-  - `string`
-  - The default input value of pin-input
-
-- password
-
-  - `boolean``
-  - If `true`, the value of input will be masked just like `type=password`
+  - `number`
+  - Default initial page number
 
 - onChange
 
-  - `(value: string) => void`
-  - The callback invoked when the input value of pin-input changes.
+  - `(page:number)=>void`
+  - The callback invoked when the currentPage of pagination changes.
 
-- onComplete
+- translation
 
-  - `(value: string) => void`
-  - The callback invoked when the input value of pin-input is fully filled.
-
-- name
-
-  - `string`
-  - The name of the input field in a pin-input. Useful for form submission.
+  - `Partial<{rootLabel: string; leftArrowLabel: string; rightArrowLabel: string; itemLabel: (props: { page: number, totalPages: number,currentPage: number }) => string}>`
+  - Specifies the localized strings that identifies the accessibility elements and their states.
 
 - getRootNode
 

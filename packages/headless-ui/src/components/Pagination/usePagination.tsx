@@ -48,14 +48,20 @@ export const usePagination = (props: UsePaginationProps) => {
     () => ({
       pages: state.pages,
       currentPage: state.currentPage,
+      setPage: (page: number) => {
+        dispatch({ type: 'SET_CURRENTPAGE', page, isTrusted: true })
+      },
       getRootProps: () => ({
         id: ids.rootId,
         ...scopeAttr.Root,
+        'aria-label': state.translation.rootLabel,
       }),
       getLeftArrowProps: () => ({
         id: ids.leftArrowId,
         ...scopeAttr.LeftArrow,
         disabled: state.leftArrowDisabled,
+        'aria-disabled': state.leftArrowDisabled,
+        'aria-label': state.translation.leftArrowLabel,
         onClick: () => {
           dispatch({ type: 'PREV' })
         },
@@ -64,6 +70,8 @@ export const usePagination = (props: UsePaginationProps) => {
         id: ids.rightArrowId,
         ...scopeAttr.RightArrow,
         disabled: state.rightArrowDisabled,
+        'aria-disabled': state.rightArrowDisabled,
+        'aria-label': state.translation.rightArrowLabel,
         onClick: () => {
           dispatch({ type: 'NEXT' })
         },
@@ -83,7 +91,11 @@ export const usePagination = (props: UsePaginationProps) => {
             return
           },
           ...scopeAttr.Item,
-
+          'aria-label': state.translation.itemLabel({
+            page: index,
+            currentPage: state.currentPage,
+            totalPages: state.totalPages,
+          }),
           'data-selected': index === state.currentPage ? true : undefined,
         }
       },
@@ -95,6 +107,8 @@ export const usePagination = (props: UsePaginationProps) => {
       state.leftArrowDisabled,
       state.pages,
       state.rightArrowDisabled,
+      state.totalPages,
+      state.translation,
     ]
   )
 }
