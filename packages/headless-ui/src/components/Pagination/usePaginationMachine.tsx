@@ -1,11 +1,24 @@
+import { merge } from 'lodash-es'
 import { useCallback, useEffect, useMemo, useReducer } from 'react'
 
 import { createScope } from '../../utils/createScope'
 import { isInState as _isInState } from '../../utils/utils'
-import { UsePaginationProps } from './type'
+import { Translation, UsePaginationProps } from './type'
 
 interface Context {
   currentPage: number
+}
+
+const DEFAILT_TRANSLATION: Translation = {
+  rootLabel: 'pagination',
+  rightArrowLabel: 'next page',
+  leftArrowLabel: 'previous page',
+  itemLabel({ page, totalPages, currentPage }) {
+    const isLastPage = totalPages > 1 && page === totalPages
+    const isCurrentPage = page === currentPage
+    console.log(isCurrentPage)
+    return `${isLastPage ? 'last page, ' : ''} ${isCurrentPage ? 'current page, ' : ''} page ${page}`
+  },
 }
 
 const DEFAULT_CURRENT_PAGE = 1
@@ -79,9 +92,10 @@ export const usePaginationMachine = (props: UsePaginationMachineProps) => {
         leftArrowDisabled: currentPage === 1,
         currentPage,
         pages,
+        translation: merge(DEFAILT_TRANSLATION, props.translation),
       }
     },
-    [lastPage, props.currentPage, props.siblingCount]
+    [lastPage, props.currentPage, props.siblingCount, props.translation]
   )
 
   const reducer = useCallback(
@@ -144,8 +158,13 @@ export const usePaginationMachine = (props: UsePaginationMachineProps) => {
   })
 
   // computed
-  const { leftArrowDisabled, rightArrowDisabled, currentPage, pages } =
-    getComputedState(context)
+  const {
+    leftArrowDisabled,
+    rightArrowDisabled,
+    currentPage,
+    pages,
+    translation,
+  } = getComputedState(context)
 
   // watch
   useEffect(() => {
@@ -160,6 +179,8 @@ export const usePaginationMachine = (props: UsePaginationMachineProps) => {
       rightArrowDisabled,
       currentPage,
       pages,
+      translation,
+      totalPages: lastPage,
     },
     dispatch,
   }

@@ -7,6 +7,18 @@ export interface UsePaginationProps {
   pageSize: number
   count: number
   siblingCount: number
+  translation?: Partial<Translation>
+}
+
+export interface Translation {
+  rootLabel: string
+  leftArrowLabel: string
+  rightArrowLabel: string
+  itemLabel: (props: {
+    page: number
+    totalPages: number
+    currentPage: number
+  }) => string
 }
 
 export interface ElementIds {
