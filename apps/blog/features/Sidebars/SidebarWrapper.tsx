@@ -30,12 +30,12 @@ export const SidebarWrapper = ({
     }
 
     if (isOpen && breakPoint === 'desktop') {
-      aside.style.display = 'block'
       animate([
         ['path.top', { d: 'M 3 16.5 L 17 2.5' }],
         ['path.middle', { opacity: 0 }, { at: '<' }],
         ['path.bottom', { d: 'M 3 2.5 L 17 16.346' }, { at: '<' }],
         ['aside', { width: '250px' }, { at: '<' }],
+        ['aside', { padding: '20px' }, { at: '<' }],
         ['aside *', { opacity: 1 }],
       ])
     } else {
@@ -45,9 +45,8 @@ export const SidebarWrapper = ({
         ['path.bottom', { d: 'M 2 16.346 L 20 16.346' }, { at: '<' }],
         ['aside *', { opacity: 0 }, { at: '<', duration: 0 }],
         ['aside', { width: 0 }, { at: '<' }],
-      ]).then(() => {
-        aside.style.display = 'none'
-      })
+        ['aside', { padding: 0 }, { at: '<' }],
+      ])
     }
   }, [animate, breakPoint, isOpen, scope])
 
@@ -57,7 +56,7 @@ export const SidebarWrapper = ({
         id='sidebar'
         aria-hidden={!isOpen}
         className={twMerge(
-          `fixed right-0 bottom-0 top-0 bg-neutral-800 p-20 w-0 text-gray-300 [&>*]:opacity-0 hidden`,
+          `fixed right-0 bottom-0 top-0 bg-neutral-800 w-0 text-gray-300 [&>*]:opacity-0`,
           className
         )}>
         {children}
