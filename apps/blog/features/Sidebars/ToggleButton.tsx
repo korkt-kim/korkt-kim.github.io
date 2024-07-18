@@ -15,7 +15,7 @@ export interface ToggleButtonProps
   extends Omit<ComponentProps<'button'>, 'onClick'> {
   toggle: () => void
 }
-
+console.log('QWer')
 export const ToggleButton = ({ toggle, ...props }: ToggleButtonProps) => (
   <button onClick={toggle} {...props}>
     <svg width='23' height='18' viewBox='0 0 23 18'>
