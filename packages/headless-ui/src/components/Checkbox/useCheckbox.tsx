@@ -1,20 +1,22 @@
 import { defaults } from 'lodash-es'
 import { ComponentProps } from 'react'
 
-import { getId } from '../../utils/utils'
+import { useGetId } from '../../utils/utils'
 import { UseCheckboxProps } from './type'
 import { useCheckboxMachine } from './useCheckboxMachine'
 
 const idPrefix = 'zk-checkbox-'
 
-const defaultIds = {
-  rootId: getId(idPrefix),
-  labelId: getId(`${idPrefix}-label`),
-  inputId: getId(`${idPrefix}-input`),
-}
-
 export const useCheckbox = (props?: UseCheckboxProps) => {
-  const ids = defaults(props?.ids, defaultIds)
+  const getId = useGetId()
+  const ids = defaults(
+    props?.ids,
+    getId({
+      rootId: idPrefix,
+      labelId: `${idPrefix}-label`,
+      inputId: `${idPrefix}-input`,
+    } as const)
+  )
 
   const { state, dispatch } = useCheckboxMachine(props)
 

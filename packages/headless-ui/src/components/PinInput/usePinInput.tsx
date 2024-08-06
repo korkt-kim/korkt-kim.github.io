@@ -2,7 +2,7 @@ import { defaults } from 'lodash-es'
 import { ComponentProps, useMemo } from 'react'
 
 import { visuallyHiddenStyle } from '../../utils/dom'
-import { getId } from '../../utils/utils'
+import { useGetId } from '../../utils/utils'
 import { ScopeAttribute, UsePinInputProps } from './type'
 import { usePinInputMachine } from './usePinInputMachine'
 
@@ -24,14 +24,17 @@ const scopeAttr = {
   },
 }
 
-const defaultIds = {
-  rootId: getId(idPrefix),
-  labelId: getId(`${idPrefix}-label`),
-  inputId: getId(`${idPrefix}-input`),
-}
-
 export const usePinInput = (props: UsePinInputProps) => {
-  const ids = defaults(props?.ids, defaultIds)
+  const getId = useGetId()
+
+  const ids = defaults(
+    props?.ids,
+    getId({
+      rootId: idPrefix,
+      labelId: `${idPrefix}-label`,
+      inputId: `${idPrefix}-input`,
+    } as const)
+  )
 
   const { state, dispatch } = usePinInputMachine(props)
 

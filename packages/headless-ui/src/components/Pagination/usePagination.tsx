@@ -1,11 +1,11 @@
 import { defaults } from 'lodash-es'
 import { useMemo } from 'react'
 
-import { getId } from '../../utils/utils'
+import { useGetId } from '../../utils/utils'
 import { UsePaginationProps } from './type'
 import { usePaginationMachine } from './usePaginationMachine'
 
-const idPrefix = 'zk-pininput-'
+const idPrefix = 'zk-pagination-'
 
 const dataScope = 'pagination'
 const scopeAttr = {
@@ -31,16 +31,18 @@ const scopeAttr = {
   },
 }
 
-const defaultIds = {
-  rootId: getId(idPrefix),
-  leftArrowId: getId(`${idPrefix}-arrow-left`),
-  rightArrowId: getId(`${idPrefix}-arrow-right`),
-  itemId: (index: number) => getId(`${idPrefix}-item-${index}`),
-  ellipsis: (index: number) => getId(`${idPrefix}-ellipsis-${index}`),
-}
-
 export const usePagination = (props: UsePaginationProps) => {
-  const ids = defaults(props?.ids, defaultIds)
+  const getId = useGetId()
+  const ids = defaults(
+    props?.ids,
+    getId({
+      rootId: idPrefix,
+      leftArrowId: `${idPrefix}-arrow-left`,
+      rightArrowId: `${idPrefix}-arrow-right`,
+      itemId: (index: number) => `${idPrefix}-item-${index}`,
+      ellipsis: (index: number) => `${idPrefix}-ellipsis-${index}`,
+    } as const)
+  )
 
   const { state, dispatch } = usePaginationMachine(props)
 
@@ -81,7 +83,7 @@ export const usePagination = (props: UsePaginationProps) => {
       }),
       getItemProps: ({ index }: { index: number }) => {
         return {
-          id: defaultIds.itemId(index),
+          id: ids.itemId(index),
           onClick: () => {
             dispatch({
               type: 'SET_CURRENTPAGE',
